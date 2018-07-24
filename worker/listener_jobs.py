@@ -1,3 +1,8 @@
+import sys
+
+# for importing helper classes
+sys.path.append("..")
+
 import socket
 import pickle
 from helper_classes import Job, Individual
