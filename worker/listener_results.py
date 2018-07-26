@@ -13,9 +13,10 @@ while 1:
         if not os.path.isfile("result"):
             conn.send(b"BSY")
         else:
-            with open("result","rb") as f:
+            with open("result", "rb") as f:
                 res = f.read()
                 conn.sendall(res)
+                print("Sending results...")
             os.remove("result")
     conn.close()
 s.close()

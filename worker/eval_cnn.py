@@ -20,7 +20,6 @@ def eval_network(individual, epochs, seed):
 
     batch_size = 32
     num_classes = 10
-    data_augmentation = False
     num_predictions = 20
     save_dir = os.path.join(os.getcwd(), 'saved_models')
     model_name = 'keras_cifar10_trained_model.h5'
@@ -45,7 +44,8 @@ def eval_network(individual, epochs, seed):
         else:
             model.add(Conv2D(layer, (3, 3)))
             model.add(Activation('relu'))
-            if (idx + 1) % (len(layers) // 2) == 0:
+            ## add 1 pooling layer in the middle
+            if (idx + 1) == (len(layers) // 2):
                 model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
     model.add(Dense(128))
@@ -65,20 +65,17 @@ def eval_network(individual, epochs, seed):
     x_train /= 255
     x_test /= 255
 
-    if not data_augmentation:
-        print('Not using data augmentation.')
-        model.fit(x_train, y_train,
-                  batch_size=batch_size,
-                  epochs=epochs,
-                  validation_data=(x_test, y_test),
-                  shuffle=False)
+    model.fit(x_train, y_train,
+              batch_size=batch_size,
+              epochs=epochs,
+              validation_data=(x_test, y_test),
+              shuffle=False)
 
     # Save model and weights
-    # if not os.path.isdir(save_dir):
-    #    os.makedirs(save_dir)
-    # model_path = os.path.join(save_dir, model_name)
-    # model.save(model_path)
-    # print('Saved trained model at 167.99.251.94 ' % model_path)
+    #if not os.path.isdir(save_dir):
+    #   os.makedirs(save_dir)
+    #model_path = os.path.join(save_dir, model_name)
+    #model.save(model_path)
 
     # Score trained model.
     scores = model.evaluate(x_test, y_test, verbose=1)
