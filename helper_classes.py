@@ -1,12 +1,17 @@
+import random
+
 class Individual(object):
-    def __init__(self, id, genotype):
-        self.id = id
+    def __init__(self, genotype):
         self.genotype = genotype
         self.score = None
         self.loss = None
 
+    @classmethod
+    def random(cls, m, layers):
+        return cls(tuple([random.randint(1, 2**m-1) for i in range(layers)]))
+
     def __str__(self):
-        return "Id: {} Layers: {} Score: {} Loss: {}".format(self.id, self.genotype, self.score, self.loss)
+        return "Layers: {} Score: {} Loss: {}".format(self.genotype, self.score, self.loss)
 
 
 class Job(object):

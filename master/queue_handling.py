@@ -5,16 +5,16 @@ import socket
 import pickle
 from helper_classes import Individual, Job
 
-hosts_pool = ["167.99.251.94",
-"167.99.251.92",
-"167.99.251.135",
-"167.99.251.110",
-"167.99.251.31",
-"167.99.251.90",
-"167.99.251.102",
-"167.99.251.95",
-"167.99.251.136",
-"167.99.251.89"]
+hosts_pool = ["167.99.247.71",
+              "138.68.100.112",
+              "159.89.23.99",
+              "206.81.26.86",
+              "206.81.26.231",
+              "206.81.26.67",
+              "159.89.100.12",
+              "167.99.254.50",
+              "206.81.18.199",
+              "46.101.113.216"]
 
 class Worker(object):
     __metaclass__ = abc.ABCMeta
@@ -89,6 +89,9 @@ class DigitalOceanWorker(Worker):
             return result
 
 
+from math import sin, pi
+
+
 class DummyWorker(object):
     def __init__(self):
         self.available = True
@@ -99,7 +102,17 @@ class DummyWorker(object):
 
     def assign_job(self, job):
         self.available = False
-        self.result = sum(job)
+        x = job.individual.genotype
+        w = []
+        for i in range(len(x)):
+            w.append(1 + (x[i] - 1) / 4)
+        middle_term = 0
+        for i in range(len(x) - 1):
+            middle_term += (w[i]-1)**2*(1 + 10 * sin(pi*w[i] + 1) * sin(pi*w[i] + 1))
+        result = sin(pi*w[0])*sin(pi*w[0]) + middle_term + (w[-1] - 1)**2 * (1 + sin(2*pi*w[-1])*sin(2*pi*w[-1]))
+        job.individual.loss = result
+        job.individual.score = 1000 - result
+        self.result = job.individual
 
     def has_result(self):
         if self.result:
@@ -118,13 +131,13 @@ class DummyWorker(object):
 class WorkManager(object):
     def __init__(self):
         self.workers = []
-        self.jobs = []
         self.results = []
         self.__initialize_workers()
 
     def __initialize_workers(self):
-        for host in hosts_pool:
-            self.workers.append(DigitalOceanWorker(host))
+        #for host in hosts_pool:
+        #    self.workers.append(DigitalOceanWorker(host))
+        self.workers.append(DigitalOceanWorker('127.0.0.1'))
 
     def evaluate(self, jobs):
         '''
@@ -132,12 +145,13 @@ class WorkManager(object):
         :param jobs: list of jobs with scores to be computed
         :return: list of Individuals with scores computed
         '''
+        self.results = []
         expected_results = len(jobs)
         while len(self.results) < expected_results:
             for worker in self.workers:
                 if worker.is_available() and jobs:
                     job = jobs.pop()
-                    print("Worker available. Assigning job ({}/{}): {}".format(expected_results - len(jobs), expected_results, job))
+                    #print("Worker available. Assigning job ({}/{}): {}".format(expected_results - len(jobs), expected_results, job))
                     worker.assign_job(job)
             for worker in self.workers:
                 if worker.has_result():
@@ -146,41 +160,3 @@ class WorkManager(object):
                     worker.free_worker()
             time.sleep(1)
         return self.results
-
-
-def map_results_to_dict(results):
-    '''
-
-    :param results: list of Individuals
-    :return: list of dicts contatining rows for csv writing
-    '''
-    dicts = []
-    for result in results:
-        assert(isinstance(result,Individual))
-        dicts.append({"id" : result.id, "genotype" : result.genotype, "score" : result.score, "loss" : result.loss})
-    return dicts
-
-
-def save_csv(results):
-    dicts = map_results_to_dict(results)
-
-    import csv
-
-    with open('data.csv', 'w') as csvfile:
-        fieldnames = ['iter', 'genotype', 'score', 'loss']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-        writer.writeheader()
-        for entry in dicts:
-            writer.writerow(entry)
-
-random.seed(1337)
-
-jobs = []
-for i in range(100):
-    jobs.append(Job(Individual(i, tuple([random.randint(1,31) for i in range(4)])),1,1337))
-wm = WorkManager()
-results = wm.evaluate(jobs)
-save_csv(results)
-
-
