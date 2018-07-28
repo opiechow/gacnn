@@ -192,7 +192,7 @@ class WorkManager(object):
                     print("Worker available. Assigning job ({}/{}): {}".format(expected_results - len(jobs), expected_results, job))
                     success = worker.assign_job(job)
                     if not success:
-                        print e
+                        print(e)
                         print("Worker %s broken, removing from pool and reasigning job", worker.ip)
                         jobs.append(job)
                         self.workers.remove(worker)
