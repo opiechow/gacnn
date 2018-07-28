@@ -193,7 +193,7 @@ class WorkManager(object):
                     success = worker.assign_job(job)
                     if not success:
                         print(e)
-                        print("Worker %s broken, removing from pool and reasigning job", worker.ip)
+                        print("Worker %s broken, removing from pool and reasigning job" % worker.ip)
                         jobs.append(job)
                         self.workers.remove(worker)
             for worker in self.workers:
@@ -204,7 +204,7 @@ class WorkManager(object):
                         worker.free_worker()
                 except Exception as e:
                     print(e)
-                    print("Worker %s broken, removing from pool and reasigning job", worker.ip)
+                    print("Worker %s broken, removing from pool and reasigning job" % worker.ip)
                     jobs.append(worker.get_current_job())
                     self.workers.remove(worker)
             time.sleep(1)
