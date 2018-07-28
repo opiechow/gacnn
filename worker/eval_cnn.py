@@ -18,10 +18,10 @@ import os
 
 def set_random_seed(seed):
     os.environ['PYTHONHASHSEED'] = '0'
-    np.random.seed(42)
-    rn.seed(12345)
+    np.random.seed(seed)
+    rn.seed(seed)
     session_conf = tf.ConfigProto(intra_op_parallelism_threads=1, inter_op_parallelism_threads=1)
-    tf.set_random_seed(1234)
+    tf.set_random_seed(seed)
     sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
     K.set_session(sess)
 
