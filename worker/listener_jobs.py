@@ -16,9 +16,12 @@ s.listen(1)
 while 1:
     conn, addr = s.accept()
     data = conn.recv(1024)
+    if b"UP?" in data:
+        conn.send(b"UP")
+        conn.close()
+        continue
     conn.close()
     training_data = pickle.loads(data)
     assert(isinstance(training_data, Job))
     eval_cnn.eval_network(training_data.individual, training_data.epochs, training_data.seed)
-
 

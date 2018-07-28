@@ -6,11 +6,13 @@ j = Job(i)
 
 wm = WorkManager()
 scores = []
-for i in range(100):
-    print(i)
-    individual = wm.evaluate([j])
-    scores.append(individual[0].score)
+jobs = []
 
-with open("variance.txt") as f:
-    for score in scores:
-        f.write("%s\n" % score)
+for i in range(100):
+    jobs.append(j)
+
+population = wm.evaluate(jobs)
+
+with open("variance.txt",'w') as f:
+    for individual in population:
+        f.write("%s\n" % individual.score)

@@ -8,12 +8,13 @@ seed = 1337
 random.seed(seed)
 
 # Generated CNN parameters
-m = 5                  # number of bits to encode one layer, eg. for m=5 we get layers in (1;31)
+m = 5                   # number of bits to encode one layer, eg. for m=5 we get layers in (1;31)
 layers = 4              # number of conv layers
 N = 100                 # population size
 max_iter = 100
-max_no_improvement = 50
-eps = 1e-5              # improvement threshold
+max_no_improvement = 20
+std_dev = 0.0019255     # std deviation calculated from 100 samples of tf learnings
+eps = 4*std_dev         # improvement threshold
 crossover_prob = 0.95
 mutation_prob = 0.3
 
@@ -146,7 +147,7 @@ def map_results_to_dict(results, iter):
 
 
 def load_already_computed_from_file():
-    reader = csv.reader(open('data.csv', 'r'))
+    reader = csv.reader(open('data_cnn.csv', 'r'))
     computed_scores = {}
     for row in reader:
         iter, code, score, loss = row
@@ -184,7 +185,7 @@ def evaluate_scores(population, workmanager, computed_scores):
 
 
 def run():
-    with open('data.csv', 'w') as csvfile:
+    with open('data_cnn.csv', 'w') as csvfile:
         fieldnames = ['iter', 'genotype', 'score', 'loss']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -195,8 +196,7 @@ def run():
     no_improvement = 0
     previous_best_score = 0
     while it <= max_iter and no_improvement < max_no_improvement:
-        if it % 10 == 0:
-            print("Iter: {}/{}".format(it, max_iter))
+        print("--------------------------Iter: {}/{}--------------------------------".format(it, max_iter))
         population = evaluate_scores(population, wm, computed_scores)
         save_csv(population, it)
         best_score =  max(map(lambda x: x.score, population))
