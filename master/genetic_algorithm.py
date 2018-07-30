@@ -12,11 +12,14 @@ m = 5                   # number of bits to encode one layer, eg. for m=5 we get
 layers = 4              # number of conv layers
 N = 100                 # population size
 max_iter = 100
-max_no_improvement = 20
+max_no_improvement = 50
 std_dev = 0.0019255     # std deviation calculated from 100 samples of tf learnings
 eps = 4*std_dev         # improvement threshold
-crossover_prob = 0.95
+crossover_prob = 0.9
 mutation_prob = 0.3
+keep = 30               # keep best in each population
+read_csv = 'newdata.csv'
+write_csv = 'newdata2.csv'
 
 wm = qh.WorkManager()
 
@@ -49,12 +52,13 @@ def selection(population):
         parents.append(copy.deepcopy(select_one(population)))
     return parents
 
+
 def genotype_to_code(genotype, n, m):
     code = 0
     for i in range(n):
         code += genotype[i]
         code = code << m
-    code >> m
+    code = code >> m
     return code
 
 
@@ -68,6 +72,7 @@ def code_to_genotype(code, n, m):
 
 def pair_crossover(p1, p2):
     assert len(p1.genotype) == len(p2.genotype) == layers
+
     n = layers
 
     mask = random.randint(1, 2 ** (m * n) - 1)
@@ -118,7 +123,7 @@ def population_mutation(population):
 def fix_broken_individual(individual):
         new_genotype = []
         for layer in individual.genotype:
-            if layer == 0:
+            if layer < 1:
                 new_genotype.append(1)
             else:
                 new_genotype.append(layer)
@@ -147,7 +152,7 @@ def map_results_to_dict(results, iter):
 
 
 def load_already_computed_from_file():
-    reader = csv.reader(open('data_cnn.csv', 'r'))
+    reader = csv.reader(open(read_csv, 'r'))
     computed_scores = {}
     for row in reader:
         iter, code, score, loss = row
@@ -164,7 +169,7 @@ def get_already_computed(individual, computed_scores):
 
 def save_csv(results, iter):
     dicts = map_results_to_dict(results, iter)
-    with open('data.csv', 'a') as csvfile:
+    with open(write_csv, 'a') as csvfile:
         fieldnames = ['iter', 'code', 'score', 'loss']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         for entry in dicts:
@@ -184,22 +189,58 @@ def evaluate_scores(population, workmanager, computed_scores):
     return computed
 
 
+def restore_state_from_file(csvfile):
+    reader = csv.reader(open(read_csv, 'r'))
+    iters = []
+    codes = []
+    scores = []
+    losses = []
+    first = True
+    for row in reader:
+        # omit header
+        if first:
+            first = False
+            continue
+        iter, code, score, loss = row
+        iters.append(int(iter))
+        codes.append(int(code))
+        scores.append(float(score))
+        losses.append(float(loss))
+    if not iters:
+        return False, None, None, None, None
+    it = max(iters)
+    best_score = max(scores)
+    for i, score in enumerate(scores):
+        if score == best_score:
+            first_max_it = iters[i]
+            break
+    no_improvement = it - first_max_it
+    population = []
+    for code in codes:
+        population.append(Individual(code_to_genotype(code,layers,m)))
+    return True, it, no_improvement, best_score, population
+
+
 def run():
-    with open('data_cnn.csv', 'w') as csvfile:
+    with open(write_csv, 'w') as csvfile:
         fieldnames = ['iter', 'genotype', 'score', 'loss']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
     computed_scores = load_already_computed_from_file()
     wm = qh.WorkManager()
-    population = population_init()
-    it = 1
-    no_improvement = 0
-    previous_best_score = 0
+    restored, it, no_improvement, previous_best_score, population = restore_state_from_file(read_csv)
+    print("it: {}, no_improv: {}, best_score: {}".format(it, no_improvement, previous_best_score))
+    if not restored:
+        population = population_init()
+        it = 1
+        no_improvement = 0
+        previous_best_score = 0
     while it <= max_iter and no_improvement < max_no_improvement:
         print("--------------------------Iter: {}/{}--------------------------------".format(it, max_iter))
         population = evaluate_scores(population, wm, computed_scores)
+        population = sorted(population, key=lambda individual: individual.score, reverse=True)
         save_csv(population, it)
-        best_score =  max(map(lambda x: x.score, population))
+        best_score = max(map(lambda x: x.score, population))
         improvement = best_score - previous_best_score
         if improvement > eps:
             no_improvement = 0
@@ -210,8 +251,9 @@ def run():
         descendants = population_crossover(parents)
         population_mutation(descendants)
         fix_broken_population(descendants)
-        # full reproduction
-        population = descendants
+        # keep best, discard random
+        random.shuffle(descendants)
+        population[keep:] = descendants[keep:]
         it += 1
 
 
