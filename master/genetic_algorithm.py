@@ -194,6 +194,8 @@ def evaluate_scores(population, workmanager, computed_scores):
 
 
 def restore_state_from_file(csvfile):
+    if not os.path.isfile(csvfile):
+        return False, None, None, None, None
     reader = csv.reader(open(read_csv, 'r'))
     iters = []
     codes = []
@@ -220,7 +222,7 @@ def restore_state_from_file(csvfile):
             break
     no_improvement = it - first_max_it
     population = []
-    for code in codes:
+    for code in codes[-N:]:
         population.append(Individual(code_to_genotype(code,layers,m)))
     return True, it, no_improvement, best_score, population
 
