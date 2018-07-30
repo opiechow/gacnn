@@ -1,7 +1,11 @@
 import random
 import copy
 import csv
-import master.queue_handling as qh
+import queue_handling as qh
+import sys
+
+sys.path.append("..")
+
 from helper_classes import Job, Individual
 
 seed = 1337

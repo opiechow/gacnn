@@ -1,10 +1,15 @@
+import sys
 import time
 import abc
 import socket
 import pickle
 import random
-from helper_classes import Individual, Job
 from math import sin, pi
+
+sys.path.append("..")
+
+from helper_classes import Individual, Job
+
 
 job_port = 4123
 result_port = 4124
