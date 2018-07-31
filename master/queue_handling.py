@@ -79,6 +79,9 @@ class RemoteWorker(Worker):
     def __eq__(self, other):
         return self.ip == other.ip
 
+    def __str__(self):
+        return "Available: {} | Result : {} | Job: {} : IP: {}".format(self.available, self.result, self.job, self.ip)
+
     def is_available(self):
         return self.available
 
@@ -203,18 +206,19 @@ class WorkManager(object):
                     print("Worker available. Assigning job ({}/{}): {}".format(expected_results - len(jobs), expected_results, job))
                     success = worker.assign_job(job)
                     if not success:
-                        print("Worker %s broken, removing from pool and reasigning job" % worker.ip)
+                        print("Worker %s broken in assigning job, removing from pool and reasigning job" % worker.ip)
                         jobs.append(worker.get_current_job())
                         self.workers.remove(worker)
             for worker in self.workers[:]:
                 try:
-                    if worker.has_result():
-                        result = worker.get_result()
-                        self.results.append(result)
-                        worker.free_worker()
+                    if not worker.is_available():
+                        if worker.has_result():
+                            result = worker.get_result()
+                            self.results.append(result)
+                            worker.free_worker()
                 except Exception as e:
                     print(e)
-                    print("Worker %s broken, removing from pool and reasigning job" % worker.ip)
+                    print("Worker %s broken in result collection, removing from pool and reasigning job" % worker.ip)
                     jobs.append(worker.get_current_job())
                     self.workers.remove(worker)
             time.sleep(1)
