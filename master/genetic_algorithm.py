@@ -3,6 +3,7 @@ import copy
 import csv
 import queue_handling as qh
 import sys
+import os
 
 sys.path.append("..")
 
@@ -156,6 +157,8 @@ def map_results_to_dict(results, iter):
 
 
 def load_already_computed_from_file():
+    if not os.path.isfile(read_csv):
+        return {}
     reader = csv.reader(open(read_csv, 'r'))
     computed_scores = {}
     for row in reader:
