@@ -3,19 +3,15 @@ import time
 import abc
 import socket
 import pickle
-import random
 from math import sin, pi
 
 sys.path.append("..")
 
-from helper_classes import Individual, Job
-
-
 job_port = 4123
 result_port = 4124
 
-def host_available(host):
 
+def host_available(host):
     try:
         for port in job_port, result_port:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -45,6 +41,10 @@ class Worker(object):
 
     @abc.abstractmethod
     def assign_job(self, job):
+        """
+        Returns True if job succesfuly assigned, False otherwise
+        :rtype: bool
+        """
         return
 
     @abc.abstractmethod
@@ -74,7 +74,7 @@ class RemoteWorker(Worker):
         self._job_port = job_port
         self._result_port = result_port
         self._start = None
-        self.timeout = 900 # after 10 minutes something is wrong
+        self.timeout = 10000  # after 60 minutes something is wrong
 
     def __eq__(self, other):
         return self.ip == other.ip
@@ -135,6 +135,7 @@ class RemoteWorker(Worker):
             assert(result.score is not None)
             return result
 
+
 class LevyWorker(object):
     def __init__(self):
         self.available = True
@@ -154,7 +155,6 @@ class LevyWorker(object):
         for i in range(len(x) - 1):
             middle_term += (w[i]-1)**2*(1 + 10 * sin(pi*w[i] + 1) * sin(pi*w[i] + 1))
         result = sin(pi*w[0])*sin(pi*w[0]) + middle_term + (w[-1] - 1)**2 * (1 + sin(2*pi*w[-1])*sin(2*pi*w[-1]))
-        # std deviation calculated from 100 samples of tf learnings
         job.individual.loss = result
         job.individual.score = 1000 - result
         self.result = job.individual
@@ -199,7 +199,7 @@ class WorkManager(object):
         self.results = []
         expected_results = len(jobs)
         while len(self.results) < expected_results:
-            self.__add_workers()
+            self.__add_workers()  # makes adding new workers while the script is running possible
             for worker in self.workers[:]:
                 if worker.is_available() and jobs:
                     job = jobs.pop()

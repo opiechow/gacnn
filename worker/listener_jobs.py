@@ -5,7 +5,7 @@ sys.path.append("..")
 
 import socket
 import pickle
-from helper_classes import Job, Individual
+from common.helper_classes import Job
 import eval_cnn
 
 HOST = ''                 # Symbolic name meaning all available interfaces

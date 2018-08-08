@@ -8,7 +8,7 @@ from keras.models import Sequential
 from keras.datasets import cifar10
 from keras import backend as K
 import tensorflow as tf
-import helper_classes
+from common import helper_classes
 import random as rn
 import numpy as np
 import pickle
@@ -32,7 +32,7 @@ def eval_network(individual, epochs, seed):
     batch_size = 32
     num_classes = 10
 
-    print("Layers : " + str(individual.genotype))
+    print("Layers : " + str(individual.phenotype))
     # The data, split between train and test sets:
     (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
@@ -40,7 +40,7 @@ def eval_network(individual, epochs, seed):
     y_train = keras.utils.to_categorical(y_train, num_classes)
     y_test = keras.utils.to_categorical(y_test, num_classes)
 
-    layers = individual.genotype
+    layers = individual.phenotype
     model = Sequential()
     for idx, layer in enumerate(layers):
         if idx == 0:
@@ -71,11 +71,11 @@ def eval_network(individual, epochs, seed):
     x_train /= 255
     x_test /= 255
 
-    model.fit(x_train, y_train,
-              batch_size=batch_size,
-              epochs=epochs,
-              validation_data=(x_test, y_test),
-              shuffle=False)
+    history = model.fit(x_train, y_train,
+                        batch_size=batch_size,
+                        epochs=epochs,
+                        validation_data=(x_test, y_test),
+                        shuffle=False)
 
     # Score trained model.
     scores = model.evaluate(x_test, y_test, verbose=1)
@@ -84,5 +84,6 @@ def eval_network(individual, epochs, seed):
     print('Test accuracy:', scores[1])
     individual.loss = scores[0]
     individual.score = scores[1]
+    individual.training_history = str(history.history)
     with open("result",'wb') as f:
         pickle.dump(individual, f)

@@ -1,4 +1,4 @@
-from helper_classes import Job, Individual
+from common.helper_classes import Job, Individual
 from queue_handling import WorkManager
 
 i = Individual((1,1,1,1))
