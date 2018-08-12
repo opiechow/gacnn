@@ -1,0 +1,224 @@
+% Szablon do pracy inżynierskiej, zgodny z Załącznikiem nr 1 do Zarządzenia Rektora PG nr 17/2014 z 1 kwietnia 2014 r. 
+% Autor: Mateusz Kraiński
+% Kontakt w razie pytań: mt.krainski@gmail.com
+% 
+% Poza ustawieniem formatowania... wszystkiego, dodano metody ułatwiające właściwe formatowanie niektórych elementów kluczowych. Polecam zapoznać się z tym co jest dostępne.
+% 
+%
+%
+%
+%
+%
+% Umieszczenie początku rozdziału, sekcji wraz z nazwiskiem autora w spisie treści.
+% \namedchapter[imię i nazwisko autora fragmentu]{Tytuł fragmentu}
+% \namedsection[imię i nazwisko autora fragmentu]{Tytuł fragmentu}
+% \namedsubsection[imię i nazwisko autora fragmentu]{Tytuł fragmentu}
+%
+% Przykład:
+% \namedchapter[Mateusz Kraiński]{Wstęp i cel pracy} %-> z nazwiskiem
+% \namedchapter{Wstęp i cel pracy} %-> bez nazwiska
+% 
+%
+%
+%
+%
+%
+% Dodanie wykazu najważniejszych oznaczeń i skrótów. Lista jest automatycznie sortowana osobno dla oznaczeń matematycznych i skrótów:
+% \begin{sortedlist}
+%  	 \mathitem{symbol}{opis}             %Dodanie elementu - symbolu matematycznego
+%  	 \shortitem{Skrót}{wyjaśnienie} 	 %Dodanie elementu - skrótu
+%\end{sortedlist}
+%  
+%Przykład:
+%\begin{sortedlist}
+%  	 \mathitem{$f_p$}{częstotliwość próbkowania [Hz]}
+%  	 \mathitem{$h_m$}{odpowiedź impulsowa pomieszczenia dla $m-$tego mikrofonu}
+%  	 \shortitem{RIR}{Room Impulse Response}
+%  	 \mathitem{$h_y$}{odpowiedź impulsowa układu $y$}
+%\end{sortedlist}
+% 
+%
+%
+%
+%
+%
+% Dodanie obrazka w sposób łatwy (jest wpisana ścieżka obrazków jako rys/, czyli należy stworzyć folder 'rys' w folderze, w którym są pliki główne i tam umieszczać obrazki). Ewentualnie można wywołać \graphicspath{ {"ścieżka_dostępu_do_plików"/} } i zmienić ścieżkę dostępu. 
+%Metoda może stwarzać problemy ze względu na sposób generacji labelów -> nie są one widoczne przez program, więc nie działa podpowiadanie. Są one tworzone przy kompilacji. Możemy się do nich odwołać przez \ref{fig:label_obrazka}
+%
+% \InsertImageSimple[rozmiar]{nazwa_pliku}{tytuł}{label_obrazka} -> wstawiany obrazek ma rozmiar 0.0-1.0 szerokości linii (parametr rozmiar w zakresie 0.0-1.0)
+% 
+% \InsertImageSimple{nazwa_pliku}{tytuł}{label_obrazka} -> wstawiany obrazek ma rozmiar oryginalny
+%
+% Wstawianie obrazka "the hard way":
+%
+%\begin{figure}[h!tb]
+%	 \centering
+%	 \includegraphics[width = 1.0\linewidth]{logoPG}
+%	 \caption{logo PG}
+%	 \label{fig:labPG}
+%\end{figure}
+% 
+%
+%
+%
+%
+%
+% Dodanie dwóch obrazków obok siebie, zasady podobne jak wyżej.
+% \InsertSubImagesSimple
+%	{nazwa_pliku_obrazek1}
+%	{tytuł_obrazek1}
+%	{label_obrazek1}
+%	{nazwa_pliku_obrazek2}
+%	{tytuł_obrazek2}
+%	{label_obrazek2}
+%	{tytuł_całość}
+%	{label_całość}
+%
+% Przykład z wykorzystaniem obrazków logoETI i logoPG tworzy etykiety fig:ETI, fig:PG i fig:logos:
+% \InsertSubImagesSimple
+%	{logoETI}		%nazwa_pliku_obrazek1
+%	{ETI}			%tytuł_obrazek1
+%	{ETI}			%label_obrazek1
+%	{logoPG}		%nazwa_pliku_obrazek2
+%	{PG}			%tytuł_obrazek2
+%	{PG}			%label_obrazek2
+%	{Loga}			%tytuł_całość
+%	{logos}			%label_całość
+%
+% Dodanie obrazków obok siebie "the hard way". Proszę korzystać z realCaptionx i tam wpisywać tytuły obrazków ze względu na wymagane formatowanie. Można powiedzieć, że to wersja beta - nie było za bardzo testowane, ale działało:
+% 
+% \begin{figure}[h!tb] 
+%	\centering
+%   \def\realCaptionA{tytuł_obrazek1}
+%	\def\realCaptionB{tytuł_obrazek2}
+%	\def\realCaptionAll{tytuł_całości}
+%	\begin{subfigure}[t]{0.4\linewidth}
+%		\caption{)}
+%		\centering
+%		\includegraphics[width = 1.0\linewidth]{plik_obrazek1}
+%		\label{fig:lab1}		
+%	\end{subfigure}
+%	\quad
+%	\begin{subfigure}[t]{0.4\textwidth}
+%		\caption{)}
+%		\centering
+%		\includegraphics[width = 1.0\linewidth]{plik_obrazek2}
+%		\label{fig:lab2}
+%	\end{subfigure}
+%	\def\showncap {\realCaptionAll\\ a) \realCaptionA, b) \realCaptionB}
+%	\caption[\realCaptionAll]{\showncap}
+%	\label{fig:labc}
+% \end{figure}
+% 
+%
+%
+%
+%
+%
+% Dodanie opisu zmiennych do równania \equationDescriptor i \equationDescriptorS. Druga funkcja dodatkowo sortuje alfabetycznie podane symbole (może to być przydatne przy skomplikowanych wzorach, ale nie przydatne przy prostych, gdzie zmienne podajemy w porządku pojawiania się). Składania podobna jak w sortedList, ale jest trochę inne formatowanie wynikowe.
+%
+% \begin{equationDescriptor}
+% 	\EQDitem{symbol}{opis} -> EQation Descriptor item
+% 	\EQDitem{symbol}{opis} 
+% \end{equationDescriptor}
+%
+% Przykład:
+% \begin{equation}
+% 	s = v_0 \cdot t + \frac{a\cdot t^2}{2}
+%   \label{eq:my_eq}
+% \end{equation}
+% gdzie:   				% nie należy zostawiać linii wolnej przed "gdzie:", gdyż spowoduje to rozpoczęcie tej linii od akapitu
+% \begin{equationDescriptor}
+%   \EQDitem{$s$}{droga w ruchu prostoliniowym, jednostajnie przyspieszonym [m],}
+% 	\EQDitem{$v_0$}{prędkość początkowa [m/s],}
+%   \EQDitem{$t$}{czas poruszania się ciała [s],}
+% 	\EQDitem{$a$}{przyspieszenie [m/s$^2$ ].}
+% \end{equationDescriptor}
+% 
+%
+%
+%
+%
+%
+% Tworzenie tabeli. Najtrudniejsza w obsłudze z podanych metod i jest dość trudna w upraszczaniu. Niestety nie działa w 100 procentach jak powinno - nie dzieli tabeli na strony i nie powtarza tytułu tabeli na nowej stronie. Okazało się to zbyt skomplikowane w implementacji i nie było motywacji żeby zrobić to do końca. Jeżeli ktoś chciałby dokończyć - proszę się nie krępować. 
+% W linijce \begin{tabularx}{\linewidth}[c]{|l|X|}}, w ostatnich nawiasach klamrowych zdefiniowana jest struktura tabeli (liczba i rodzaj kolumn). W tym przypadku oznacza to jedną kolumnę dopasowaną do szerokości tekstu (oznaczenie l) i jedną kolumnę o maksymalnej pozostałej szerokości (oznaczenie X). W celu stworzenia tablicy trzykolumnowej, o dwóch kolumnach o maksymalnej szerokości należy tam wpisać |l|X|X|. W celu stworzenia tablicy o 4 kolumnach, z czego pierwsza i trzecia mają minimalną szerokość, a pozostałe maksymalną należy wpisać |l|X|l|X| itd.
+% W linijkach:
+%  	1 & opis1 \\ \hline
+%  	2 & opis1\\ \hline
+%  	3 & opis1\\ \hline
+% są dane do umieszczenia w tabeli. Parametr & oznacza zmianę kolumny, a \\ przejście do nowego wiersza. \hline wstawia poziomą linię oddzielającą wiersze tabeli. Zgodnie z wytycznymi do formatowania powinna być ona obecna.
+%
+% \begin{table}[h!tb]
+% \centering
+% \small
+% \caption{tutaj_wpisz_tytuł}
+% \begin{tabularx}{\linewidth}[c]{|l|X|}} 
+%	\hline
+%  	1 & opis1 \\ \hline
+%  	2 & opis1\\ \hline
+%  	3 & opis1\\ \hline
+%  	\noalign{\smallskip}
+% \end{tabularx}
+% \vspace{-8pt}
+% \end{table}
+% 
+%
+%
+%
+%
+% Bibliografia znajduje się w pliku bibl.bib. Należy tam dodawać pozycje zgodnie ze standardem bibtex. Jeżeli np. wyszukujemy coś w scholar.google.com klikamy na "Cytuj" pod interesującym nas artykułem, zaznaczamy format BibTeX i kopiujemy całość do pliku bibl.bib
+% Obecnie znajduje się tam przykład, do którego w tekście możemy się odwołać przez \cite{labelofarticle}. Pojawi się on w bibliografii dopiero jak zostanie zacytowany, więc nie musimy się przejmować kolejnością wstawiania kolejnych pozycji
+% 
+%
+%
+% To już wszystko. W razie pytań poważnie proszę pisać - chętnie pomogę :-) 
+% Enjoy! :-)
+%
+% Testowane na Linuxie Ubuntu 14.10 i jak to powtarzają programiści - U MNIE DZIAŁA!
+% U kolegi na Windows 8.1 też :-)
+
+
+%Plik konfiguracyjny
+\input{configure}
+
+\begin{document}
+
+
+% Strona tytułowa, 
+% Należy podać ścieżkę dostępu do plików pdf zawierających oświadczenie i stronę tytułową. Po dodaniu ścieżki odkomentować linijkę %\include{titlepage}
+\def\StronaTytulowa{StronaTytulowa_149097.pdf}
+\def\Oswiadczenie{Oswiadczenie_149097.pdf}
+\include{titlepage}
+
+%streszczenie
+\input{abstract}
+
+%spis treści
+\tableofcontents
+
+%wykaz skrótów
+\input{shorts}
+
+%W pliku Chapter.tex umieszczamy treść pojedynczego rozdziału pracy. Radzę go skopiować tyle razy ile plików będziemy używali. Dzięki zapisywaniu każdego chaptera w osobnym pliku praca jest przejrzysta i łatwo się edytuje czy pracuje nawet w kilka osób, bez specjalistycznego oprogramowania do kontroli wersji.
+\input{Chapter1}
+\input{Chapter2}
+\input{Chapter3}
+\input{Chapter4}
+\input{Chapter5}
+\input{Chapter6}
+% .
+
+\clearpage
+
+\bibliography{bibl}{}
+\bibliographystyle{plain}
+
+%spis rysunków
+\clearpage
+\listoffigures
+
+%spis tablic
+\clearpage
+\listoftables
+
+\end{document}

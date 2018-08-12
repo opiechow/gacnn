@@ -1,0 +1,77 @@
+\contentsline {chapter}{Wykaz wa\IeC {\.z}niejszych oznacze\IeC {\'n} i skr\IeC {\'o}t\IeC {\'o}w}{6}
+\contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p}{8}
+\contentsline {chapter}{\numberline {2}Przegl\IeC {\k a}d stanu wiedzy}{9}
+\contentsline {section}{\numberline {2.1}Uczenie maszynowe}{9}
+\contentsline {section}{\numberline {2.2}Metauczenie}{9}
+\contentsline {section}{\numberline {2.3}Uczenie z nadzorem}{10}
+\contentsline {section}{\numberline {2.4}Klasyfikacja obraz\IeC {\'o}w}{10}
+\contentsline {section}{\numberline {2.5}CIFAR-10}{11}
+\contentsline {section}{\numberline {2.6}K najbli\IeC {\.z}szych s\IeC {\k a}siad\IeC {\'o}w}{13}
+\contentsline {section}{\numberline {2.7}Klasyfikator liniowy}{14}
+\contentsline {section}{\numberline {2.8}Sieci Neruonowe}{16}
+\contentsline {section}{\numberline {2.9}Konwolucyjne sieci neuronowe}{17}
+\contentsline {section}{\numberline {2.10}Algorytm geneteyczny}{17}
+\contentsline {chapter}{\numberline {3}Opis rozwi\IeC {\k a}zania}{19}
+\contentsline {section}{\numberline {3.1}Redukcja problemu}{19}
+\contentsline {section}{\numberline {3.2}Sie\IeC {\'c} neuronowa jako osobnik algorytmu genetycznego}{19}
+\contentsline {section}{\numberline {3.3}Operacje genetyczne algorytmu genetycznego}{20}
+\contentsline {subsection}{\numberline {3.3.1}Selekcja}{20}
+\contentsline {subsection}{\numberline {3.3.2}Krzy\IeC {\.z}owanie}{21}
+\contentsline {subsection}{\numberline {3.3.3}Mutacja}{21}
+\contentsline {subsection}{\numberline {3.3.4}''Naprawianie'' osobnik\IeC {\'o}w}{21}
+\contentsline {subsection}{\numberline {3.3.5}Substytucja}{22}
+\contentsline {section}{\numberline {3.4}Architektura eksperymentu}{22}
+\contentsline {subsection}{\numberline {3.4.1}Elementy wsp\IeC {\'o}lne}{23}
+\contentsline {subsection}{\numberline {3.4.2}W\IeC {\k e}ze\IeC {\l } zarz\IeC {\k a}dzaj\IeC {\k a}cy}{23}
+\contentsline {subsection}{\numberline {3.4.3}System kolejkowania zada\IeC {\'n}}{25}
+\contentsline {subsection}{\numberline {3.4.4}Protok\IeC {\'o}\IeC {\l } komunikacji ze zdalnymi w\IeC {\k e}z\IeC {\l }ami}{26}
+\contentsline {subsection}{\numberline {3.4.5}W\IeC {\k e}ze\IeC {\l } obliczeniowy}{27}
+\contentsline {subsection}{\numberline {3.4.6}Zarz\IeC {\k a}danie infrastruktur\IeC {\k a} w\IeC {\k e}z\IeC {\l }\IeC {\'o}w obliczeniowych}{29}
+\contentsline {section}{\numberline {3.5}Replikatywno\IeC {\'s}\IeC {\'c} bada\IeC {\'n}}{33}
+\contentsline {chapter}{\numberline {4}Badania i testy}{34}
+\contentsline {section}{\numberline {4.1}Wariancja wynik\IeC {\'o}w dla jednej sieci}{34}
+\contentsline {section}{\numberline {4.2}Test dzia\IeC {\l }ania algorytmu genetycznego}{34}
+\contentsline {section}{\numberline {4.3}Poszukiwanie optymalnej struktury konwolucyjnej sieci neuronowej za pomoc\IeC {\k a} algorytmu genetycznego dla uczenia 1-epokowego}{37}
+\contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie wynik\IeC {\'o}w dla uczenia 1- i 10- epokowego}{41}
+\contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie przebiegu uczenia sieci w pierwszej i ostatniej iteracji algorytmu genetycznego}{41}
+\contentsline {section}{\numberline {4.6}Osi\IeC {\k a}gi najlepszej wed\IeC {\l }ug algorytmu sieci po 25 epokach uczenia}{43}
+\contentsline {chapter}{\numberline {5}Podsumowanie}{44}
+\contentsline {chapter}{Bibliografia}{45}
+\contentsline {chapter}{Spis rysunk\'ow}{46}
+\contentsline {chapter}{Spis tabel}{47}
+\setcounter {tocdepth}{-1}
+\contentsline {chapter}{ \numberline {A}Dodatek A}{48}
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{ Dodatek A}{48}
+\contentsline {section}{\numberline {A.1}Tytu\IeC {\l } dyplomu}{48}
+\contentsline {section}{\numberline {A.2}Cel i przeznaczenie aplikacji}{48}
+\contentsline {section}{\numberline {A.3}Funkcjonalno\IeC {\'s}\IeC {\'c}}{48}
+\contentsline {subsection}{\numberline {A.3.1}Spis realizowanych funkcji}{48}
+\contentsline {subsection}{\numberline {A.3.2}Lista przyk\IeC {\l }adowych zastosowa\IeC {\'n}}{48}
+\contentsline {subsection}{\numberline {A.3.3}Szczeg\IeC {\'o}\IeC {\l }owy opis dzia\IeC {\l }ania aplikacji}{48}
+\contentsline {section}{\numberline {A.4}Og\IeC {\'o}lna architektura systemu}{48}
+\contentsline {section}{\numberline {A.5}Architektura sprz\IeC {\k e}tu}{48}
+\contentsline {section}{\numberline {A.6}Architektura oprogramowania}{48}
+\contentsline {section}{\numberline {A.7}Opis sposobu wytwarzania aplikacji}{48}
+\contentsline {subsection}{\numberline {A.7.1}Za\IeC {\l }o\IeC {\.z}enia i sformu\IeC {\l }owanie zadania}{48}
+\contentsline {subsection}{\numberline {A.7.2}Analiza problemu (z przegl\IeC {\k a}dem dotychczasowych rozwi\IeC {\k a}za\IeC {\'n})}{48}
+\contentsline {subsection}{\numberline {A.7.3}Specyfikacje}{48}
+\contentsline {subsection}{\numberline {A.7.4}Przygotowanie projektu}{48}
+\contentsline {subsection}{\numberline {A.7.5}Prototypowanie i implementacja}{48}
+\contentsline {subsection}{\numberline {A.7.6}Testowanie}{48}
+\contentsline {subsection}{\numberline {A.7.7}Ocena aplikacji (w tym por\IeC {\'o}wnanie do innych rozwi\IeC {\k a}za\IeC {\'n})}{48}
+\contentsline {subsection}{\numberline {A.7.8}Wnioski i perspektywy dalszych prac}{48}
+\setcounter {tocdepth}{-1}
+\contentsline {chapter}{ \numberline {B}Dodatek B}{49}
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{ Dodatek B}{49}
+\setcounter {tocdepth}{-1}
+\contentsline {chapter}{ \numberline {C}Dodatek C}{50}
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{ Dodatek C}{50}
+\setcounter {tocdepth}{-1}
+\contentsline {chapter}{ \numberline {D}Dodatek D}{51}
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{ Dodatek D}{51}
+\setcounter {tocdepth}{3}
+\contentsfinish 

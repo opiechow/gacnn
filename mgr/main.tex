@@ -1,0 +1,52 @@
+%Plik konfiguracyjny
+\input{configure}
+
+\begin{document}
+
+
+% Strona tytułowa, 
+% Należy podać ścieżkę dostępu do plików pdf zawierających oświadczenie i stronę tytułową. Po dodaniu ścieżki odkomentować linijkę %\include{titlepage}
+\def\StronaTytulowa{StronaTytulowa_145526.pdf}
+\def\Oswiadczenie{Oswiadczenie_145526.pdf}
+\include{titlepage}
+
+%streszczenie
+\pagestyle{plain}
+\input{abstract}
+
+%spis treści
+\tableofcontents
+
+%wykaz skrótów
+\input{shorts}
+%W pliku Chapter.tex umieszczamy treść pojedynczego rozdziału pracy. Radzę go skopiować tyle razy ile plików będziemy używali. Dzięki zapisywaniu każdego chaptera w osobnym pliku praca jest przejrzysta i łatwo się edytuje czy pracuje nawet w kilka osób, bez specjalistycznego oprogramowania do kontroli wersji.
+\input{Chapter1}
+\input{Chapter2}
+\input{Chapter3}
+\input{Chapter4}
+\input{Chapter5}
+% .
+
+\clearpage
+
+\bibliography{bibl.bib}{}
+\bibliographystyle{plain}
+
+%spis rysunków
+\clearpage
+\listoffigures
+
+%spis tablic
+\clearpage
+\listoftables
+
+\begin{appendices}
+
+\input{AppendixA}
+\input{AppendixB}
+\input{AppendixC}
+\input{AppendixD}
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
+\end{appendices}
+\end{document}

@@ -1,0 +1,311 @@
+%Szablon do pracy inżynierskiej 2014
+% Autor: Mateusz Kraiński
+% Kontakt: mt.krainski@gmail.com
+
+
+\documentclass[a4paper,twoside,10pt]{report}
+
+\usepackage[a4paper, left=3.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm, headsep=1.2cm]{geometry}
+\setlength\parindent{1.25cm}
+
+\usepackage[MeX]{polski} %Mex zawiera polskie fonty
+\usepackage[utf8]{inputenc} %kodowanie 1250, dla iso to: "latin2"
+
+% Closest to arial as i could get
+\renewcommand{\familydefault}{\sfdefault}
+\normalfont
+
+\usepackage{pifont}
+\usepackage{float}
+\usepackage[pdftex]{graphicx}
+\usepackage[nottoc]{tocbibind}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{indentfirst} %do każdego akapitu dodawane jest wcięcie, zgodnie z polskimi standardami drukarskimi.
+\usepackage{sectsty}
+\usepackage{setspace} %ustawianie interlini, dobrze wygladaja tabele, \singlespacing, \onehalfspacing, and \doublespacing
+\usepackage{float}
+\usepackage{amsthm} %dla twierdzen
+\usepackage{amsmath} %pakiet matematyczny
+\usepackage{amssymb} %pakiet dodatkowych symboli
+\usepackage{multirow}\usepackage{amsthm} %dla twierdzen
+\usepackage{amsmath} %pakiet matematyczny
+\usepackage{amssymb} %pakiet dodatkowych symboli
+\usepackage{multirow}
+\usepackage{xcolor,listings} %listingi
+\usepackage[final]{pdfpages}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage{gensymb}
+\usepackage{textcomp} % promil \textperthousand
+
+\singlespacing
+\sectionfont{\large}
+\subsectionfont{\normalsize}
+\renewcommand{\baselinestretch}{1.0}
+
+
+%---------------------------------------------------------------------------------
+%Sortowanie tekstu
+\usepackage{datatool}% http://ctan.org/pkg/datatool
+
+\DTLnewdb{MathSymbols}
+\DTLnewdb{Shortcuts}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\mathitem}[2]{%
+  \DTLnewrow{MathSymbols}% Create a new entry
+  \DTLnewdbentry{MathSymbols}{name}{ #1}% Add entry as description
+  \DTLnewdbentry{MathSymbols}{description}{#2}
+}
+\newcommand{\shortitem}[2]{%
+  \DTLnewrow{Shortcuts}% Create a new entry
+  \DTLnewdbentry{Shortcuts}{name}{#1}% Add entry as description
+  \DTLnewdbentry{Shortcuts}{description}{#2}
+}
+\newenvironment{sortedlist}{%
+  \DTLifdbexists{MathSymbols}{\DTLcleardb{MathSymbols}}{\DTLnewdb{MathSymbols}}
+  \DTLifdbexists{Shortcuts}{\DTLcleardb{Shortcuts}}{\DTLnewdb{Shortcuts}}
+  % Create new/discard old list
+  }
+  {%
+  \DTLsort{name}{MathSymbols}% Sort list
+  \begin{flushleft}
+  \begin{tabularx}{\linewidth}[c]{l c R}
+  \DTLforeach*{MathSymbols}{\theName=name, \theDesc=description}{
+     \theName & -- & \theDesc \vspace{6pt}\\}
+  \DTLforeach*{Shortcuts}{\theName=name, \theDesc=description}{
+     \theName & -- & \theDesc \vspace{6pt}\\}
+  \end{tabularx}
+  \vspace{-26pt}
+  \end{flushleft}
+}
+
+\DTLnewdb{eqlist}
+
+\newcommand{\EQDitem}[2]{%
+  \DTLnewrow{eqlist}% Create a new entry
+  \DTLnewdbentry{eqlist}{name}{#1}% Add entry as description
+  \DTLnewdbentry{eqlist}{description}{#2}
+}
+\newenvironment{equationDescriptorS}{%
+  \DTLifdbexists{eqlist}{\DTLcleardb{eqlist}}{\DTLnewdb{eqlist}}
+  % Create new/discard old list
+  }
+  {%
+  \DTLsort{name}{eqlist}% Sort list
+  \begin{flushleft}
+  \vspace{-8pt}
+  \begin{tabularx}{\linewidth}[c]{l c R}
+  \DTLforeach*{eqlist}{\theName=name, \theDesc=description}{
+     \theName &--& \theDesc\\}
+  \end{tabularx}
+  \vspace{-24pt}
+  \end{flushleft}
+}
+
+\newenvironment{equationDescriptor}{%
+  \DTLifdbexists{eqlist}{\DTLcleardb{eqlist}}{\DTLnewdb{eqlist}}
+  % Create new/discard old list
+  }
+  {
+  \begin{flushleft}
+  \vspace{-8pt}
+  \begin{tabularx}{\linewidth}[c]{l c R}
+  \DTLforeach*{eqlist}{\theName=name, \theDesc=description}{
+     \theName &--& \theDesc\\}
+  \end{tabularx}
+  \vspace{-24pt}
+  \end{flushleft}
+}
+
+
+
+%-------------------------------------------------------------sub--------------------
+%Formatowanie spisu treści
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+% Definicja nowego sposobu umieszczania tytułów sekcji
+\def\empty{none}
+\newcommand{\namedchapter}[2][\empty]{\chapter[#2 \ifx#1\empty\else(#1)\fi]{#2}}
+\newcommand{\namedsection}[2][\empty]{\section[#2 \ifx#1\empty\else(#1)\fi]{#2}}
+\newcommand{\namedsubsection}[2][\empty]{\subsection[#2 \ifx#1\empty\else(#1)\fi]{#2}}
+
+
+\titlecontents{chapter}
+[0.0cm]             % left margin
+{\vspace{6 pt }}                  % above code
+{%                  % numbered format
+{\thecontentslabel. }%
+}%
+{}         % unnumbered format
+{\enspace\titlerule*{.}\contentspage}         % filler-page-format, e.g dots
+
+\titlecontents{section}
+[1em]             % left margin
+{\vspace{6 pt }}                   % above code
+{%                  % numbered format
+{\thecontentslabel. }%
+}%
+{}         % unnumbered format
+{\enspace\titlerule*{.} \contentspage}         % filler-page-format, e.g dots
+
+% indented subsection (in toc)
+\titlecontents{subsection}
+[2em]             % left margin
+{\vspace{6 pt }}                   % above code
+{%                  % numbered format
+{\thecontentslabel. }%
+}%
+{}         % unnumbered format
+{ \enspace\titlerule*{.}\contentspage}         % filler-page-format
+
+
+
+
+
+%---------------------------------------------------------------------------------
+% Formatowanie rozdziałów, podrozdziałów itd.
+\usepackage{textcase}
+\usepackage{titlesec}
+
+
+\titleformat
+{\chapter} % command
+[hang] % shape
+{\bfseries\large} % format
+{\thechapter. } % label
+{0pt} % sep
+{\MakeTextUppercase} % before-code
+[] % after-code
+\titlespacing*{\chapter}{0pt}{12pt}{6pt}
+
+
+\titleformat
+{\section} % command
+[hang] % shape
+{\normalsize\bfseries\itshape} % format
+{\thesection. } % label
+{0em} % sep
+{} % before-code
+[] % after-code
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+\titleformat
+{\subsection} % command
+[hang] % shape
+{\normalsize\itshape} % format
+{\thesubsection. } % label
+{0em} % sep
+{} % before-code
+[] % after-code
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+
+
+
+%---------------------------------------------------------------------------------
+% Change itemize point style
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelenumi}{\arabic{enumi}. }
+\renewcommand{\labelenumii}{\labelenumi\arabic{enumii}. }
+\renewcommand{\labelenumiii}{\labelenumii\arabic{enumiii}. }
+
+
+
+
+%---------------------------------------------------------------------------------
+
+%Change image style, add simple functions InsertImageSimple and InsertSubImagesSimple
+%\usepackage{caption}
+\usepackage[font=small, labelsep=period, figurename=Rys., aboveskip=6pt, belowskip=0pt]{caption}
+\usepackage{subcaption}
+
+\captionsetup*[subfigure]{
+	font=small,
+	singlelinecheck=off,
+	justification=raggedright,
+	labelformat=simple,
+	labelsep=none,
+	aboveskip=6pt,
+	belowskip=0pt
+}
+
+\graphicspath{ {rys/} }
+
+\newcommand{\InsertImageSimple}[4][\empty]
+{
+\begin{figure}[h!tb]
+    \centering
+    \ifx#1\empty\includegraphics[scale=1]{#2}\else\includegraphics[width = #1\linewidth]{#2}\fi
+    \caption{#3}
+	\label{fig:#4}
+\end{figure}
+}
+
+\newcommand{\InsertSubImagesSimple}[8]
+{
+\begin{figure}[h!tb]
+	\centering
+	\begin{subfigure}[t]{0.4\linewidth}
+		\caption{)}
+	%	\def\realCaptionA{#2}
+		\centering
+		\includegraphics[width = 1.0\linewidth]{#1}
+		\label{fig:#3}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[t]{0.4\textwidth}
+		\caption{)}
+	%	\def\realCaptionB{#5}
+		\centering
+		\includegraphics[width = 1.0\linewidth]{#4}
+		\label{fig:#6}
+	\end{subfigure}
+	%\def\realCaptionAll{#7}
+	\def\showncap {#7\\ a) #2, b) #5}
+	\caption[#7]{\showncap}
+	\label{fig:#8}
+\end{figure}
+}
+
+%---------------------------------------------------------------------------------
+% Change table style
+
+\captionsetup[table]{
+    listformat=empty,
+    name=Tabela,
+    singlelinecheck=off,
+    justification=raggedright,
+    labelsep=period,
+    position=above,
+    aboveskip=0pt,
+	belowskip=-4pt,
+    width=\linewidth,
+    labelfont={small, bf},
+    font={small}
+    }
+
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+%Dodatki
+\makeatletter
+\newcommand{\setappendix}{Dodatek~\thechapter:~}
+\newcommand{\setchapter}{\thechapter~}
+\titleformat{\chapter}{\bfseries\large}{%
+  \ifnum\pdfstrcmp{\@currenvir}{appendices}=0
+    \setappendix
+  \else
+    \setchapter
+  \fi}{0em}{}
+\makeatother
+\usepackage[titletoc, title]{appendix}
+\usepackage[justification=centering]{caption}
+
+\renewcommand\appendixname{}
+\renewcommand\appendixpagename{Dodatki}
+\renewcommand\appendixtocname{Dodatki}

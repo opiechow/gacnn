@@ -1,0 +1,99 @@
+\begin{thebibliography}{10}
+
+\bibitem{tensorflow2015-whitepaper}
+Mart\'{\i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
+  Craig Citro, Greg~S. Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin,
+  Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard,
+  Yangqing Jia, Rafal Jozefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh
+  Levenberg, Dandelion Man\'{e}, Rajat Monga, Sherry Moore, Derek Murray, Chris
+  Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal
+  Talwar, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda Vi\'{e}gas,
+  Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, and
+  Xiaoqiang Zheng.
+\newblock {TensorFlow}: Large-scale machine learning on heterogeneous systems,
+  2015.
+\newblock Software available from tensorflow.org.
+
+\bibitem{ascher.dubois.hinsen.hugunin.oliphant-1999-np}
+David Ascher, Paul~F. Dubois, Konrad Hinsen, James Hugunin, and Travis
+  Oliphant.
+\newblock {\em Numerical Python}.
+\newblock Lawrence Livermore National Laboratory, Livermore, CA, ucrl-ma-128569
+  edition, 1999.
+
+\bibitem{gpuvms2018}
+Jon Beck, Cynthia Nottingham, Dan Lepow, Jean-Paul Connock, and Ralph
+  Squillace.
+\newblock Gpu optimized virtual machine sizes.
+\newblock Dostęp: 29/06/2018 pod adresem
+  https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-gpu,
+  2018.
+
+\bibitem{bialaszewski2012}
+Tomasz Białaszewski.
+\newblock Algorytmy genetyczne.
+\newblock Materiały Wykładowe Politechinki Gdańskiej, 2012.
+
+\bibitem{Brazdil2009}
+Pavel Brazdil, Christophe Giraud-Carrier, Carlos Soares, and Ricardo Vilalta.
+\newblock {\em Metalearning - Applications to Data Mining.}
+\newblock 01 2009.
+
+\bibitem{chollet2015keras}
+Fran\c{c}ois Chollet et~al.
+\newblock Keras.
+\newblock \url{https://keras.io}, 2015.
+
+\bibitem{Hunter:2007}
+J.~D. Hunter.
+\newblock Matplotlib: A 2d graphics environment.
+\newblock {\em Computing In Science \& Engineering}, 9(3):90--95, 2007.
+
+\bibitem{Krizhevsky09learningmultiple}
+Alex Krizhevsky.
+\newblock Learning multiple layers of features from tiny images.
+\newblock Technical report, 2009.
+
+\bibitem{Lemke2015}
+Christiane Lemke, Marcin Budka, and Bogdan Gabrys.
+\newblock Metalearning: a survey of trends and technologies.
+\newblock {\em Artificial Intelligence Review}, 44(1):117--130, Jun 2015.
+
+\bibitem{cs231n}
+Fei-Fei Li, Andrej Karpathy, and Justin Johnson.
+\newblock Cs231n: Convolutional neural networks for visual recognition 2016.
+
+\bibitem{mitchell1997machine}
+Tom Mitchell.
+\newblock {\em Machine Learning}.
+\newblock McGraw-Hill, New York, 1997.
+
+\bibitem{mohri2012foundations}
+Mehryar Mohri.
+\newblock {\em Foundations of machine learning}.
+\newblock MIT Press, Cambridge, MA, 2012.
+
+\bibitem{russell2010artificial}
+Stuart Russell.
+\newblock {\em Artificial intelligence : a modern approach}.
+\newblock Prentice Hall, Upper Saddle River, NJ, 2010.
+
+\bibitem{simulationlib}
+S.~Surjanovic and D.~Bingham.
+\newblock Virtual library of simulation experiments: Test functions and
+  datasets.
+\newblock Dostęp: 29/06/2018 pod adresem
+  \url{http://www.sfu.ca/~ssurjano/levy.html}.
+
+\bibitem{CS-R9526}
+G.~van Rossum.
+\newblock Python tutorial.
+\newblock Technical Report CS-R9526, Centrum voor Wiskunde en Informatica
+  (CWI), Amsterdam, May 1995.
+
+\bibitem{zuradabarskijedruch1996}
+Jacek Żurada, Mariusz Barski, and Wojciech Jędruch.
+\newblock {\em Sztuczne sieci neuronowe : podstawy teorii i zastosowania.}
+\newblock Warszawa : Wydawnictwo Naukowe PWN, 1996., 1996.
+
+\end{thebibliography}

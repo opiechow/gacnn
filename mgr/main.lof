@@ -1,0 +1,39 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Komputerowa reprezentacja zdj\IeC {\k e}cia kota \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna na podstawie \cite {cs231n}\relax }}{10}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Problemy w klasyfikacji obraz\IeC {\'o}w \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna na podstawie \cite {cs231n}\relax }}{11}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Przyk\IeC {\l }adowe obrazki ze zbioru CIFAR-10 \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: https://www.cs.toronto.edu/\textasciitilde kriz/cifar.html\relax }}{12}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ilustracja dzia\IeC {\l }ania algorytmu k najbli\IeC {\.z}szych s\IeC {\k a}siad\IeC {\'o}w w dw\IeC {\'o}ch wymiarach \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{13}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Schematyczna wizualizacja dzia\IeC {\l }ania klasyfikator\IeC {\'o}w liniowych \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna na podstawie \cite {cs231n}\relax }}{14}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Mapowanie 4 monochromatycznych pikseli do 3 klas \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna na podstawie \cite {cs231n}\relax }}{15}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Pojedynczy 3-wej\IeC {\'s}ciowy neuron \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna na podstawie \cite {cs231n,zuradabarskijedruch1996}\relax }}{16}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Schemat dzia\IeC {\l }ania algorytmu genetycznego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{18}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Przedstawienie pojedynczego osobnika \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{20}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Krzy\IeC {\.z}owanie jednorodne \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{21}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ca\IeC {\l }okszta\IeC {\l }t systemu przeprowadzania eksperymentu \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{22}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Struktura katalgo\IeC {\'o}w projektu systemu eksperymentu \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{22}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces System kolejkowania oblicze\IeC {\'n} \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{25}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Schemat wymiany komunikat\IeC {\'o}w pomi\IeC {\k e}dzy systemem kolejkowym a w\IeC {\k e}z\IeC {\l }ami obliczeniowymi \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{27}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Schemat systemu obs\IeC {\l }ugi zada\IeC {\'n} \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{29}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Interfejs Microsoft Azure - tworzenie maszyny wirtualnej \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{31}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces 6 w\IeC {\k e}z\IeC {\l }\IeC {\'o}w obliczeniowych w trakcie pracy \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{32}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Wykres funkcji Levego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: \cite {simulationlib}\relax }}{35}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Maksymalne warto\IeC {\'s}ci funkcji przystosowania w ka\IeC {\.z}dej iteracji dla funkcji Levego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{36}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \IeC {\'S}rednie warto\IeC {\'s}ci funkcji przystosowania w ka\IeC {\.z}dej iteracji dla funkcji Levego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{36}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Maksymalne warto\IeC {\'s}ci funkcji przystosowania w ka\IeC {\.z}dej iteracji dla sieci konwolucyjnych - podej\IeC {\'s}cie nr 1 \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{37}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \IeC {\'S}rednie warto\IeC {\'s}ci funkcji przystosowania w ka\IeC {\.z}dej iteracji dla sieci konwolucyjnych - podej\IeC {\'s}cie nr 1 \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{38}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ostrze\IeC {\.z}enia wyst\IeC {\k e}puj\IeC {\k a}ce w trakcie pracy w\IeC {\k e}z\IeC {\l }a obliczeniowego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{39}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Maksymalne warto\IeC {\'s}ci funkcji przystosowania w ka\IeC {\.z}dej iteracji dla sieci konwolucyjnych - podej\IeC {\'s}cie nr 2 \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{40}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \IeC {\'S}rednie warto\IeC {\'s}ci funkcji przystosowania w ka\IeC {\.z}dej iteracji dla sieci konwolucyjnych - podej\IeC {\'s}cie nr 2 \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{40}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Przebieg uczenia najlepszej, \IeC {\'s}redniej i najgorszej sieci w pierwszej iteracji algorytmu genetycznego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{42}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Przebieg uczenia najlepszej, \IeC {\'s}redniej i najgorszej sieci w ostatniej iteracji algorytmu genetycznego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{42}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Przebieg uczenia najlepszej sieci w pierwszej i ostatniej iteracji algorytmu genetycznego \IeC {\'Z}r\IeC {\'o}d\IeC {\l }o: praca w\IeC {\l }asna\relax }}{43}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsfinish 
+\contentsfinish 
