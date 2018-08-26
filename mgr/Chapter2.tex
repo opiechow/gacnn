@@ -296,11 +296,24 @@ Dla tak małych obrazków liczba ta nie wydaje się być problematyczna, jednak 
 Zakładając, że każda waga przechowywana jest jako liczba zmiennoprzecinkowa o podwójnej precyzji i przechowoywana w 8 bajtach, uzyskujemy $18874368$ B $= 18$MB na jeden neuron.
 Tak duża liczba parametrów jest nadmiarowa i może prowadzić do nadmiernego dopasowania.
 
-Przykładową sieć neuronową moglibyśmy zdefiniować w następujący sposób:
+Konwolucyjne sieci neuronowe wykorzystują fakt, że danymi podawanymi na ich wejście są obrazy i nakładają ograniczenia na architekturę w bardziej rozsądny sposób.
+W szególności, w przeciwieństwie do tradycyjnej sieci neuronowej, warstwy sieci konwolucyjnej posiadają neurony zorganizowane w 3 wymiarach: wysokości, szerokości i głębokośći (rozumianej jako trzeci wymiar wejścia, nie jako głębkość w sensie liczby warstw w sieci).
+W sieciach neruonowych każda warstwa przekształca trójwymiarowe wejście na trójwymiarowe wyjście przez różniczkowalną funkcję, która może lecz nie musi posiadać parametry.
 
-\cite{cs231n}
+W sieciach konwolucyjnych wyróżnia się kilka podstawowych rodzajów warstw, które następnie składa się w całą sieć.
+Trzy podstawowe typy to:
+\begin{itemize}
+	\item warstwa konwolucyjna lub splotowa - oblicza wyjścia neuronów połączynych z lokalnymi fragmentami wejścia, wyznaczając iloczyn skalarny pomiędzy swoimi wagami a małym obszarem wejścia, do którego są połączone.
+	\item warstwa agregująca - dokonuje operacji podpróbkowania wzdłuż wysokośi i szerokośći wejścia, zmniejszając wymiar danych na swoim wyjściu
+	\item warstwa w pełni połączona - tak jak w klasycznych sieciach neuronowych, każdy neuron jest połączony z każdą jednostką wejścia
+\end{itemize}
+
+Przyjmować będziemy również, że warstwa aktywacji liniowej (\textit{ReLU, Rectified Linear Unit}) jest ''zaszyta'' wewnątrz warstwy konwolucyjnej, na jej wyściu,
+Warstwa ta realizuje funkcję $max(0, x)$ w odniesieniu do każdego elementu na swoim wejściu. \cite{cs231n}
 
 \section{Algorytm geneteyczny}\label{sec:ag}
+
+Algorytm genetyczny jest kolejnym opisywanym narzędziem sztucnej inteligencji, które powstało dzięki obsrerwacji natury i jej sposóbów działania.
 
 Działanie algorytmu genetycznego można schematycznie przedstawić jak na rysunku \ref{fig:gen_schemat}
 

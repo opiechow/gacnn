@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.5.15)  12 AUG 2018 04:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.5.15)  12 AUG 2018 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1340,7 +1340,7 @@ Package pdftex.def Info: img/neuron.png used on input line 259.
 File: img/genetyczny_schemat.png Graphic file (type png)
 
 <use img/genetyczny_schemat.png>
-Package pdftex.def Info: img/genetyczny_schemat.png used on input line 309.
+Package pdftex.def Info: img/genetyczny_schemat.png used on input line 322.
 (pdftex.def)             Requested size: 426.79135pt x 299.82355pt.
 ) (./Chapter3.tex [17] [18 <./img/genetyczny_schemat.png>]
 Rozdzia\PlPrIeC {\l } 3.
@@ -1536,13 +1536,22 @@ File: img/iter_learn_best.png Graphic file (type png)
 
 <use img/iter_learn_best.png>
 Package pdftex.def Info: img/iter_learn_best.png used on input line 263.
-(pdftex.def)             Requested size: 384.1096pt x 288.09827pt.
- [42 <./img/iter_learn_first.png> <./img/iter_learn_last.png>]) (./Chapter5.tex
- [43 <./img/iter_learn_best.png>]
-Rozdzia\PlPrIeC {\l } 5.
-) [44
+(pdftex.def)             Requested size: 362.77525pt x 272.09692pt.
+ [42 <./img/iter_learn_first.png> <./img/iter_learn_last.png>] <img/25epoch.png
+, id=249, 462.528pt x 346.896pt>
+File: img/25epoch.png Graphic file (type png)
 
-] (./main.bbl) [45
+<use img/25epoch.png>
+Package pdftex.def Info: img/25epoch.png used on input line 275.
+(pdftex.def)             Requested size: 362.77525pt x 272.09692pt.
+
+Underfull \vbox (badness 2689) has occurred while \output is active []
+
+ [43 <./img/iter_learn_best.png> <./img/25epoch.png>]) (./Chapter5.tex [44]
+Rozdzia\PlPrIeC {\l } 5.
+) [45
+
+] (./main.bbl) [46
 
 
 ] (./main.lof
@@ -1555,38 +1564,38 @@ ps://www.cs.toronto.edu/~kriz/cifar.html [][]
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [46
+ [47
 
 
 ] (./main.lot)
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
- (./AppendixA.tex [47
+ (./AppendixA.tex [48
 
 
 ]
  A.
-) (./AppendixB.tex [48
+) (./AppendixB.tex [49
 
 ]
  B.
-) (./AppendixC.tex [49
+) (./AppendixC.tex [50
 
 ]
  C.
-) (./AppendixD.tex [50
+) (./AppendixD.tex [51
 
 ]
  D.
-) [51
+) [52
 
 ] (./main.aux (./titlepage.aux)) ) 
 Here is how much of TeX's memory you used:
- 12340 strings out of 493029
- 171470 string characters out of 6136234
- 403411 words of memory out of 5000000
- 15469 multiletter control sequences out of 15000+600000
+ 12346 strings out of 493029
+ 171573 string characters out of 6136234
+ 402423 words of memory out of 5000000
+ 15474 multiletter control sequences out of 15000+600000
  22326 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,10n,92p,841b,1557s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1609,10 +1618,10 @@ fonts/type1/public/pl/plssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/pl/plsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plsy7.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/pltt10.pfb></usr/share/
 texmf/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on main.pdf (53 pages, 6998300 bytes).
+Output written on main.pdf (54 pages, 7034833 bytes).
 PDF statistics:
- 340 PDF objects out of 1000 (max. 8388607)
- 196 compressed objects within 2 object streams
+ 345 PDF objects out of 1000 (max. 8388607)
+ 198 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

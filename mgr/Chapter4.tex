@@ -260,7 +260,7 @@ Co zaobserwowano:
 
 \begin{figure}[h!tb]
 	 \centering
-	 \includegraphics[width = 0.9\linewidth]{img/iter_learn_best}
+	 \includegraphics[width = 0.85\linewidth]{img/iter_learn_best}
 	 \caption{Przebieg uczenia najlepszej sieci w pierwszej i ostatniej iteracji algorytmu genetycznego\\
               Źródło: praca własna}
 	 \label{fig:iter_learn_best}
@@ -270,4 +270,20 @@ Ostatecznie widoczne jest polepszenie procesu uczenia sieci przez algorytm genet
 Nie jest to polepszenie w sensie dynamicznym, gdyż kształt funkcji uczenia prawie się nie zmienia, jednakże w sensie statycznym, czyli wartości na początku i na końcu, widać poprawę.
 
 \section{Osiągi najlepszej według algorytmu sieci po 25 epokach uczenia}
+\begin{figure}[h!tb]
+	 \centering
+	 \includegraphics[width = 0.85\linewidth]{img/25epoch}
+	 \caption{Przebieg uczenia najlepszego osobnika z \ref{sec:actual_experiment} dla 25 epok\\
+              Źródło: praca własna}
+	 \label{fig:25epoch}
+\end{figure}
+
+
 Dla rozwiązania $\mathbf{x^*} = \begin{bmatrix}12 \\ 21 \\ 23 \\ 31\end{bmatrix}$ przeprowadzone zostanło uczenie 25-epokowe.
+Na rys. \ref{fig:25epoch} przedstawiono krzywą uczenia dla tego przypadku:
+
+Ostateczny wynik uzyskany przez sieć to 67\%.
+Jest to gorszy wynik, niż w przykładzie, na którym oparto budowanie modeli sieci i uczenie ich (dostępny pod adresem \url{https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py})
+Powodem tego może być brak zastosowania warstw \textit{dropout} w sieci modyfikowanej przez algorytm genetyczny, co prowadzi do nadmiernego dopasowania.
+Dalsza opytmalizacja powyżej uzyskanych 67\% wymagałaby modyfikacji elementów przyjętych jako stałe w strukturze sieci.
+Nie zmienia to faktu, że ów wynik może być najwyższym co można osiągnąć przy tak narzuconej strukturze.

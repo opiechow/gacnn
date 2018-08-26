@@ -35,43 +35,43 @@
 \contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie wynik\IeC {\'o}w dla uczenia 1- i 10- epokowego}{41}
 \contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie przebiegu uczenia sieci w pierwszej i ostatniej iteracji algorytmu genetycznego}{41}
 \contentsline {section}{\numberline {4.6}Osi\IeC {\k a}gi najlepszej wed\IeC {\l }ug algorytmu sieci po 25 epokach uczenia}{43}
-\contentsline {chapter}{\numberline {5}Podsumowanie}{44}
-\contentsline {chapter}{Bibliografia}{45}
-\contentsline {chapter}{Spis rysunk\'ow}{46}
-\contentsline {chapter}{Spis tabel}{47}
+\contentsline {chapter}{\numberline {5}Podsumowanie}{45}
+\contentsline {chapter}{Bibliografia}{46}
+\contentsline {chapter}{Spis rysunk\'ow}{47}
+\contentsline {chapter}{Spis tabel}{48}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {A}Dodatek A}{48}
+\contentsline {chapter}{ \numberline {A}Dodatek A}{49}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek A}{48}
-\contentsline {section}{\numberline {A.1}Tytu\IeC {\l } dyplomu}{48}
-\contentsline {section}{\numberline {A.2}Cel i przeznaczenie aplikacji}{48}
-\contentsline {section}{\numberline {A.3}Funkcjonalno\IeC {\'s}\IeC {\'c}}{48}
-\contentsline {subsection}{\numberline {A.3.1}Spis realizowanych funkcji}{48}
-\contentsline {subsection}{\numberline {A.3.2}Lista przyk\IeC {\l }adowych zastosowa\IeC {\'n}}{48}
-\contentsline {subsection}{\numberline {A.3.3}Szczeg\IeC {\'o}\IeC {\l }owy opis dzia\IeC {\l }ania aplikacji}{48}
-\contentsline {section}{\numberline {A.4}Og\IeC {\'o}lna architektura systemu}{48}
-\contentsline {section}{\numberline {A.5}Architektura sprz\IeC {\k e}tu}{48}
-\contentsline {section}{\numberline {A.6}Architektura oprogramowania}{48}
-\contentsline {section}{\numberline {A.7}Opis sposobu wytwarzania aplikacji}{48}
-\contentsline {subsection}{\numberline {A.7.1}Za\IeC {\l }o\IeC {\.z}enia i sformu\IeC {\l }owanie zadania}{48}
-\contentsline {subsection}{\numberline {A.7.2}Analiza problemu (z przegl\IeC {\k a}dem dotychczasowych rozwi\IeC {\k a}za\IeC {\'n})}{48}
-\contentsline {subsection}{\numberline {A.7.3}Specyfikacje}{48}
-\contentsline {subsection}{\numberline {A.7.4}Przygotowanie projektu}{48}
-\contentsline {subsection}{\numberline {A.7.5}Prototypowanie i implementacja}{48}
-\contentsline {subsection}{\numberline {A.7.6}Testowanie}{48}
-\contentsline {subsection}{\numberline {A.7.7}Ocena aplikacji (w tym por\IeC {\'o}wnanie do innych rozwi\IeC {\k a}za\IeC {\'n})}{48}
-\contentsline {subsection}{\numberline {A.7.8}Wnioski i perspektywy dalszych prac}{48}
+\contentsline {chapter}{ Dodatek A}{49}
+\contentsline {section}{\numberline {A.1}Tytu\IeC {\l } dyplomu}{49}
+\contentsline {section}{\numberline {A.2}Cel i przeznaczenie aplikacji}{49}
+\contentsline {section}{\numberline {A.3}Funkcjonalno\IeC {\'s}\IeC {\'c}}{49}
+\contentsline {subsection}{\numberline {A.3.1}Spis realizowanych funkcji}{49}
+\contentsline {subsection}{\numberline {A.3.2}Lista przyk\IeC {\l }adowych zastosowa\IeC {\'n}}{49}
+\contentsline {subsection}{\numberline {A.3.3}Szczeg\IeC {\'o}\IeC {\l }owy opis dzia\IeC {\l }ania aplikacji}{49}
+\contentsline {section}{\numberline {A.4}Og\IeC {\'o}lna architektura systemu}{49}
+\contentsline {section}{\numberline {A.5}Architektura sprz\IeC {\k e}tu}{49}
+\contentsline {section}{\numberline {A.6}Architektura oprogramowania}{49}
+\contentsline {section}{\numberline {A.7}Opis sposobu wytwarzania aplikacji}{49}
+\contentsline {subsection}{\numberline {A.7.1}Za\IeC {\l }o\IeC {\.z}enia i sformu\IeC {\l }owanie zadania}{49}
+\contentsline {subsection}{\numberline {A.7.2}Analiza problemu (z przegl\IeC {\k a}dem dotychczasowych rozwi\IeC {\k a}za\IeC {\'n})}{49}
+\contentsline {subsection}{\numberline {A.7.3}Specyfikacje}{49}
+\contentsline {subsection}{\numberline {A.7.4}Przygotowanie projektu}{49}
+\contentsline {subsection}{\numberline {A.7.5}Prototypowanie i implementacja}{49}
+\contentsline {subsection}{\numberline {A.7.6}Testowanie}{49}
+\contentsline {subsection}{\numberline {A.7.7}Ocena aplikacji (w tym por\IeC {\'o}wnanie do innych rozwi\IeC {\k a}za\IeC {\'n})}{49}
+\contentsline {subsection}{\numberline {A.7.8}Wnioski i perspektywy dalszych prac}{49}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {B}Dodatek B}{49}
+\contentsline {chapter}{ \numberline {B}Dodatek B}{50}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek B}{49}
+\contentsline {chapter}{ Dodatek B}{50}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {C}Dodatek C}{50}
+\contentsline {chapter}{ \numberline {C}Dodatek C}{51}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek C}{50}
+\contentsline {chapter}{ Dodatek C}{51}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {D}Dodatek D}{51}
+\contentsline {chapter}{ \numberline {D}Dodatek D}{52}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek D}{51}
+\contentsline {chapter}{ Dodatek D}{52}
 \setcounter {tocdepth}{3}
 \contentsfinish 
