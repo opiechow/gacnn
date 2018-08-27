@@ -7,11 +7,11 @@ W przypadku pojedynczej konwolucyjnej sieci neuronowej (opisanej bliżej w \ref{
 	\item zadaniem $T_{CN}$ nazwiemy klasyfikację obrazów
 	\item miarą jakości $P_{CN}$ będzie stosunek liczby poprawnie zaklasyfikowanych zdjęć ze zbioru testowego do wielkości zbioru testowego
 \end{itemize}
-W przypadku algorytmu genetycznego (opisanego w \ref{sec:ag}) poszukującego optymalnej struktury sieci neurnowej:
+W przypadku algorytmu genetycznego (opisanego w \ref{sec:ag}) poszukującego optymalnej struktury sieci neuronowej:
 \begin{itemize}
-	\item doświadczeniem $E_{GA}$ będzie tworzenie i testowanie nowych sieci neruonowych
+	\item doświadczeniem $E_{GA}$ będzie tworzenie i testowanie nowych sieci neuronowych
 	\item zadanie $T_{GA}$ to poszukiwanie optymalnej w sensie $P_{CN}$ struktury (parametrów) sieci neuronowej
-	\item miarą jakości $P_{GA}$ będzie miara jakośći najlepszego wygenerowanego przez algorytm osobnika
+	\item miarą jakości $P_{GA}$ będzie miara jakości najlepszego wygenerowanego przez algorytm osobnika
 \end{itemize}
 Zastosowanie jednego algorytmu z dziedziny uczenia maszynowego do poprawy procesu uczenia się innego algorytmu tej samej klasy ma ścisły związek z pojęciem metauczenia.
 \section{Metauczenie}
@@ -23,30 +23,30 @@ Zastosowanie jednego algorytmu z dziedziny uczenia maszynowego do poprawy proces
 		\item z innych dziedzin lub problemów.
 	\end{enumerate}
 \end{enumerate}
-Dodatkowo, często używanym pojęciem w metauczeniu jest pojęcie tendencyjnośći (\textit{bias}), które w tym kontekście odnosi się do zbioru założeń wpływająych na wybór hipotez opisujących dane. \cite{Lemke2015}
+Dodatkowo, często używanym pojęciem w metauczeniu jest pojęcie tendencyjności (\textit{bias}), które w tym kontekście odnosi się do zbioru założeń wpływających na wybór hipotez opisujących dane. \cite{Lemke2015}
 Hipoteza w tym kontekście oznacza funkcję predykcyjną (\textit{predictive function}) powstałą w wyniku zastosowania tradycyjnego uczenia (np. konwolucyjnej sieci neuronowej) pewnymi danymi, a wpływ na jej kształt mają ustalone założenia zaszyte w strukturze uczonego algorytmu. \cite[s.2]{Brazdil2009}
 Autorzy w \cite{Brazdil2009} wyróżniają:
 \begin{itemize}
-	\item tendencyjność deklaratywną (\textit{declarative bias}) - specyfikuje ona reprezentację przestrzeni hipotez, np. przedstawianie hiptoez korzystając wyłącznie z sieci neuronowych
+	\item tendencyjność deklaratywną (\textit{declarative bias}) - specyfikuje ona reprezentację przestrzeni hipotez, np. przedstawianie hipotez korzystając wyłącznie z sieci neuronowych
 	\item tendencyjność proceduralną (\textit{procedural bias}) - wpływa na szeregowanie hipotez, np. preferowanie hipotez o krótszym czasie wykonania (\textit{runtime})
 \end{itemize}
 Zgodnie z tą teorią, w tradycyjnym uczeniu tendencyjność jest stała, podczas gdy metauczenie stara się ją dobierać dynamicznie. \cite{Lemke2015}
 W kontekście projektowanego systemu automatycznie dobierającego parametry konwolucyjnej sieci neuronowej, spełnia ona założenia sprecyzowane w pierwszej części definicji, tj.
 \begin{itemize}
-	\item Istnieje uczący się podsystem (konwolucyjna sieć neurnowa)
-	\item Struktura najlepszego osobnika ulega zmanie (przystosowuje się z doświadczeniem)
+	\item Istnieje uczący się podsystem (konwolucyjna sieć neuronowa)
+	\item Struktura najlepszego osobnika ulega zmianie (przystosowuje się z doświadczeniem)
 	\item Metawiedza jest wydobywana z poprzednich epizodów uczenia (jako wartość funkcji przystosowania konkretnej struktury)
 \end{itemize}
-W odniesieniu do tendencyjności deklaratywnej - przestrzeń poszukiwań (najlepszego algorytmu do klasyfikacji obrazów) została zawężona wyłącznie do konwolucyjnych sieci neruonowych, jednakże sieci o różnych strukturach będą produkować różne hipotezy.
+W odniesieniu do tendencyjności deklaratywnej - przestrzeń poszukiwań (najlepszego algorytmu do klasyfikacji obrazów) została zawężona wyłącznie do konwolucyjnych sieci neuronowych, jednakże sieci o różnych strukturach będą produkować różne hipotezy.
 Poszukiwanie najlepszego algorytmu do klasyfikacji obrazów na zbiorze CIFAR-10 nie jest tematem tej pracy - jest nią próba znalezienia optymalnej struktury dla konkretnego algorytmu.
-W przypadku tak zawężonej przestrzeni poszukwiań dalej możemy preferować jedne generowane hipotezy od drugich, co można regulować odpowiednio modyfikując funkcję przystosowania, np. uwzględniając karę za komplikację uzyskanej struktury (np. wynikowa ilość aktywnych warstw konwolucyjnych).
+W przypadku tak zawężonej przestrzeni poszukiwań dalej możemy preferować jedne generowane hipotezy od drugich, co można regulować odpowiednio modyfikując funkcję przystosowania, np. uwzględniając karę za komplikację uzyskanej struktury (np. wynikowa ilość aktywnych warstw konwolucyjnych).
 \section{Uczenie z nadzorem}\label{supervised_learning}
 Zadanie uczenia maszynowego nauczenia się funkcji wiążącej wejście z wyjściem na podstawie przykładowych par wejściowo-wyjściowych nazywamy uczeniem z nadzorem. \cite{russell2010artificial}
 Polega ono na wywodzeniu funkcji z oznaczonych etykietami danych treningowych składających się ze zbioru przykładów treningowych. \cite{mohri2012foundations}
 Przykładowy problem, który może zostać zaklasyfikowany do uczenia z nadzorem: posiadając historyczne dane miesięczne na temat ilości pożarów w danym mieście, przewidzieć ile pożarów wybuchnie w nadchodzącym miesiącu.
 W tym wypadku czas (miesiąc) jest zmienną niezależną, a liczba pożarów zmienną zależną. Ustalenie związku pomiędzy tymi wielkościami (znalezienie modelu) jest zadaniem regresji, które jest jedną z podklas uczenia z nadzorem.
-Drugą klasą takich problemów jest tzw. problem klasyfikacji, w którym, zamiast wyznaczać funkcję, której zbiór wartości jest (w przybliżeniu) ciągły, identyfikujemy odwzorowane, które pozowli nam nową, nieznaną daną zakwalifikować do dykretnego zbioru klas.
-Popularnym przykładem jest uczenie systemu klasyfikowania wiadomości e-mail jako spam lub nie, gdy posiadamy zbiór treningowy w postaci już opisanych jako należące do odpowiedniej klasy wiadomośći.
+Drugą klasą takich problemów jest tzw. problem klasyfikacji, w którym, zamiast wyznaczać funkcję, której zbiór wartości jest (w przybliżeniu) ciągły, identyfikujemy odwzorowane, które pozwoli nam nową, nieznaną daną zakwalifikować do dyskretnego zbioru klas.
+Popularnym przykładem jest uczenie systemu klasyfikowania wiadomości e-mail jako spam lub nie, gdy posiadamy zbiór treningowy w postaci już opisanych jako należące do odpowiedniej klasy wiadomości.
 Podczas gdy taki klasyfikator (filtr antyspamowy) przetwarza tekst, w przypadku niniejszej pracy magisterskiej mamy do czynienia z problemem klasyfikacji obrazów.
 \section{Klasyfikacja obrazów}
 Klasyfikacja obrazów jest zadaniem z klasy uczenia z nadzorem, w którym poszukujemy funkcji przypisującej obrazom odpowiednie etykiety z pewnego skończonego zbioru.
@@ -86,7 +86,7 @@ Na rys.\ref{fig:classification_problems} przedstawiono ilustrację powyższych p
 	 \label{fig:classification_problems}
 \end{figure}
 
-Dobry model klasyfikujący obrazy powienien być niewrażliwy na dowolne kombinacje powyższych zakłóceń, jednocześnie pozostając wrażliwym na zróżnicowanie pomiędzy klasami.
+Dobry model klasyfikujący obrazy powinien być niewrażliwy na dowolne kombinacje powyższych zakłóceń, jednocześnie pozostając wrażliwym na zróżnicowanie pomiędzy klasami.
 Stworzenie algorytmu poprawnie klasyfikującego obrazy jest zadaniem nietrywialnym (w przeciwieństwie np. do ułożenia algorytmu sortującego liczby według zadanego porządku).
 Jednym ze podejść, jakie można przyjąć do tego problemu, jest stworzenie algorytmu, który będzie się uczył na podstawie dużej ilości oznaczonych etykietami danych, czyli wspomniane wcześniej uczenie maszynowe (\ref{machine_learning}) i uczenie z nadzorem (\ref{supervised_learning}).
 Takie rozwiązanie problemu nazywane jest również podejściem opartym na danych (\textit{data-driven approach}).
@@ -95,9 +95,9 @@ Takie rozwiązanie problemu nazywane jest również podejściem opartym na danyc
 
 \section{CIFAR-10}
 Przykładem zbioru danych służącego do uczenia i oceny algorytmów uczenia maszynowego w dziedzinie klasyfikacji obrazów jest zbiór CIFAR-10.
-Zbiór danych CIFAR-10 składa się z 60000 kolorowych obrazków o wymiarach 32x32 pogrupowanych w 10 klas, po 6000 obrazków w każdej. Zbiór trenigowy składa się z 50000 obrazków, a testowy z 10000.
+Zbiór danych CIFAR-10 składa się z 60000 kolorowych obrazków o wymiarach 32x32 pogrupowanych w 10 klas, po 6000 obrazków w każdej. Zbiór treningowy składa się z 50000 obrazków, a testowy z 10000.
 
-Dane zorganizowane są w pięć partii trenigowych i jedną testową, po 10000 obrazków każda. Partia testowa zawiera dokładnie po 1000 losowo wybranych obrazków z każdej klasy. Partie treningowe zawierają pozostałe obrazki w losowej kolejności, w związku z czym niektóre partie mogą zawierać więcej obrazków z jednej klasy niż pozostałych. Łącznie zawierają po 5000 obrazków z każdej klasy.
+Dane zorganizowane są w pięć partii treningowych i jedną testową, po 10000 obrazków każda. Partia testowa zawiera dokładnie po 1000 losowo wybranych obrazków z każdej klasy. Partie treningowe zawierają pozostałe obrazki w losowej kolejności, w związku z czym niektóre partie mogą zawierać więcej obrazków z jednej klasy niż pozostałych. Łącznie zawierają po 5000 obrazków z każdej klasy.
 
 Poniżej, na rysunku \ref{fig:sample_data} przedstawiono wszystkie klasy wraz z 10 losowymi obrazkami dla każdej z nich.
 \begin{figure}[h!tb]
@@ -108,7 +108,7 @@ Poniżej, na rysunku \ref{fig:sample_data} przedstawiono wszystkie klasy wraz z 
 	 \label{fig:sample_data}
 \end{figure}
 
-Każda z klas wyklucza się wzajemnie. Klasy ''samochód'' (\textit{automobile}) i ''ciężarówka'' (\textit{truck}) nie posiadają części wspólnej. ''Samochód'' zawiera sedany, SUVy i inne tego typu samochody. ''Ciężarówka'' zaiwera tylko duże ciężarówki. Żadna z nich nie zawiera pojazdów typu pickup.
+Każda z klas wyklucza się wzajemnie. Klasy ''samochód'' (\textit{automobile}) i ''ciężarówka'' (\textit{truck}) nie posiadają części wspólnej. ''Samochód'' zawiera sedany, SUVy i inne tego typu samochody. ''Ciężarówka'' zawiera tylko duże ciężarówki. Żadna z nich nie zawiera pojazdów typu pickup.
 
 Poniżej opisano organizację tego zbioru danych w wersji dla języka Python.
 
@@ -124,24 +124,24 @@ def unpickle(file):
 
     Załadowane w ten sposób, każdy z plików z partiami zawiera następujące elementy:
 \begin{itemize}
-\item \textit{data} - macierz \textit{numpy} typu \textit{uint8} o wymiarach 10000x3072. Każdy rząd macierzy przechowuje kolorowy obrazek o wymiarach 32x32. Pierwsze 1024 pozycji zawiera wartości pikseli dla kanału czerwononego, kolejne 1024 dla zielonego, a ostatnie dla niebieskiego. Zdjęcia przechowywane są rzędami w kolejności od góry do dołu, tj. pierwsze 32 elementy macierzy opisują wartości kanału czerwonogo dla pierwszego rzędu pikseli obrazka.
+\item \textit{data} - macierz \textit{numpy} typu \textit{uint8} o wymiarach 10000x3072. Każdy rząd macierzy przechowuje kolorowy obrazek o wymiarach 32x32. Pierwsze 1024 pozycji zawiera wartości pikseli dla kanału czerwonego, kolejne 1024 dla zielonego, a ostatnie dla niebieskiego. Zdjęcia przechowywane są rzędami w kolejności od góry do dołu, tj. pierwsze 32 elementy macierzy opisują wartości kanału czerwonego dla pierwszego rzędu pikseli obrazka.
 \item \textit{labels} - lista 10000 liczb w przedziale 0-9. Liczba pod indeksem i oznacza etykietę z klasą dla i-tego obrazka w macierzy data.
 \end{itemize}
 
 Zbiór danych zawiera również plik batches.meta, który również zawiera obiekt typu słownik dla języka Python. Zawiera on następujące elementy:
 \begin{itemize}
-\item \textit{label\_names} - 10 elementowa lista która nadaje czytelne dla człowieka nazwy liczbowym etykietom w liście \textit{labels} opisanej powyżej. Na przykład, label\_names[0] == ''airplane'', label\_names[1] == ''automobile'', itd. \cite{Krizhevsky09learningmultiple}
+\item \textit{label\_names} - 10-elementowa lista która nadaje czytelne dla człowieka nazwy liczbowym etykietom w liście \textit{labels} opisanej powyżej. Na przykład, label\_names[0] == ''airplane'', label\_names[1] == ''automobile'', itd. \cite{Krizhevsky09learningmultiple}
 \end{itemize}
 
-Wśród kilku podejść, które mogą nam posłużyć do rozwiązania tego problemu, wyróżnić możemy algorytm k najbliższych sąsiadów (\textit{k - Nearest Neighbour Classifier}), klasyfikatory liniowe, sieci neuronowe.
+Wśród kilku podejść, które mogą nam posłużyć do rozwiązania tego problemu, wyróżnić możemy algorytm k najbliższych sąsiadów (\textit{k - Nearest Neighbor Classifier}), klasyfikatory liniowe, sieci neuronowe.
 
 \section{K najbliższych sąsiadów}\label{sec:knear}
 
 Dla zbioru CIFAR-10 mamy $50000$ obrazków oznaczonych etykietami i $10000$ obrazów, które chcemy zaklasyfikować.
 Każdy obrazek o wymiarach $32 \times 32 \times 3$ możemy przedstawić jako wektor o wymiarach $3072 \times 1$.
 Oznacza to, że każdy z nich możemy interpretować jako punkt w przestrzeni $3072$-wymiarowej.
-Najprotszym sposobem w jaki możemy klasyfikować nowe dane jest badanie ich położenia w owej przestrzeni.
-Zakładając, że obrazki jednej klasy będą grupować się w klastry, każdy kolejny punkt znajdujący się blisko chmury punktów reprezentującej daną klasę z wysokim prawdopoboieństwem również będzie przynależał do tej klasy.
+Najprostszym sposobem w jaki możemy klasyfikować nowe dane jest badanie ich położenia w owej przestrzeni.
+Zakładając, że obrazki jednej klasy będą grupować się w klastry, każdy kolejny punkt znajdujący się blisko chmury punktów reprezentującej daną klasę z wysokim prawdopodobieństwem również będzie przynależał do tej klasy.
 Przykładowo, rozważmy sytuację jak na rys. \ref{fig:knearest} dla klasyfikacji dwuwymiarowych punktów. Punkt albo przynależy do klasy 'niebieski okrąg', albo 'czerwony krzyżyk'. Rozważamy punkt, który oznaczony jest zielonym krzyżykiem.
 
 \begin{figure}[h!tb]
@@ -152,12 +152,12 @@ Przykładowo, rozważmy sytuację jak na rys. \ref{fig:knearest} dla klasyfikacj
 	 \label{fig:knearest}
 \end{figure}
 
-Dla najprostszego przypadku $k=1$ badamy odległości (w tym przypadku użwyając normy $l^2$) pomiędzy interesującym nas punktem a wszystkimi danymi ze zbioru treningowego i przyjmujemy, że badany punkt będzie przynależał do tej samej klasy, do której przynależy jej najbliższy sąsiad.
+Dla najprostszego przypadku $k=1$ badamy odległości (w tym przypadku używając normy $l^2$) pomiędzy interesującym nas punktem a wszystkimi danymi ze zbioru treningowego i przyjmujemy, że badany punkt będzie przynależał do tej samej klasy, do której przynależy jej najbliższy sąsiad.
 W przypadku rys. \ref{fig:knearest} badany zielony punkt znajduje się najbliżej czerwonego krzyżyka w punkcie $(0,-1)$, zatem przypisujemy go do tej samej klasy.
 Dla większych wartości k rozważamy więcej najbliższych sąsiadów i przypisujemy rozważany punkt do tej klasy, do której należy większość najbliższych punktów.
 
 Podejście to, mimo iż intuicyjne i proste w implementacji, nie rozwiązuje dobrze problemu klasyfikacji, osiągając skuteczność $39.6\%$ dla $k = 1$ dla zbioru CIFAR-10.
-Jest to lepiej niż losowe przydielanie do klas (które dla 10 klas ma skuteczność $10\%$), ale wciąż dalekie od skuteczności człowieka.
+Jest to lepiej niż losowe przydzielanie do klas (które dla 10 klas ma skuteczność $10\%$), ale wciąż dalekie od skuteczności człowieka.
 
 Jednym z problemów podejścia k najbliższych sąsiadów jest kosztowne testowanie nowych punktów.
 Dla każdego nowego punktu wymaga ono policzenia odległości od 50000 punktów w przestrzeni 3072-wymiarowej oraz posortowania wg. obliczonej odległości, co jest dość kosztowną operacją.
@@ -171,7 +171,7 @@ Tak duże podobieństwo może prowadzić do błędnej klasyfikacji w przypadku t
 Innym podejściem, jakie można przyjąć do klasyfikacji obrazów, jest stworzenie liniowego odwzorowania pomiędzy pikselową reprezentacją obrazu a stopniem przynależności danego obrazu do poszczególnych klas.
 Oznaczając dane treningowe przez $x_i \in R^D$, każde powiązane z etykietą $y_i$.
 W tym przypadku $i = 1 ... N$ i $y_i \in 1 ... K$, tj. zbiór uczący składa się z $N$ przykładów (każdy D-wymiarowy) i K rozróżnialnych kategorii.
-Przykładowo, dla zbioru CIFAR-10 zbiór treningowy ma rozmiar $N = 50000$, każdy po $32 \times 32 \times 3 = 3072$ pikseli i $K = 10$, poniważ rozróżniamy pomiędzy 10 klasami (pies, kot, samochód itd.).
+Przykładowo, dla zbioru CIFAR-10 zbiór treningowy ma rozmiar $N = 50000$, każdy po $32 \times 32 \times 3 = 3072$ pikseli i $K = 10$, ponieważ rozróżniamy pomiędzy 10 klasami (pies, kot, samochód itd.).
 Zdefiniujemy funkcję oceny (\textit{score function}) $f : R^D \mapsto R^K$, która odwzorowuje wartości pikseli do oceny przynależności do danej klasy.
 Zatem liniowy klasyfikator zdefiniować jako następujące liniowe odwzorowanie:
 \begin{equation}\label{eqn:lc}
@@ -180,11 +180,11 @@ f(x_i,W,b) = Wx_i + b
 We wzorze \ref{eqn:lc} zakładamy, że obrazek $x_i$ zawiera wszystkie wartości swoich pikseli w wektorze o wymiarach $[D \times 1]$.
 Macierz $W$ (o wymiarach $[K \times D$]) oraz wektor $b$ (o wymiarach [$K \times 1$]) są parametrami funkcji.
 W zbiorze CIFAR-10 $x_i$ zawiera wszystkie piksele $i$-tego obrazka spłaszczone do jednej [$3072 \times 1$] kolumny, $W$ ma wymiar [$10 \times 3072$] a $b$ [$10 \times 1$], zatem 3072 liczby są wejściem dla funkcji, a wyjść jest 10 (oceny klas).
-Parametry wewnątrz $W$ nazywane są również wagami, a wektor $b$ nazywany jest wektorem przesunięcia (\textit{bias vector}), ponieważ ma wpływ na wyjściowe ocenu bez wchodzenia w interakcję z danymi $x_i$. \cite{cs231n}
+Parametry wewnątrz $W$ nazywane są również wagami, a wektor $b$ nazywany jest wektorem przesunięcia (\textit{bias vector}), ponieważ ma wpływ na wyjściowe oceny bez wchodzenia w interakcję z danymi $x_i$. \cite{cs231n}
 
 Jak już wspominano, obrazki mogą być rozumiane jako punkty w 3072 wymiarowej przestrzeni.
 Pojedynczy liniowy klasyfikator możemy interpretować jako hiperpłaszczyznę separującą punkty w tej przestrzeni.
-Możemy wyobrazić sobie ściśnięcie wszystkich punktów do dwóch wymiarów jak na rys. \ref{fig:cartoon_class}, wtedy hiperpłaszczyny sprowadzają się do prostych.
+Możemy wyobrazić sobie ściśnięcie wszystkich punktów do dwóch wymiarów jak na rys. \ref{fig:cartoon_class}, wtedy hiperpłaszczyzny sprowadzają się do prostych.
 
 \begin{figure}[h!tb]
 	 \centering
@@ -196,7 +196,7 @@ Możemy wyobrazić sobie ściśnięcie wszystkich punktów do dwóch wymiarów j
 
 Przy klasyfikatorze liniowym warto zauważyć kilka faktów:
 \begin{itemize}
-	\item Pojedyncze mnożenie macierzowe $Wx_i$ w efekcie wyznacza oceny dla 10 różnnych klasyfikatorów jednocześnie (jeden na klasę), gdzie każdy klasyfikator to rząd macierzy W i jednej prostej separującej na rys. \ref{fig:cartoon_class}
+	\item Pojedyncze mnożenie macierzowe $Wx_i$ w efekcie wyznacza oceny dla 10 różnych klasyfikatorów jednocześnie (jeden na klasę), gdzie każdy klasyfikator to rząd macierzy W i jednej prostej separującej na rys. \ref{fig:cartoon_class}
 	\item Dane wejściowe $(x_i,y_i)$ są ustalone, a kontrolujemy parametry $W,b$. Naszym celem będzie ustawienie tych parametrów w taki sposób, by wynikowe oceny zgadzały się z prawdziwymi przynależnościami do klas na całym zbiorze treningowym.
 	\item Zaletą tego podejścia jest możliwość odrzucenia (nie przechowywania w pamięci) zbioru treningowego po nauczeniu się parametrów $W,b$. Dzieje się tak, ponieważ nowe punkty do klasyfikacji klasyfikujemy przy pomocy ocen uzyskanych z już nauczonej funkcji.
 	\item Klasyfikowanie obrazów testowych sprowadza się do pojedynczego mnożenia macierzowego i dodawania, które jest szybsze od porównywania do wszystkich obrazków ze zbioru treningowego (jak w \ref{sec:knear}).
@@ -213,9 +213,9 @@ Przykład mapowania wartości pikseli do oceny przynależności do klas przedsta
 
 Jak widać na rys. \ref{fig:lin_class}, wagi w macierzy W nie są dobrze dobrane, gdyż klasyfikator przypisuje najwyższą ocenę klasie pies, podczas gdy w istocie na obrazku znajduje się kot.
 Uczenie liniowego klasyfikatora będzie polegać na takim doborze wag, by błędy klasyfikacji zachodziły jak najrzadziej.
-W tym celu zdefinujemy funkcję kosztów (\textit{loss function}), która będzie miarą tego jak dobrze działa dany klasyfikator.\cite{cs231n}
+W tym celu zdefiniujemy funkcję kosztów (\textit{loss function}), która będzie miarą tego jak dobrze działa dany klasyfikator.\cite{cs231n}
 
-Funkcję kosztów dla całego zbioru danych definuje wzór \ref{eqn:total_loss}.
+Funkcję kosztów dla całego zbioru danych definiuje wzór \ref{eqn:total_loss}.
 \begin{equation}\label{eqn:total_loss}
 L =  \underbrace{ \frac{1}{N} \sum_i L_i }_\text{składowa danych} + \underbrace{ \lambda R(W) }_\text{składowa regularyzacji} \\\\
 \end{equation}
@@ -227,7 +227,7 @@ R(W) = \sum_k\sum_l W_{k,l}^2
 \end{equation}
 
 Wprowadzenie tej składowej do funkcji kosztu pozwala uniknąć niejednoznaczności rozwiązania, gdzie dowolna macierz $W$ przeskalowana o współczynnik $\alpha \in R^+$ jest równie dobrym rozwiązaniem.
-W ten sposób prefeorwane będą rozwiązania o o mniejszych wartościach współczynników.
+W ten sposób preferowane będą rozwiązania o o mniejszych wartościach współczynników.
 Co więcej, okazuje się, że przy takim podejściu uzyskujemy lepiej generalizujące i bardziej odporne na nadmierne dopasowanie (\textit{overfitting}) klasyfikatory.
 Wynika to z faktu, że żaden z wejściowych wymiarów nie może mieć dużego wpływu na końcowy wynik.
 Dla przykładu, dla wektora danych $x = [1,1,1,1]$ i dwóch wektorów wagowych $w_1 = [1,0,0,0]$ i $w_2 = [0.25,0.25,0.25,0.25]$ wynik mnożenia (wartość funkcji oceny) $w_1^Tx = w_2^Tx = 1$.
@@ -235,12 +235,12 @@ Jednakże wprowadzenie kary $l^2$ do funkcji kosztu powoduje, że preferowany b�
 Widać zatem, że preferowane będą wektory wagowe o bardziej rozłożonych współczynnikach.
 
 Składowa danych ze wzoru \ref{eqn:total_loss} jest funkcją kosztu dla pojedynczego obrazka uśrednioną po wszystkich danych treningowych.
-Dla $i$-tego punktu treningowego możemy zdefinować wiele różnych funkcji kosztu.
+Dla $i$-tego punktu treningowego możemy zdefiniować wiele różnych funkcji kosztu.
 Dla klasyfikatora typu wieloklasowa maszyna wektorów nośnych (\textit{Multiclass SVM}) będzie to koszt ''zawiasowy'' (\textit{hinge loss}, wzór \ref{eqn:single_loss_svm}), natomiast dla klasyfikatora typu \textit{Softmax} koszt entropii krzyżowej (\textit{cross-entropy loss}, przedstawiony na wzorze \ref{eqn:single_loss_softmax}).
 \begin{equation}\label{eqn:single_loss_svm}
 L_i = \sum_{j\neq y_i} \max(0, s_j - s_{y_i} + \Delta)
 \end{equation}
-gdzie $s_j = f(x_i, W)_j$ to $j$-ty element wektora ocen klas, $s_{y_i}$ jest oceną uzyskaną przez prawdziwą klasę, a $\Delta$ jest marigniesem, który chcemy utrzymać pomiędzy wartością oceny klasy prawdziwej a wartościami ocen klas niepoprawnych.
+gdzie $s_j = f(x_i, W)_j$ to $j$-ty element wektora ocen klas, $s_{y_i}$ jest oceną uzyskaną przez prawdziwą klasę, a $\Delta$ jest marginesem, który chcemy utrzymać pomiędzy wartością oceny klasy prawdziwej a wartościami ocen klas niepoprawnych.
 
 \begin{equation}\label{eqn:single_loss_softmax}
 L_i = -\log\left(\frac{e^{s_{y_i}}}{ \sum_j e^{s_j} }\right) \hspace{0.5in} \text{lub równoważnie} \hspace{0.5in} L_i = -s_{y_i} + \log\sum_j e^{s_j}
@@ -252,7 +252,7 @@ Jest to problem optymalizacji, który rozwiązujemy najczęściej przy pomocy gr
 
 Powodem, dla którego tyle miejsca poświęcono liniowemu klasyfikatorowi i pojęciami z nim związanymi jest fakt, że wszystkie te pojęcia mają również zastosowanie przy sieciach neuronowych.
 
-\section{Sieci Neruonowe}\label{sec:nn}
+\section{Sieci Neuronowe}\label{sec:nn}
 
 \begin{figure}[h!tb]
 	 \centering
@@ -265,7 +265,7 @@ Powodem, dla którego tyle miejsca poświęcono liniowemu klasyfikatorowi i poj�
 Zarówno zwierzęta, jak i ludzie lepiej radzą sobie z rozpoznawaniem obrazów niż współczesne komputery.
 Sieci neuronowe dlatego wzbudzają zainteresowanie, że możemy za ich pomocą częściowo naśladować ludzki mózg.
 Informacja w takich sieciach przetwarzana jest przez dużą ilość węzłów obliczeniowych oraz połączeń między nimi.
-Skoordynowane jednoski jednocześnie dokonują przetwarzania wszystkich lub większości sygnałów i danych wejściowych.
+Skoordynowane jednostki jednocześnie dokonują przetwarzania wszystkich lub większości sygnałów i danych wejściowych.
 Działanie sztucznych sieci neuronowych możemy porównać do rozproszonych systemów obliczeniowych.
 Elementarną jednostkę wykonującą obliczenia w takiej sieci nazywamy neuronem.
 Pojedynczy neuron dokonuje sumowania i nieliniowego przetwarzania sygnałów.
@@ -278,28 +278,28 @@ Schematycznie pojedynczy neuron możemy przedstawić jak na rys. \ref{fig:neuron
 
 Pojedynczy neuron możemy również traktować jako klasyfikator liniowy, stąd obszerniejszy opis klasyfikatorów liniowych w \ref{sec:linear_classifier}.
 Matematyczny model neuronu od linowego klasyfikatora różni się jedynie zastosowaniem nieliniowości po operacji iloczynu skalarnego.
-Nieliniowość owa odpowiada za zdolność neuronu do prefeorwania pewnych liniowych obszarów jego wejścia (wartość funkcji aktywacji w okolicy 1) od innych (wartość funkcji aktywacji w okolicy 0).
-Tym samym stosując odpowiednią postać funkcji kosztu możemy sprowadzić zwykły neuron do klasyfiktaora liniowego. \cite{cs231n}
+Nieliniowość owa odpowiada za zdolność neuronu do preferowania pewnych liniowych obszarów jego wejścia (wartość funkcji aktywacji w okolicy 1) od innych (wartość funkcji aktywacji w okolicy 0).
+Tym samym stosując odpowiednią postać funkcji kosztu możemy sprowadzić zwykły neuron do klasyfikatora liniowego. \cite{cs231n}
 
 Architektura sieci jest tym co odróżnia konkretne sieci od siebie.
-Na przykład sieci nie posiadające połączeń zwrotnych reagują na pobudzenie w sposób natychmiastowy i te własnie sieci będą omawiane w dalszej części pracy.
+Na przykład sieci nie posiadające połączeń zwrotnych reagują na pobudzenie w sposób natychmiastowy i te właśnie sieci będą omawiane w dalszej części pracy.
 Natomiast sieci, które posiadają połączenia zwrotne, ustalają swoją odpowiedź dopiero po pewnym czasie, mają zatem swoją dynamikę określające ich zachowanie w czasie. \cite{zuradabarskijedruch1996}
 Dalej rozważać będziemy jedynie sieci bez połączeń zwrotnych.
 
-Sieci neurnowe posiadają wiele zastosowań, wśród nich można wymienić:
+Sieci neuronowe posiadają wiele zastosowań, wśród nich można wymienić:
 \begin{itemize}
 	\item modelowanie zagadnień programowania liniowego
-	\item rozpoznwanie pisma
+	\item rozpoznawanie pisma
 	\item zastosowania w teorii sterowania
 	\begin{itemize}
 		\item identyfikacja obiektów
 		\item neurosterowanie obiektami statycznymi
 	\end{itemize}
-	\item steorwanie kinematyką robotów
+	\item sterowanie kinematyką robotów
 	\item neuronowe sieci ekspertowe \cite{zuradabarskijedruch1996}
 \end{itemize}
 
-Pytanie o to, które z modyfikowalnych komponenetów systemu uczącego się są odpowiedzialne za jego sukces lub porażkę i jakie zmiany w nich polepszają ich wydajność nazywane jest fundamentalnym problemem przypisania zasługi (\textit{the fundamental credit assignment problem}). \cite{SCHMIDHUBER201585}.
+Pytanie o to, które z modyfikowalnych komponentów systemu uczącego się są odpowiedzialne za jego sukces lub porażkę i jakie zmiany w nich polepszają ich wydajność nazywane jest fundamentalnym problemem przypisania zasługi (\textit{the fundamental credit assignment problem}). \cite{SCHMIDHUBER201585}.
 Innymi słowy do dziś nie wiadomo, co dokładnie jest czynnikiem sprawiającym, że jedna sieć będzie działać lepiej od drugiej.
 Badanie czy algorytm genetyczny jest w stanie poprawić jakość działania takiej sieci jest częściowo próbą znalezienia odpowiedzi na to pytanie.
 
@@ -314,24 +314,24 @@ Sieci te projektowane są z założeniem, że będą przetwarzały obrazy, stąd
 Motywacją stojącą za poszukiwaniem innych architektur sieci neuronowych była bardzo szybko narastająca ilość wag do uczenia w przypadku przetwarzania obrazów za pomocą w pełni połączonych sieci neuronowych.
 Biorąc dla przykładu CIFAR-10 i obrazki o wymiarach $ 32 \times 32 \times 3$ (wysokość, szerokość, 3 kanały kolorów), pojedynczy neuron znajdujący się zaraz za warstwą wejściową posiadałby 3072 + 1 wejście od stałej wartości (\textit{bias}) wag do nauczenia.
 Dla tak małych obrazków liczba ta nie wydaje się być problematyczna, jednak podając na wejście obraz o wymiarach $1024 \times 768 \times 3 = 2359296$ widzimy, że już pojedynczy neuron zaczyna zajmować bardzo dużo pamięci.
-Zakładając, że każda waga przechowywana jest jako liczba zmiennoprzecinkowa o podwójnej precyzji i przechowoywana w 8 bajtach, uzyskujemy $18874368$ B $= 18$MB na jeden neuron.
+Zakładając, że każda waga przechowywana jest jako liczba zmiennoprzecinkowa o podwójnej precyzji i przechowywana w 8 bajtach, uzyskujemy $18874368$ B $= 18$MB na jeden neuron.
 Tak duża liczba parametrów jest nadmiarowa i może prowadzić do nadmiernego dopasowania.
 
 Konwolucyjne sieci neuronowe wykorzystują fakt, że danymi podawanymi na ich wejście są obrazy i nakładają ograniczenia na architekturę w bardziej rozsądny sposób.
-W szególności, w przeciwieństwie do tradycyjnej sieci neuronowej, warstwy sieci konwolucyjnej posiadają neurony zorganizowane w 3 wymiarach: wysokości, szerokości i głębokośći (rozumianej jako trzeci wymiar wejścia, nie jako głębkość w sensie liczby warstw w sieci).
-W sieciach neruonowych każda warstwa przekształca trójwymiarowe wejście na trójwymiarowe wyjście przez różniczkowalną funkcję, która może lecz nie musi posiadać parametry.
+W szczególności, w przeciwieństwie do tradycyjnej sieci neuronowej, warstwy sieci konwolucyjnej posiadają neurony zorganizowane w 3 wymiarach: wysokości, szerokości i głębokości (rozumianej jako trzeci wymiar wejścia, nie jako głębokość w sensie liczby warstw w sieci).
+W sieciach neuronowych każda warstwa przekształca trójwymiarowe wejście na trójwymiarowe wyjście przez różniczkowalną funkcję, która może lecz nie musi posiadać parametry.
 
 W sieciach konwolucyjnych wyróżnia się kilka podstawowych rodzajów warstw, które następnie składa się w całą sieć.
 Trzy podstawowe typy to:
 \begin{itemize}
-	\item warstwa konwolucyjna lub splotowa - oblicza wyjścia neuronów połączynych z lokalnymi fragmentami wejścia, wyznaczając iloczyn skalarny pomiędzy swoimi wagami a małym obszarem wejścia, do którego są połączone.
-	\item warstwa agregująca - dokonuje operacji podpróbkowania wzdłuż wysokośi i szerokośći wejścia, zmniejszając wymiar danych na swoim wyjściu
+	\item warstwa konwolucyjna lub splotowa - oblicza wyjścia neuronów połączonych z lokalnymi fragmentami wejścia, wyznaczając iloczyn skalarny pomiędzy swoimi wagami a małym obszarem wejścia, do którego są połączone.
+	\item warstwa agregująca - dokonuje operacji podpróbkowania (\textit{subsampling}) wzdłuż wysokości i szerokości wejścia, zmniejszając wymiar danych na swoim wyjściu
 	\item warstwa w pełni połączona - tak jak w klasycznych sieciach neuronowych, każdy neuron jest połączony z każdą jednostką wejścia
 \end{itemize}
 
-Przyjmować będziemy również, że warstwa aktywacji liniowej (\textit{ReLU, Rectified Linear Unit}) jest ''zaszyta'' wewnątrz warstwy konwolucyjnej, na jej wyściu.
+Przyjmować będziemy również, że warstwa aktywacji liniowej (\textit{ReLU, Rectified Linear Unit}) jest ''zaszyta'' wewnątrz warstwy konwolucyjnej, na jej wyjściu.
 Warstwa ta realizuje funkcję $max(0, x)$ w odniesieniu do każdego elementu na swoim wejściu. \cite{cs231n}
-Schematycznie organizację neurnów w konwolucyjnej sieci neurnowej przedstawiono na rys. \ref{fig:cnn}
+Schematycznie organizację neuronów w konwolucyjnej sieci neuronowej przedstawiono na rys. \ref{fig:cnn}
 
 \begin{figure}[h!tb]
 	 \centering
@@ -341,7 +341,7 @@ Schematycznie organizację neurnów w konwolucyjnej sieci neurnowej przedstawion
 	 \label{fig:cnn}
 \end{figure}
 
-Na rysunku uwidoczniona została główna idea konwolucyjnych sieci neuronowych - najważniejszy parametr to liczba neurnów w warstwie, zwana również głębokością warstwy, która w tym przypadku wynosi 5.
+Na rysunku uwidoczniona została główna idea konwolucyjnych sieci neuronowych - najważniejszy parametr to liczba neuronów w warstwie, zwana również głębokością warstwy, która w tym przypadku wynosi 5.
 Każdy z tych neuronów posiada swój zestaw wag, który następnie jest splatany z obrazem wejściowym na całej jego szerokości i wysokości.
 Owe 5 filtrów ''widzi'' tylko swój mały kawałek obrazu, nazywany jego polem percepcji (\textit{receptive field}).
 Takie ograniczenie nazywane jest lokalną połączeniowością (\textit{local connectivity}).
@@ -359,18 +359,18 @@ Rozmiar obrazu po przejściu przez warstwę tak zdefiniowaną można obliczyć z
 \begin{equation}\label{eqn:output_size}
 (W - F + 2P)/S + 1
 \end{equation}
-gdzie W to wymiary obrazu wejściowego, F to rozmiar pola percepcji neruonu, P to liczba dopełnianych zer a S to przeskok z jakim przesuwamy okno.
+gdzie W to wymiary obrazu wejściowego, F to rozmiar pola percepcji neuronu, P to liczba dopełnianych zer a S to przeskok z jakim przesuwamy okno.
 
 Co do warstwy agregującej, również wykonuje ona operacje na małym polu wejściowym, dając w wyniku jeden skalar - np. z pola 2x2 wybierana jest maksymalna wartość lub średnia ważona wszystkich wartości.
-Operacja taka ma na celu zwiększenie kontroli nad nadmiernym dopasowaniem przez algorytm, i w wyniku daje pomniejszony wymiar obrazu (mapy) wyjściowej, np. przeprwadzenie agregacji 2x2 na warstwie 32x32 zaowocuje obrazem o wymiarach 16x16 na wyjściu.
+Operacja taka ma na celu zwiększenie kontroli nad nadmiernym dopasowaniem przez algorytm, i w wyniku daje pomniejszony wymiar obrazu (mapy) wyjściowej, np. przeprowadzenie agregacji 2x2 na warstwie 32x32 zaowocuje obrazem o wymiarach 16x16 na wyjściu.
 
-Warstwa w pełni połączona zazwyczaj używana jest na końcu i zwykle znajduje się w niej tyle neuronów, ile klas, a ich wyjście mówi nam (w przypadku zastosowaniu odpowdniej funkcji kosztu przy uczeniu sieci) o prawdopodobieństwie przynależenia danego obrazka do danej klasy.
+Warstwa w pełni połączona zazwyczaj używana jest na końcu i zwykle znajduje się w niej tyle neuronów, ile klas, a ich wyjście mówi nam (w przypadku zastosowaniu odpowiedniej funkcji kosztu przy uczeniu sieci) o prawdopodobieństwie przynależenia danego obrazka do danej klasy.
 
-Sposóród wymienionych wyżej parametrów, kontrolowanym przez algorytm genetyczny parametrem będzie głębokość 4 warstw.
+Spośród wymienionych wyżej parametrów, kontrolowanym przez algorytm genetyczny parametrem będzie głębokość 4 warstw.
 
-\section{Algorytm geneteyczny}\label{sec:ag}
+\section{Algorytm genetyczny}\label{sec:ag}
 
-Algorytm genetyczny jest kolejnym opisywanym narzędziem sztucnej inteligencji, które powstało dzięki obserwacji natury i jej sposóbów działania.
+Algorytm genetyczny jest kolejnym opisywanym narzędziem sztucznej inteligencji, które powstało dzięki obserwacji natury i jej sposobów działania.
 Wywodzi się on z genetyki, czyli z badania dziedziczności i zmienności organizmów.
 Pierwsze badania z tej dziedziny w XIX wieku przeprowadzał Gregor Johann Mendel.
 W ich wyniku powstało pojęcie genu - abstrakcyjnej jednostki dziedziczności oraz alleli - różnych odmian tego samego genu.
@@ -389,8 +389,8 @@ Na podstawie obserwacji sposobu dziedziczenia i rozmnażania się komórek, proc
 Podstawowe cechy algorytmu genetycznego:
 \begin{enumerate}
 	\item poszukiwania prowadzone są w wielu punktach
-	\item zadanie optymalizacji sprametryzowane w sposób zakodowany
-	\item nowe rozwiązania tworzeone i wybierane sa przy pomocy metod probabilystyczno-ewolucyjnych
+	\item zadanie optymalizacji sparametryzowane w sposób zakodowany
+	\item nowe rozwiązania tworzone i wybierane są przy pomocy metod probabilistyczno-ewolucyjnych
 	\item brak ograniczeń na przestrzeń poszukiwań - funkcja celu może być dowolna, nieznana \label{lst:opt}
 	\item prostota implementacji i uniwersalność
 \end{enumerate}
@@ -399,7 +399,7 @@ Głównie ze względu na punkt \ref{lst:opt} wybrano tę metodę do optymalizacj
 
 Istotnymi pojęciami w AG są pojęcia genotypu i fenotypu.
 Genotyp rozumiemy jako zakodowane parametry reprezentujące danego osobnika.
-Poniżej wymeniono kilka podstawowych sposóbów kodowania parametrów w AG:
+Poniżej wymieniono kilka podstawowych sposobów kodowania parametrów w AG:
 \begin{itemize}
 	\item bialleliczne
 	\item Gray’a
@@ -407,9 +407,9 @@ Poniżej wymeniono kilka podstawowych sposóbów kodowania parametrów w AG:
 	\item trialleliczne
 	\item multialleliczne
 	\item wielopoziomowe
-	\item całkowitoliczowe
+	\item całkowitoliczbowe
 \end{itemize}
-Fenotyp jest uzewnętrznienieniem tych zakodowanych cech.
+Fenotyp jest uzewnętrznieniem tych zakodowanych cech.
 
 Podstawowe operacje algorytmu genetycznego zwane operacjami genetycznymi oraz kilka ich realizacji wymieniono poniżej:
 \begin{itemize}
@@ -457,9 +457,9 @@ Podstawowe operacje algorytmu genetycznego zwane operacjami genetycznymi oraz ki
 Algorytm genetyczny początkowo wytwarza losową populację osobników (rozwiązań).
 Następnie dla każdego z osobników wyznaczana jest wartość funkcji przystosowania, która ma być zmaksymalizowana.
 Następnie, spośród ocenionych już osobników wybierana jest pula rodzicielska przy pomocy jednej z metod selekcji.
-Wewnątrz wybranej puli rodzicielskiej z pewnym prawdopoboieństwem nazywanym prawdopodobieństwem krzyżowania dochodzi do krzyżowania, czyli powstania dwóch nowych potmków z dwóch rodziców.
-Następnie, wszystkie osobniki z pewnym prawdopoboieństwem zwanym prawdopoboieństwem mutacji są modyfikowane.
-Ostatecznie, całość lub część starej populacji jest wymienina według jednej ze strategii reprodukcji.
+Wewnątrz wybranej puli rodzicielskiej z pewnym prawdopodobieństwem nazywanym prawdopodobieństwem krzyżowania dochodzi do krzyżowania, czyli powstania dwóch nowych potomków z dwóch rodziców.
+Następnie, wszystkie osobniki z pewnym prawdopodobieństwem zwanym prawdopodobieństwem mutacji są modyfikowane.
+Ostatecznie, całość lub część starej populacji jest wymieniana według jednej ze strategii reprodukcji.
 Powyższe działania powtarzane są tak długo, aż nie otrzymamy satysfakcjonującego nas rozwiązania, np. rozwiązanie nie poprawi się przez 100 kolejnych iteracji.
 Działanie algorytmu genetycznego można schematycznie przedstawić jak na rysunku \ref{fig:gen_schemat}
 

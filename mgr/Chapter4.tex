@@ -3,14 +3,14 @@
 Ważnym parametrem algorytmu genetycznego jest jego kryterium stopu.
 W przypadku eksperymentów opisanych w \ref{sec:levy_test} i \ref{sec:actual_experiment} przyjęto dwa:
 \begin{enumerate}
-  \item maksymalna liczba iteracji - z przyczyn długiego czasu potrzebenego na obliczenia w przypadku eksperymentu \ref{sec:actual_experiment}, liczbę tę ustalono na 100.
+  \item maksymalna liczba iteracji - z przyczyn długiego czasu potrzebnego na obliczenia w przypadku eksperymentu \ref{sec:actual_experiment}, liczbę tę ustalono na 100.
   \item maksymalna liczba iteracji bez poprawy - jeżeli od dłuższego czasu nie obserwujemy poprawy rozwiązania, możemy przyjąć założenie, że znaleźliśmy globalne minimum\label{improvement}
 \end{enumerate}
 Z punktem \ref{improvement} wiąże się parametr $\epsilon$, który ma sens progu różnicy między nową najlepszą wartością a poprzednią, po przekroczeniu którego możemy mówić o poprawie.
 
 Program eksperymentu został tak zaimplementowany, by reprodukowalność eksperymentu była możliwie najwyższa, tj. by niwelować wpływ generatora pseudolosowego na uzyskane wyniki.
 W procesie uczenia sieci neuronowych losowo inicjalizowane są wagi połączeń między neuronami.
-Oznacza to, że w przypadku, gdy nie mamym kontroli nad stanem generatora losowego, ta sama w sensie struktury sieć może uzyskać inny wynik po jednej epoce uczenia w zależności od początkowych wag.
+Oznacza to, że w przypadku, gdy nie mamy kontroli nad stanem generatora losowego, ta sama w sensie struktury sieć może uzyskać inny wynik po jednej epoce uczenia w zależności od początkowych wag.
 
 W celu minimalizacji wpływu losowego początkowego doboru wag na poprawę wyników sieci, przeprowadzono 100-krotnie uczenie sieci o 4 warstwach, po jednym filtrze w każdej, z różnymi początkowymi wagami.
 
@@ -52,7 +52,7 @@ Wykres tej funkcji dla przypadku 2-wymiarowego przedstawiono na rys. \ref{fig:le
 
 Przestrzeń poszukiwań (genotyp osobnika) przyjęto identyczną jak dla problemu optymalizacji struktury konwonlucyjnych sieci neuronowych, tj. $x_i \in \lbrace 1, 2, ... 30, 31 \rbrace$ dla $i = 1..4$.
 
-W celu uniknięcia przypadku, w którym optymalny osobnik powstaje w wyniku mechanizmu naprawiania osbników (opisanego w \ref{sec:individual_fix}) dokonano arbitralnie dobranego przesunięcia wektora $\mathbf{x}$ o wektor $\begin{bmatrix}3 \\ 7 \\ 13 \\ 20\end{bmatrix}$, tak, że optymalne rozwiązanie znalazło się w punkcie $\mathbf{x^*} = \begin{bmatrix}4 \\ 8 \\ 14 \\ 21\end{bmatrix}$.
+W celu uniknięcia przypadku, w którym optymalny osobnik powstaje w wyniku mechanizmu naprawiania osobników (opisanego w \ref{sec:individual_fix}) dokonano arbitralnie dobranego przesunięcia wektora $\mathbf{x}$ o wektor $\begin{bmatrix}3 \\ 7 \\ 13 \\ 20\end{bmatrix}$, tak, że optymalne rozwiązanie znalazło się w punkcie $\mathbf{x^*} = \begin{bmatrix}4 \\ 8 \\ 14 \\ 21\end{bmatrix}$.
 
 Jako, że algorytm maksymalizuje funkcję przystosowania osobników, w celu minimalizacji wartości funkcji Levego (funkcji kosztu) została ona zdefiniowana zgodnie ze wzorem \ref{eqn:levy_fitness}. \cite{bialaszewski2012}
 \begin{equation}\label{eqn:levy_fitness}
@@ -73,7 +73,7 @@ Metodą prób i błędów dobrano takie nastawy parametrów algorytmu genetyczne
 
 Ostatni parametr dobrany został w sposób opisany w \ref{sec:std_dev}
 Operacje genetyczne przeprowadzane są tak jak opisano w \ref{sec:genetic_ops}.
-Fenotyp pojedycznego osobnika jest 4-elementową listą liczb całkowitych: $[ x_1, x_2, x_3, x_4]$, natomiast genotyp jest binarną reprezntacją fenotypu na liczbach o długości $m=5$ bitów.
+Fenotyp pojedynczego osobnika jest 4-elementową listą liczb całkowitych: $[ x_1, x_2, x_3, x_4]$, natomiast genotyp jest binarną reprezentacją fenotypu na liczbach o długości $m=5$ bitów.
 Badanie zostało przeprowadzone dla ziarna generatora ustawionego na wartość 1337.
 
 Na rys. \ref{fig:levy_maxes} i rys. \ref{fig:levy_means} przestawiono odpowiednio maksymalne i średnie (dla całej populacji) wartości funkcji przystosowania w kolejnych iteracjach algorytmu.
@@ -95,7 +95,7 @@ Wszystkie kolejne wykresy zostały wykonane przy pomocy biblioteki \textit{Matpl
 	 \label{fig:levy_means}
 \end{figure}
 
-Zaobserwowane przebiegi wyglądaja jak poprawne przebiegi dla algorytmu genetycznego.
+Zaobserwowane przebiegi wyglądają jak poprawne przebiegi dla algorytmu genetycznego.
 Minimum w punkcie $\mathbf{x^*} = \begin{bmatrix}4 \\ 8 \\ 14 \\ 21\end{bmatrix}$ zostało znalezione w 67. pokoleniu, a kryterium zatrzymania algorytmu, które zadziałało, to maksymalna liczba iteracji równa 100.
 
 Test ten udowodnił, że algorytm genetyczny został zaimplementowany poprawnie i w związku z tym można go w takiej formie wykorzystać do poszukiwania optymalnej struktury konwolucyjnych sieci neuronowych.
@@ -131,11 +131,11 @@ Test ten pozwolił na zweryfikowanie:
 W wyniku działania testu zauważono, że bufor o rozmiarze 1 kiB (1024 bajtów) nie był wystarczająco duży, gdyż przesyłany plik z historią uczenia dla 25 epok miał rozmiar 1,5kB, co powodowało ucięcie transmisji i błąd w dekodowaniu spakowanego obiektu.
 Dla zachowania pewnego zapasu bezpieczeństwa zwiększono rozmiar tego bufora do 8192 bajtów.
 
-Ponadto test sprawdził działanie zarówno systemu kolejkowego dla brzegowego przypadku jednego zadania i jednego węxła, jak i oprogramowania węzła obliczeniowego.
+Ponadto test sprawdził działanie zarówno systemu kolejkowego dla brzegowego przypadku jednego zadania i jednego węzła, jak i oprogramowania węzła obliczeniowego.
 W wyniku jego przeprowadzenia otrzymano poprawnie nauczoną sieć neuronową, więcej na ten temat powiedziano w \ref{sec:2525_epoch_training}.
 
 \section{Poszukiwanie optymalnej struktury konwolucyjnej sieci neuronowej za pomocą algorytmu genetycznego dla uczenia 1-epokowego}\label{sec:actual_experiment}
-Celem tego badania jest sprawdzenie, czy algorytm genetyczny jest w stanie znaleźć optymalną w sensie skutecznośći po jednej epoce uczenia strukturę sieci neuronowej.
+Celem tego badania jest sprawdzenie, czy algorytm genetyczny jest w stanie znaleźć optymalną w sensie skuteczności po jednej epoce uczenia strukturę sieci neuronowej.
 
 Parametry algorytmu genetycznego przyjęto dokładnie takie, do jakich dostrojono algorytm, gdy poszukiwał minimum funkcji Levego, to jest:
 \begin{itemize}
@@ -167,21 +167,21 @@ Parametry algorytmu genetycznego przyjęto dokładnie takie, do jakich dostrojon
 Przeprowadzono dwa podejścia do tego eksperymentu, z powodu zaobserwowania niepokojących zjawisk w wynikach z podejścia pierwszego.
 Na rys. \ref{fig:cnn_maxes_first} i rys. \ref{fig:cnn_means_first} obserwujemy wykresy odpowiednio najwyższych i średnich wartości funkcji przystosowania w populacji.
 
-Badanie zostało przeprowadzone z ziarnem generatora 1337, jednak z przyczyn niezależnych algorytm przerywał działanie i był wzmnawiany odpowiednio w iteracjach 19, 27 i 54, zatem za każdym razem w tych momentach ziarno było ustawiane na 1337.
+Badanie zostało przeprowadzone z ziarnem generatora 1337, jednak z przyczyn niezależnych algorytm przerywał działanie i był wznawiany odpowiednio w iteracjach 19, 27 i 54, zatem za każdym razem w tych momentach ziarno było ustawiane na 1337.
 
 Przy pierwszym spojrzeniu nie widać nic niepokojącego.
 Wykresy przedstawiają poprawne działanie algorytmu genetycznego.
-Maksimum funkcji przysotoswania wg. algorytmu znajduje się w punkcie $\mathbf{x^*} = \begin{bmatrix}4 \\ 4 \\ 13 \\ 19\end{bmatrix}$ i zostało odnalezione w 62. iteracji.
+Maksimum funkcji przystosowania wg. algorytmu znajduje się w punkcie $\mathbf{x^*} = \begin{bmatrix}4 \\ 4 \\ 13 \\ 19\end{bmatrix}$ i zostało odnalezione w 62. iteracji.
 
 Co widoczne będzie dopiero po porównaniu tych wykresów z wykresami na rys. \ref{fig:cnn_maxes} i rys. \ref{fig:cnn_means}, zarówno maksymalne jak i średnie wartości utrzymują się na niższym poziomie.
-Jest tak ponieważ pojawiło się nadspodziewanie wiele wartości zbliżonych do 0.1, czego przyczyną może być jedno z następująych dwóch zjawisk:
+Jest tak ponieważ pojawiło się nadspodziewanie wiele wartości zbliżonych do 0.1, czego przyczyną może być jedno z następujących dwóch zjawisk:
 \begin{enumerate}
   \item sieć ma bardzo złą strukturę (np. 1 filtr konwolucyjny przed warstwą agregującą)
   \item błędy w trakcie uczenia sieci przez węzeł obliczeniowy, które nie powodowały wyłączenia programu, jednak miały istotny wpływ na wynik
 \end{enumerate}
-Po bliższym przyjrzeniu się kilku przypadkom z danych znaleziono przykłady, w których sieć wygląda, jakby nie miała powodu by osiągać niskie wyniki, np. $\mathbf{x} = \begin{bmatrix}30 \\ 20 \\ 15 \\ 20\end{bmatrix}$, a  jej skutczność klasyfikacji była oceniana na poziomie 10\%.
+Po bliższym przyjrzeniu się kilku przypadkom z danych znaleziono przykłady, w których sieć wygląda, jakby nie miała powodu by osiągać niskie wyniki, np. $\mathbf{x} = \begin{bmatrix}30 \\ 20 \\ 15 \\ 20\end{bmatrix}$, a  jej skuteczność klasyfikacji była oceniana na poziomie 10\%.
 
-Przyczyną okazało się złe skonfigurowanie węzłów obliczneniowych.
+Przyczyną okazało się złe skonfigurowanie węzłów obliczeniowych.
 Wówczas korzystano z węzłów obliczeniowych opartych na obrazie \textit{Data Science Virtual Machine for Linux}.
 Obraz ten został wybrany ze względu na preinstalowane biblioteki \textit{Keras, TensorFlow i Numpy}.
 Po bliższym przyjrzeniu się sytuacji i ponownym uruchomieniu konkretnego przykładu na maszynie wirtualnej \textit{Data Science Virtual Machine for Linux} ukazało się wiele ostrzeżeń, jak na rys. \ref{fig:warnings}.
@@ -194,8 +194,8 @@ Po bliższym przyjrzeniu się sytuacji i ponownym uruchomieniu konkretnego przyk
 	 \label{fig:warnings}
 \end{figure}
 
-Widać, że maszyna ma problem z alokacją odpowedniej ilości pamięci dla większych sieci, stąd niepoprawne wyniki na poziomie 10\% skuteczności klasyfikacji.
-W trakcie pierwszego podejścia przyczynę problemu odnaleziono dopiero po wykonaniu powższych pomiarów.
+Widać, że maszyna ma problem z alokacją odpowiedniej ilości pamięci dla większych sieci, stąd niepoprawne wyniki na poziomie 10\% skuteczności klasyfikacji.
+W trakcie pierwszego podejścia przyczynę problemu odnaleziono dopiero po wykonaniu powyższych pomiarów.
 To podejście okazało się być podejściem testowym i pomogło dopracować system w pełni, tak by działał poprawnie.
 Łącznie uczenie wszystkich sieci trwało ok. 24 godzin na 20 węzłach.
 
@@ -221,9 +221,9 @@ Kryterium stopu które zadziałało tym razem to liczba iteracji bez poprawy - 5
 Znalezione przez algorytm rozwiązanie ma postać: $\mathbf{x^*} = \begin{bmatrix}12 \\ 21 \\ 23 \\ 31\end{bmatrix}$ i po jednej epoce uczenia osiąga skuteczność na poziomie 47.51\%.
 Niestety, nie jesteśmy w stanie stwierdzić, czy jest to minimum globalne bez wykonywania kosztownego przeszukiwania metodą siłową.
 
-Do drugiego podejścia wymieniono całą infrastukturę węzłów obliczeniowych, tj. zniszczono 20 maszyn wirtualnych opartych na obrazie \textit{Data Science Virtual Machine for Linux} i wymieniono je na obrazy \textit{Ubuntu Server 17.10}, jak opisano w \ref{sec:azure}.
+Do drugiego podejścia wymieniono całą infrastrukturę węzłów obliczeniowych, tj. zniszczono 20 maszyn wirtualnych opartych na obrazie \textit{Data Science Virtual Machine for Linux} i wymieniono je na obrazy \textit{Ubuntu Server 17.10}, jak opisano w \ref{sec:azure}.
 Stwierdzono, że na żadnej z maszyn nie występują ostrzeżenia jak na rys. \ref{fig:warnings}.
-Dodatkowo, w stosunku do poprzedniej próby wprowadzono modyfikacje w celu zaoszczędzenia czasu obliczniowego.
+Dodatkowo, w stosunku do poprzedniej próby wprowadzono modyfikacje w celu zaoszczędzenia czasu obliczeniowego.
 Od tego momentu opisany w \ref{sec:queue_system} rozpoczął wewnętrznie sprawdzać, czy powtarzają się osobniki do policzenia, aby nie liczyć ich kilka razy.
 
 Dla drugiego uruchomienia przeprowadzono statystykę ile obliczeń zaoszczędzono.
@@ -234,7 +234,7 @@ Dodatkowo, algorytm tym razem nie liczył pełnych 100 iteracji, tylko zakończy
 Patrząc na wykres \ref{fig:cnn_maxes} widać, że poprawa wyniku pomiędzy 20 i 30 iteracją nie została uwzględniona jako poprawa, gdyż nie przekroczyła zadanego progu $\epsilon$.
 
 \section{Porównanie wyników dla uczenia 1- i 10- epokowego}\label{sec:thesis_proof}
-W tym przypadku również przeprowadzono eksperyment dla dwóch przypadków - z infrastukturą opartą na obrazach \textit{Data Science Virtual Machine for Linux} oraz na \textit{Ubuntu Server 17.10}.
+W tym przypadku również przeprowadzono eksperyment dla dwóch przypadków - z infrastrukturą opartą na obrazach \textit{Data Science Virtual Machine for Linux} oraz na \textit{Ubuntu Server 17.10}.
 Plan eksperymentu przedstawia się następująco:
 \begin{enumerate}
   \item Z danych zebranych w badaniu \ref{sec:actual_experiment} wybierz najlepszego, średniego i najsłabszego osobnika w każdej iteracji
@@ -247,10 +247,10 @@ Biorąc pod uwagę, że wszystkich możliwych ustawień trzech osobników jest $
 Dla przypadku, tj. węzły obliczeniowe utworzone na podstawie \textit{Data Science Virtual Machine for Linux} - jedynie w 3 przypadkach na 100 kolejność się zgadzała. Wynika to ze złego działania węzłów obliczeniowych - nie jesteśmy w stanie nic powiedzieć, ponieważ zbyt wiele wyników jest zniekształconych w wyniku braku pamięci.
 Dla uczenia 10-epokowego jedynie 9 sieci na 156 uczonych uzyskało wynik powyżej 15\% - nie są to osiągi jakie powinna osiągać sieć po 10 epokach uczenia.
 
-Dla przypadku drugiego, tj. infrastuktura oparta o \textit{Ubuntu Server 17.10}, czyli, jak stwierdzono w \ref{sec:actual_experiment} działającej metody obliczania wartości funkcji przystosowania, liczba iteracji dla których kolejność została zachowana wyniosła 40 na 68, co stanowi około 59\%.
+Dla przypadku drugiego, tj. infrastruktura oparta o \textit{Ubuntu Server 17.10}, czyli, jak stwierdzono w \ref{sec:actual_experiment} działającej metody obliczania wartości funkcji przystosowania, liczba iteracji dla których kolejność została zachowana wyniosła 40 na 68, co stanowi około 59\%.
 Wynik ten jest dużo wyższy niż losowe ustalanie kolejności (poziom 16\%).
 Pozwala to wysnuć wniosek, że istnieje pewien związek pomiędzy osiągami sieci po 1-epoce uczenia a ostatecznymi osiągami (tutaj rozumianymi jako 10-epokowe uczenie), gdyż szansa, że trzy sieci zachowają swoją kolejność pod względem jakości klasyfikacji wynosi niemalże 60 \%.
-Co więcej, dla prostszego testu, to jest bez uwzględnienia środkowego środkowego osobnika, uszeregowanie zgadzało się w 100 \% przypadków, tj. najlepsza sieć była najlepsza zarówno po 10 jak i 1 epoce uczenia, a najgorsza pozostwała najgorszą.
+Co więcej, dla prostszego testu, to jest bez uwzględnienia środkowego środkowego osobnika, uszeregowanie zgadzało się w 100 \% przypadków, tj. najlepsza sieć była najlepsza zarówno po 10 jak i 1 epoce uczenia, a najgorsza pozostawała najgorszą.
 
 Tutaj również, jak w \ref{sec:actual_experiment} dokonano ulepszenia pomiędzy uruchomieniami algorytmu.
 W celu lepszej wizualizacji zachowania sieci w trakcie uczenia, zapisywano historię uczenia, tj. wartości funkcji przystosowania i funkcji kosztu w każdej epoce uczenia uzyskane na zbiorze uczącym oraz uzyskane na zbiorze testowym.
@@ -266,7 +266,7 @@ Aby zobrazować różnice pomiędzy owymi sieciami zestawiono ze sobą przebiegi
 \end{enumerate}
 Co zaobserwowano:
 \begin{itemize}
-  \item Wszystkie krzywe uczenia ewolują w ten sam sposób - z każdą epoką uczenia coraz lepiej klasyfikują obrazy
+  \item Wszystkie krzywe uczenia ewoluują w ten sam sposób - z każdą epoką uczenia coraz lepiej klasyfikują obrazy
   \item Porównując rys. \ref{fig:iter_learn_first} i rys. \ref{fig:iter_learn_last} widzimy, że w obydwu przypadkach najlepsza i średnia sieć znajdują się blisko siebie, a najgorsza znajduje się stosunkowo daleko pod nimi.
   \item Na rys. \ref{fig:iter_learn_last} widzimy sytuację, w której w dalszych fazach uczenia sieć średnia wyprzedza początkowo najlepszą.
   Zgodnie z \ref{sec:thesis_proof}, do takich sytuacji dochodzi w 40\% iteracji algorytmu.
@@ -314,11 +314,11 @@ Nie jest to polepszenie w sensie dynamicznym, gdyż kształt funkcji uczenia pra
 \end{figure}
 
 
-Dla rozwiązania $\mathbf{x^*} = \begin{bmatrix}12 \\ 21 \\ 23 \\ 31\end{bmatrix}$ przeprowadzone zostanło uczenie 25-epokowe.
+Dla rozwiązania $\mathbf{x^*} = \begin{bmatrix}12 \\ 21 \\ 23 \\ 31\end{bmatrix}$ przeprowadzone zostało uczenie 25-epokowe.
 Na rys. \ref{fig:25epoch} przedstawiono krzywą uczenia dla tego przypadku:
 
 Ostateczny wynik uzyskany przez sieć to 67\%.
 Jest to gorszy wynik, niż w przykładzie, na którym oparto budowanie modeli sieci i uczenie ich (dostępny pod adresem \url{https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py})
 Powodem tego może być brak zastosowania warstw \textit{dropout} w sieci modyfikowanej przez algorytm genetyczny, co prowadzi do nadmiernego dopasowania.
-Dalsza opytmalizacja powyżej uzyskanych 67\% wymagałaby modyfikacji elementów przyjętych jako stałe w strukturze sieci.
+Dalsza optymalizacja powyżej uzyskanych 67\% wymagałaby modyfikacji elementów przyjętych jako stałe w strukturze sieci.
 Wynik ten jest jednak optymalny przy tak narzuconej strukturze.

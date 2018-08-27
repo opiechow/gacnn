@@ -6,14 +6,14 @@
 Optymalizacja struktury konwolucyjnych sieci neuronowych za
 pomocą algorytmu genetycznego
 \section{Cel i przeznaczenie aplikacji}
-Stworzenie systemu umożliwiającego badanie możliwości użycia algorytmu genetycznego do znalezienia optymalnej struktury dla konwolucyjnej sieci neuronowej w sensie skutecznośći klasyfikacji obrazów.
+Stworzenie systemu umożliwiającego badanie możliwości użycia algorytmu genetycznego do znalezienia optymalnej struktury dla konwolucyjnej sieci neuronowej w sensie skuteczności klasyfikacji obrazów.
 \section{Funkcjonalność}
 
 \subsection{Spis realizowanych funkcji}
 Wytworzony system realizuje następujące funkcje:
 \begin{itemize}
   \item Generacja sieci konwolucyjnych o różnych w sensie ilości neuronów w poszczególnych warstwach strukturach
-  \item Rodzielanie zadań uczenia sieci przez system kolejkowy do poszczególnych węzłów obliczeniowych
+  \item Rozdzielanie zadań uczenia sieci przez system kolejkowy do poszczególnych węzłów obliczeniowych
   \item Uczenie sieci o zadanej strukturze, liczbie epok uczenia oraz przy ustalonym ziarnie generatora liczb losowych
   \item Przetwarzanie uzyskanych w wyniku przeprowadzonego eksperymentu danych do czytelnej formy wykresów
 \end{itemize}
@@ -27,12 +27,12 @@ Przykładowe zastosowania wytworzonego systemu:
 \subsection{Szczegółowy opis działania aplikacji}
 Algorytm genetyczny generuje potencjalnie optymalne struktury sieci neuronowych.
 Wygenerowane sieci oceniane są pod względem skuteczności klasyfikacji obrazków na zbiorze testowym CIFAR-10.
-Wynikowo uzyskuje się optymalną pod względem struktury sieć neuronową oraz dużo danych z przebiegu algorytmu genetycznego.
-Dane są nastepnie ręczne przetwarzane z wykorzystaniem pomocniczych skryptów w języku \textit{Python}.
+Ostatecznie uzyskuje się optymalną pod względem struktury sieć neuronową oraz dużo danych z przebiegu algorytmu genetycznego.
+Dane są następnie ręczne przetwarzane z wykorzystaniem pomocniczych skryptów w języku \textit{Python}.
 
 \section{Ogólna architektura systemu}
-System składa się z węzła zarządzającego przetwarzanymmi eksperymentami i węzłów obliczeniowych, wykonujących powierzone im zadania.
-Każde z nich z założenia jest komputerem z zainstalowanym interpreterem języka \textit{Python} w wersji 3 wraz z obpowiednim bibliotekami: \textit{Keras, TensorFlow, Numpy}.
+System składa się z węzła zarządzającego przetwarzanymi eksperymentami i węzłów obliczeniowych, wykonujących powierzone im zadania.
+Każde z nich z założenia jest komputerem z zainstalowanym interpreterem języka \textit{Python} w wersji 3 wraz z odpowiednim bibliotekami: \textit{Keras, TensorFlow, Numpy}.
 System komunikuje się przez sieć przy pomocy interfejsu \textit{socket} poprzez protokół TCP/IP.
 
 \section{Architektura sprzętu}
@@ -42,19 +42,19 @@ Podane zostaną sprzętowe parametry użytych jako węzły obliczeniowe maszyn w
 
 \section{Architektura oprogramowania}
 Oprogramowanie zostało podzielone na logicznie separowalne moduły.
-Jeden z nich jest odpowiedzialny za działanie węzłów zarządzających i zawiera w sobie wszystkie pożyteczne dla takiego węzła funcjonalności, np. system kolejkowy.
+Jeden z nich jest odpowiedzialny za działanie węzłów zarządzających i zawiera w sobie wszystkie pożyteczne dla takiego węzła funkcjonalności, np. system kolejkowy.
 Drugi odpowiedzialny jest za pracę węzła obliczeniowego, który jest w istocie komputerem z jednocześnie pracującymi dwoma programami - jednym nasłuchującym zadań, drugim nasłuchującym zapytań o wyniki.
 Trzeci moduł zawiera oprogramowanie pomocnicze, służące automatyzacji procesu tworzenia nowych węzłów obliczeniowych.
 
 \section{Opis sposobu wytwarzania aplikacji}
 \subsection{Założenia i sformułowanie zadania}
-System pownien umożliwić zbadanie przystosowania algorytmu genetycznego do poszukiwania optymalnej struktury konwolucyjnej sieci neuronowej oraz zbadanie związku pomiędzy uczeniem krótkim i długim.
+System powinien umożliwić zbadanie przystosowania algorytmu genetycznego do poszukiwania optymalnej struktury konwolucyjnej sieci neuronowej oraz zbadanie związku pomiędzy uczeniem krótkim i długim.
 \subsection{Analiza problemu (z przeglądem dotychczasowych rozwiązań)}
-Dokonano analizy problemu z uwzględnienem następujących zagadnień: uczenie maszynowe, uczenie z nadzorem, metauczenie, klasyfikacja obrazów, klasyfikatory liniowe, konwolucyjne sieci neuronowe, algorytm genetyczny.
+Dokonano analizy problemu z uwzględnieniem następujących zagadnień: uczenie maszynowe, uczenie z nadzorem, metauczenie, klasyfikacja obrazów, klasyfikatory liniowe, konwolucyjne sieci neuronowe, algorytm genetyczny.
 \subsection{Specyfikacje}
 Specyfikacje w głównej mierze narzucone były przez ograniczony czas i budżet, zatem dążono do stworzenia systemu który wykona obliczenia małym kosztem i możliwie szybko.
 \subsection{Przygotowanie projektu}
-Projekt przygotowano odpowiednio przygotowując w odpowiedniej kolejności projekt systemu kolejkowego, węzeła obliczeniowego oraz węzeł zarządzającego.
+Projekt przygotowano odpowiednio przygotowując w odpowiedniej kolejności projekt systemu kolejkowego, węzła obliczeniowego oraz węzeł zarządzającego.
 \subsection{Prototypowanie i implementacja}
 Prototypowanie i implementacja odbyły się w podobnej kolejności, w jakiej przygotowano projekt - stworzono prototyp systemu kolejkowego, węzła obliczeniowego i zarządzającego, a implementacja postępowała wraz z kolejnymi ulepszeniami dokonywanymi na prototypach.
 \subsection{Testowanie}
@@ -64,7 +64,7 @@ Aplikacja spełnia postawione przed nią zadanie. W porównaniu do istniejących
 \subsection{Wnioski i perspektywy dalszych prac}
 Wnioski są następujące -
 \begin{itemize}
-  \item można poszukiwać struktury konwolucyjnych sieci neurnowych przy pomocy algorytmu genetycznego
+  \item można poszukiwać struktury konwolucyjnych sieci neuronowych przy pomocy algorytmu genetycznego
   \item istnieje związek pomiędzy uczeniem krótkim i długim sieci neuronowych
 \end{itemize}
-Dalsze prace polegałyby na dopracowywaniu systemu do szybszego i stablinjeszego działania, projektowaniu nowych eksperymentów oraz uruchamianie ich na wytworzonym systemie oraz dokładniejszego zbadania zależności pomiędzy różnicą w wynikach po uczeniu krótkim a po uczeniu długim.
+Dalsze prace polegałyby na dopracowywaniu systemu do szybszego i stabilniejszego działania, projektowaniu nowych eksperymentów oraz uruchamianie ich na wytworzonym systemie oraz dokładniejszego zbadania zależności pomiędzy różnicą w wynikach po uczeniu krótkim a po uczeniu długim.

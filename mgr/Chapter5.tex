@@ -23,7 +23,7 @@ To z kolei wiązało się z kolejnymi krokami:
 \begin{enumerate}
   \item Redukcji problemu, to jest dokładniejszego zdefiniowania problemu z uwzględnieniem ograniczonego czasu i budżetu na obliczenia
   \item Zdefiniowania osobnika dla algorytmu genetycznego jako sieci neuronowej o określonej strukturze z pewnymi zmiennymi parametrami
-  \item Zdefiniowaniu konkrentych operacji genetycznych jakie przeprowadzane będą w tej konkretnej implementacji algorytmu genetycznego, a konkretniej zdefinowanie:
+  \item Zdefiniowaniu konkretnych operacji genetycznych jakie przeprowadzane będą w tej konkretnej implementacji algorytmu genetycznego, a konkretniej zdefiniowanie:
   \begin{itemize}
     \item krzyżowania
     \item mutacji
@@ -34,16 +34,16 @@ To z kolei wiązało się z kolejnymi krokami:
   \item Zdefiniowaniu sposobu pracy węzła zarządzającego przeprowadzaniem eksperymentu
   \item Zaprojektowaniu systemu kolejkowania zadań w celu przyspieszenia obliczeń
   \item Stworzeniu protokołu do komunikacji z węzłami zdalnymi
-  \item Implementacji węzła obliczeniowego wykonującego zleocne mu zadania i zwracającego wyniki
+  \item Implementacji węzła obliczeniowego wykonującego zlecone mu zadania i zwracającego wyniki
   \item Automatyzacji tworzenia nowych węzłów obliczeniowych
   \item Analizie replikatywności wyników badań ze względu na korzystanie z generatora liczb pseudolosowych
 \end{enumerate}
 
-Powstawanie owego systemu wymagało czasu, dogłębnego przemeślenia oraz pochłonęło zasoby na zarówno udane jak i nieudane próby przeprowadzenia eksperymentu.
+Powstawanie owego systemu wymagało czasu, dogłębnego przemyślenia oraz pochłonęło zasoby na zarówno udane jak i nieudane próby przeprowadzenia eksperymentu.
 Ostatecznie testy i wyniki, które zostały przeprowadzone można podsumować następująco:
 
 \begin{itemize}
-  \item Przeporwadzono badanie wariancji wyników dla sieci o jendej strukturze przy róznych wartościach ziarna generatora losowego w celu wyznaczenia progu poprawy pomiędzy iteracjami
+  \item Przeprowadzono badanie wariancji wyników dla sieci o jednej strukturze przy rożnych wartościach ziarna generatora losowego w celu wyznaczenia progu poprawy pomiędzy iteracjami
   \item Przeprowadzono test działania algorytmu genetycznego dla testowej funkcji Levego
   \item Przeprowadzono test działania systemu kolejkowego dla jednej maszyny lokalnej
   \item Przeprowadzono poszukiwanie optymalnej struktury sieci neuronowej za pomocą algorytmu genetycznego w dwóch próbach
@@ -56,18 +56,18 @@ W toku przeprowadzonych badań udało się potwierdzić obydwie stawiane we wst�
 
 \begin{enumerate}
   \item Możliwa jest optymalizacja struktury konwonlucyjnych sieci neuronowych za pomocą algorytmu genetycznego
-  \item Istnieje związek pomiędzy skutecznośćią sieci po krótkim i długim uczeniu
+  \item Istnieje związek pomiędzy skutecznością sieci po krótkim i długim uczeniu
 \end{enumerate}
 
 System można w dalszym ciągu dopracować.
 Poniżej przedstawiono kilka propozycji ulepszeń:
 
 \begin{itemize}
-  \item Aby uzyskać replikatywność badań zrezygnowano z równoległych obliczeń na GPU i system dostosowany został do obliczeń na CPU, możnaby jednak uwzględnić taką możliwość w kolejnych generacjach systemu.
-  \item System kolejkowy możnaby dodatkowo usprawnić implementując algorytm rozdzielania zadań dla równoległych maszyn, np. implementując algorytm CDS (Campbella, Dudeka i Smitha)
-  \item Można w dalszym ciągu ulepszyć czytelność kodu przepisująć odpowiednie fragmenty
-  \item Algorytmy parametry genetycznego dobrane zostały metodą prób i błędów - możnaby wejść na kolejny poziom metauczenia również dobierając jego parametry za pomoca innego algorytmu uczenia maszynowego\
-  \item Ustalone elementy sieci neuronowej (stałą część jej sturktury) możnaby ulepszyć tak, by ostateczna wynikowa sieć miała lepsze wyniki klasyfikacji
+  \item Aby uzyskać replikatywność badań zrezygnowano z równoległych obliczeń na GPU i system dostosowany został do obliczeń na CPU, można by jednak uwzględnić taką możliwość w kolejnych generacjach systemu.
+  \item System kolejkowy można by dodatkowo usprawnić implementując algorytm rozdzielania zadań dla równoległych maszyn, np. implementując algorytm CDS (Campbella, Dudeka i Smitha)
+  \item Można w dalszym ciągu ulepszyć czytelność kodu przepisując odpowiednie fragmenty
+  \item Algorytmy parametry genetycznego dobrane zostały metodą prób i błędów - można by wejść na kolejny poziom metauczenia również dobierając jego parametry za pomocą innego algorytmu uczenia maszynowego\
+  \item Ustalone elementy sieci neuronowej (stałą część jej struktury) można by ulepszyć tak, by ostateczna wynikowa sieć miała lepsze wyniki klasyfikacji
   \item Węzły zdalne w żaden sposób nie sprawdzają, kto wysyła im zadania.
   Może to doprowadzić do sytuacji gdzie uruchomienie jednocześnie kilku systemów kolejkowych zlecających zadanie uniemożliwia poprawne działanie systemu.
   Należałoby to poprawić w przypadku korzystania z systemu przez więcej niż jedną osobę.
