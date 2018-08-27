@@ -3,7 +3,9 @@ import time
 import abc
 import socket
 import pickle
+import copy
 from math import sin, pi
+from common.helper_classes import Job, Individual
 
 sys.path.append("..")
 
@@ -74,7 +76,7 @@ class RemoteWorker(Worker):
         self._job_port = job_port
         self._result_port = result_port
         self._start = None
-        self.timeout = 10000  # after 60 minutes something is wrong
+        self.timeout = 4800  # after 1,5 hour something is wrong in 10 epoch learnig
 
     def __eq__(self, other):
         return self.ip == other.ip
@@ -127,7 +129,7 @@ class RemoteWorker(Worker):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((self.ip, self._result_port))
         s.sendall(b"RDY?")
-        response = s.recv(1024)
+        response = s.recv(8192)
         if "BSY" in str(response):
             return None
         else:
@@ -136,17 +138,19 @@ class RemoteWorker(Worker):
             return result
 
 
-class LevyWorker(object):
+class LevyWorker(Worker):
     def __init__(self):
         self.available = True
         self.result = None
+        self.job = None
 
     def is_available(self):
         return self.available
 
     def assign_job(self, job):
+        self.job = job
         self.available = False
-        xm = job.individual.genotype
+        xm = job.individual.phenotype
         x = (xm[0] - 3, xm[1] - 7, xm[2] - 13, xm[3] - 20)
         w = []
         for i in range(len(x)):
@@ -157,6 +161,7 @@ class LevyWorker(object):
         result = sin(pi*w[0])*sin(pi*w[0]) + middle_term + (w[-1] - 1)**2 * (1 + sin(2*pi*w[-1])*sin(2*pi*w[-1]))
         job.individual.loss = result
         job.individual.score = 1000 - result
+        job.individual.training_history = "DUMMY HISTORY"
         self.result = job.individual
         return True
 
@@ -172,7 +177,10 @@ class LevyWorker(object):
     def free_worker(self):
         self.available = True
         self.result = None
+        self.job = None
 
+    def get_current_job(self):
+        return self.job
 
 class WorkManager(object):
     def __init__(self):
@@ -192,34 +200,56 @@ class WorkManager(object):
 
     def evaluate(self, jobs):
         '''
-
+        Evaluates a given list of jobs, avoiding calculating duplicates.
         :param jobs: list of jobs with scores to be computed
-        :return: list of Individuals with scores computed
+        :return: list of individuals with scores computed
         '''
         self.results = []
-        expected_results = len(jobs)
-        while len(self.results) < expected_results:
+
+        job_keys = set(map(lambda x: x.get_key(), jobs))
+
+        inner_jobs = []
+
+        for phenotype, epochs, seed in job_keys:
+            individual = Individual(phenotype)
+            j = Job(individual, epochs, seed)
+            inner_jobs.append(j)
+
+        inner_results = {}
+
+        #saved = ("{},\n".format(len(jobs) - len(inner_jobs)))
+        #with open("saved_calculations_zbiorczy.txt", "a") as f:
+        #    f.write(saved)
+
+        expected_results = len(inner_jobs)
+        while len(inner_results) < expected_results:
             self.__add_workers()  # makes adding new workers while the script is running possible
             for worker in self.workers[:]:
-                if worker.is_available() and jobs:
-                    job = jobs.pop()
-                    print("Worker available. Assigning job ({}/{}): {}".format(expected_results - len(jobs), expected_results, job))
+                if worker.is_available() and inner_jobs:
+                    job = inner_jobs.pop()
+                    print("Worker available. Assigning job ({}/{}): {}".format(expected_results - len(inner_jobs), expected_results, job))
                     success = worker.assign_job(job)
                     if not success:
                         print("Worker %s broken in assigning job, removing from pool and reasigning job" % worker.ip)
-                        jobs.append(worker.get_current_job())
+                        inner_jobs.append(worker.get_current_job())
                         self.workers.remove(worker)
             for worker in self.workers[:]:
                 try:
                     if not worker.is_available():
                         if worker.has_result():
                             result = worker.get_result()
-                            self.results.append(result)
+                            job = worker.get_current_job()
+                            inner_results[job.get_key()] = result
                             worker.free_worker()
                 except Exception as e:
                     print(e)
                     print("Worker %s broken in result collection, removing from pool and reasigning job" % worker.ip)
-                    jobs.append(worker.get_current_job())
+                    inner_jobs.append(worker.get_current_job())
                     self.workers.remove(worker)
             time.sleep(1)
+        for job in jobs:
+            key = job.get_key()
+            result_copy = copy.deepcopy(inner_results[key])
+            self.results.append(result_copy)
+
         return self.results

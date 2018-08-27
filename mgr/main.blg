@@ -8,45 +8,45 @@ Warning--empty publisher in Brazdil2009
 Warning--empty institution in Krizhevsky09learningmultiple
 Warning--empty journal in cs231n
 Warning--empty year in cs231n
-You've used 16 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            589 strings with 7086 characters,
-and the built_in function-call counts, 5379 in all, are:
-= -- 464
-> -- 411
+            614 strings with 7743 characters,
+and the built_in function-call counts, 6296 in all, are:
+= -- 554
+> -- 439
 < -- 1
-+ -- 164
-- -- 148
-* -- 403
-:= -- 974
-add.period$ -- 47
-call.type$ -- 16
-change.case$ -- 117
++ -- 177
+- -- 156
+* -- 440
+:= -- 1128
+add.period$ -- 59
+call.type$ -- 20
+change.case$ -- 133
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 153
-empty$ -- 338
-format.name$ -- 148
-if$ -- 1048
+cite$ -- 24
+duplicate$ -- 185
+empty$ -- 431
+format.name$ -- 156
+if$ -- 1248
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 13
-newline$ -- 82
-num.names$ -- 32
-pop$ -- 157
+int.to.str$ -- 20
+missing$ -- 14
+newline$ -- 102
+num.names$ -- 40
+pop$ -- 183
 preamble$ -- 1
-purify$ -- 105
+purify$ -- 117
 quote$ -- 0
-skip$ -- 103
+skip$ -- 131
 stack$ -- 0
-substring$ -- 124
-swap$ -- 15
+substring$ -- 169
+swap$ -- 19
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
+type$ -- 70
 warning$ -- 4
-while$ -- 36
-width$ -- 18
-write$ -- 166
+while$ -- 45
+width$ -- 22
+write$ -- 207
 (There were 4 warnings)

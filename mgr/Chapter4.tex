@@ -1,4 +1,4 @@
-\chapter{Badania i testy}
+\chapter{Badania i testy}\label{chap:tests}
 \section{Wariancja wyników dla jednej sieci}\label{sec:std_dev}
 Ważnym parametrem algorytmu genetycznego jest jego kryterium stopu.
 W przypadku eksperymentów opisanych w \ref{sec:levy_test} i \ref{sec:actual_experiment} przyjęto dwa:
@@ -99,6 +99,40 @@ Zaobserwowane przebiegi wyglądaja jak poprawne przebiegi dla algorytmu genetycz
 Minimum w punkcie $\mathbf{x^*} = \begin{bmatrix}4 \\ 8 \\ 14 \\ 21\end{bmatrix}$ zostało znalezione w 67. pokoleniu, a kryterium zatrzymania algorytmu, które zadziałało, to maksymalna liczba iteracji równa 100.
 
 Test ten udowodnił, że algorytm genetyczny został zaimplementowany poprawnie i w związku z tym można go w takiej formie wykorzystać do poszukiwania optymalnej struktury konwolucyjnych sieci neuronowych.
+
+\section{Test działania dla lokalnego węzła obliczeniowego}
+
+Schemat działania testu przedstawiono na rys. \ref{fig:localhost_test}
+
+\begin{figure}[h!tb]
+	 \centering
+	 \includegraphics[width = 1.0\linewidth]{img/localhost_test}
+	 \caption{Test działania całego systemu w ramach maszyny lokalnej\\
+              Źródło: praca własna}
+	 \label{fig:localhost_test}
+\end{figure}
+
+Kolejność wykonywania działań w teście była następująca:
+
+\begin{enumerate}
+  \item Modyfikacja pliku \textit{workers} by zawierał wyłącznie adres 127.0.0.1, czyli adres maszyny lokalnej
+  \item Uruchomienie skryptu \textit{listener\_jobs.py} do nasłuchiwania zadań
+  \item Uruchomienie skryptu \textit{listener\_jobs.py} do nasłuchiwania zapytań o wyniki
+  \item Uruchomienie skryptu \textit{25epoch.py}, który zleca zadanie uczenia jednej sieci przez 25 epok
+\end{enumerate}
+
+Test ten pozwolił na zweryfikowanie:
+\begin{enumerate}
+  \item Czy rzeczywiście program węzła zdalnego działa niezależnie od systemu operacyjnego - na maszynie lokalnej działał system Linux Mint 18.3 Cinnamon 64 bit
+  \item Czy zdefiniowano wystarczająco duży bufor dla przesyłu informacji pomiędzy węzłami
+  \item Czy system kolejkowy działa jak powinien
+\end{enumerate}
+
+W wyniku działania testu zauważono, że bufor o rozmiarze 1 kiB (1024 bajtów) nie był wystarczająco duży, gdyż przesyłany plik z historią uczenia dla 25 epok miał rozmiar 1,5kB, co powodowało ucięcie transmisji i błąd w dekodowaniu spakowanego obiektu.
+Dla zachowania pewnego zapasu bezpieczeństwa zwiększono rozmiar tego bufora do 8192 bajtów.
+
+Ponadto test sprawdził działanie zarówno systemu kolejkowego dla brzegowego przypadku jednego zadania i jednego węxła, jak i oprogramowania węzła obliczeniowego.
+W wyniku jego przeprowadzenia otrzymano poprawnie nauczoną sieć neuronową, więcej na ten temat powiedziano w \ref{sec:2525_epoch_training}.
 
 \section{Poszukiwanie optymalnej struktury konwolucyjnej sieci neuronowej za pomocą algorytmu genetycznego dla uczenia 1-epokowego}\label{sec:actual_experiment}
 Celem tego badania jest sprawdzenie, czy algorytm genetyczny jest w stanie znaleźć optymalną w sensie skutecznośći po jednej epoce uczenia strukturę sieci neuronowej.
@@ -216,6 +250,7 @@ Dla uczenia 10-epokowego jedynie 9 sieci na 156 uczonych uzyskało wynik powyże
 Dla przypadku drugiego, tj. infrastuktura oparta o \textit{Ubuntu Server 17.10}, czyli, jak stwierdzono w \ref{sec:actual_experiment} działającej metody obliczania wartości funkcji przystosowania, liczba iteracji dla których kolejność została zachowana wyniosła 40 na 68, co stanowi około 59\%.
 Wynik ten jest dużo wyższy niż losowe ustalanie kolejności (poziom 16\%).
 Pozwala to wysnuć wniosek, że istnieje pewien związek pomiędzy osiągami sieci po 1-epoce uczenia a ostatecznymi osiągami (tutaj rozumianymi jako 10-epokowe uczenie), gdyż szansa, że trzy sieci zachowają swoją kolejność pod względem jakości klasyfikacji wynosi niemalże 60 \%.
+Co więcej, dla prostszego testu, to jest bez uwzględnienia środkowego środkowego osobnika, uszeregowanie zgadzało się w 100 \% przypadków, tj. najlepsza sieć była najlepsza zarówno po 10 jak i 1 epoce uczenia, a najgorsza pozostwała najgorszą.
 
 Tutaj również, jak w \ref{sec:actual_experiment} dokonano ulepszenia pomiędzy uruchomieniami algorytmu.
 W celu lepszej wizualizacji zachowania sieci w trakcie uczenia, zapisywano historię uczenia, tj. wartości funkcji przystosowania i funkcji kosztu w każdej epoce uczenia uzyskane na zbiorze uczącym oraz uzyskane na zbiorze testowym.
@@ -269,7 +304,7 @@ Co zaobserwowano:
 Ostatecznie widoczne jest polepszenie procesu uczenia sieci przez algorytm genetyczny.
 Nie jest to polepszenie w sensie dynamicznym, gdyż kształt funkcji uczenia prawie się nie zmienia, jednakże w sensie statycznym, czyli wartości na początku i na końcu, widać poprawę.
 
-\section{Osiągi najlepszej według algorytmu sieci po 25 epokach uczenia}
+\section{Osiągi najlepszej według algorytmu sieci po 25 epokach uczenia}\label{sec:25_epoch_training}
 \begin{figure}[h!tb]
 	 \centering
 	 \includegraphics[width = 0.85\linewidth]{img/25epoch}
@@ -286,4 +321,4 @@ Ostateczny wynik uzyskany przez sieć to 67\%.
 Jest to gorszy wynik, niż w przykładzie, na którym oparto budowanie modeli sieci i uczenie ich (dostępny pod adresem \url{https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py})
 Powodem tego może być brak zastosowania warstw \textit{dropout} w sieci modyfikowanej przez algorytm genetyczny, co prowadzi do nadmiernego dopasowania.
 Dalsza opytmalizacja powyżej uzyskanych 67\% wymagałaby modyfikacji elementów przyjętych jako stałe w strukturze sieci.
-Nie zmienia to faktu, że ów wynik może być najwyższym co można osiągnąć przy tak narzuconej strukturze.
+Wynik ten jest jednak optymalny przy tak narzuconej strukturze.

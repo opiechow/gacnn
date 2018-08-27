@@ -166,7 +166,7 @@ Kolejnym problemem w przypadku przetwarzania obrazów jest klasyfikowanie wyłą
 Na przykład, zarówno w przypadku klasy ''samolot'' jak i w przypadku klasy ''statek'' często występującym w tle kolorem będzie niebieski, gdyż niebieskie jest zarówno niebo i woda.
 Tak duże podobieństwo może prowadzić do błędnej klasyfikacji w przypadku tych dwóch klas. \cite{cs231n}
 
-\section{Klasyfikator liniowy}
+\section{Klasyfikator liniowy}\label{sec:linear_classifier}
 
 Innym podejściem, jakie można przyjąć do klasyfikacji obrazów, jest stworzenie liniowego odwzorowania pomiędzy pikselową reprezentacją obrazu a stopniem przynależności danego obrazu do poszczególnych klas.
 Oznaczając dane treningowe przez $x_i \in R^D$, każde powiązane z etykietą $y_i$.
@@ -276,11 +276,32 @@ Każde połączenie pomiędzy neuronami charakteryzowane jest przez siłę jego 
 
 Schematycznie pojedynczy neuron możemy przedstawić jak na rys. \ref{fig:neuron}
 
+Pojedynczy neuron możemy również traktować jako klasyfikator liniowy, stąd obszerniejszy opis klasyfikatorów liniowych w \ref{sec:linear_classifier}.
+Matematyczny model neuronu od linowego klasyfikatora różni się jedynie zastosowaniem nieliniowości po operacji iloczynu skalarnego.
+Nieliniowość owa odpowiada za zdolność neuronu do prefeorwania pewnych liniowych obszarów jego wejścia (wartość funkcji aktywacji w okolicy 1) od innych (wartość funkcji aktywacji w okolicy 0).
+Tym samym stosując odpowiednią postać funkcji kosztu możemy sprowadzić zwykły neuron do klasyfiktaora liniowego. \cite{cs231n}
+
 Architektura sieci jest tym co odróżnia konkretne sieci od siebie.
 Na przykład sieci nie posiadające połączeń zwrotnych reagują na pobudzenie w sposób natychmiastowy i te własnie sieci będą omawiane w dalszej części pracy.
 Natomiast sieci, które posiadają połączenia zwrotne, ustalają swoją odpowiedź dopiero po pewnym czasie, mają zatem swoją dynamikę określające ich zachowanie w czasie. \cite{zuradabarskijedruch1996}
+Dalej rozważać będziemy jedynie sieci bez połączeń zwrotnych.
 
+Sieci neurnowe posiadają wiele zastosowań, wśród nich można wymienić:
+\begin{itemize}
+	\item modelowanie zagadnień programowania liniowego
+	\item rozpoznwanie pisma
+	\item zastosowania w teorii sterowania
+	\begin{itemize}
+		\item identyfikacja obiektów
+		\item neurosterowanie obiektami statycznymi
+	\end{itemize}
+	\item steorwanie kinematyką robotów
+	\item neuronowe sieci ekspertowe \cite{zuradabarskijedruch1996}
+\end{itemize}
 
+Pytanie o to, które z modyfikowalnych komponenetów systemu uczącego się są odpowiedzialne za jego sukces lub porażkę i jakie zmiany w nich polepszają ich wydajność nazywane jest fundamentalnym problemem przypisania zasługi (\textit{the fundamental credit assignment problem}). \cite{SCHMIDHUBER201585}.
+Innymi słowy do dziś nie wiadomo, co dokładnie jest czynnikiem sprawiającym, że jedna sieć będzie działać lepiej od drugiej.
+Badanie czy algorytm genetyczny jest w stanie poprawić jakość działania takiej sieci jest częściowo próbą znalezienia odpowiedzi na to pytanie.
 
 \section{Konwolucyjne sieci neuronowe}\label{sec:cnn}
 
@@ -308,13 +329,138 @@ Trzy podstawowe typy to:
 	\item warstwa w pełni połączona - tak jak w klasycznych sieciach neuronowych, każdy neuron jest połączony z każdą jednostką wejścia
 \end{itemize}
 
-Przyjmować będziemy również, że warstwa aktywacji liniowej (\textit{ReLU, Rectified Linear Unit}) jest ''zaszyta'' wewnątrz warstwy konwolucyjnej, na jej wyściu,
+Przyjmować będziemy również, że warstwa aktywacji liniowej (\textit{ReLU, Rectified Linear Unit}) jest ''zaszyta'' wewnątrz warstwy konwolucyjnej, na jej wyściu.
 Warstwa ta realizuje funkcję $max(0, x)$ w odniesieniu do każdego elementu na swoim wejściu. \cite{cs231n}
+Schematycznie organizację neurnów w konwolucyjnej sieci neurnowej przedstawiono na rys. \ref{fig:cnn}
+
+\begin{figure}[h!tb]
+	 \centering
+	 \includegraphics[width = 1.0\linewidth]{img/cnn}
+	 \caption{Schematyczne przedstawienie architektury konwolucyjnej sieci neuronowej \\
+              Źródło: \cite{cs231n}}
+	 \label{fig:cnn}
+\end{figure}
+
+Na rysunku uwidoczniona została główna idea konwolucyjnych sieci neuronowych - najważniejszy parametr to liczba neurnów w warstwie, zwana również głębokością warstwy, która w tym przypadku wynosi 5.
+Każdy z tych neuronów posiada swój zestaw wag, który następnie jest splatany z obrazem wejściowym na całej jego szerokości i wysokości.
+Owe 5 filtrów ''widzi'' tylko swój mały kawałek obrazu, nazywany jego polem percepcji (\textit{receptive field}).
+Takie ograniczenie nazywane jest lokalną połączeniowością (\textit{local connectivity}).
+W wyniku operacji splotu otrzymywana jest mapa cech dla każdego neuronu, i w wyniku procesu uczenia neurony dobierają swoje wagi tak, by być wrażliwymi na cechy charakterystyczne dla danej klasy.
+Oprócz liczby filtrów z różnymi wagami, z których każdy splatany jest przez na zasadzie ruchomego okna, dodatkowymi parametrami cechującymi taką sieć są:
+
+\begin{itemize}
+	\item przeskok (\textit{stride}) - okno można przesuwać konsekwentnie piksel po pikselu po całym obrazie, można jednak przesuwać o większą ilość pikseli, owocuje to jednak zmniejszeniem wymiaru obrazu wyjściowego
+	\item dopełnianie zerami (\textit{zero padding}) - w przypadku skrajnych pikseli okno np. o wymiarach 3x3 przesuwane jest po nieistniejących w obrazie pikselach, które najczęściej zastępowane są zerami.
+	 			Rozmiar ramki złożonej z zer jest parametrem, który pozwala nam kontrolować rozmiar wyjścia.
+\end{itemize}
+
+Rozmiar obrazu po przejściu przez warstwę tak zdefiniowaną można obliczyć ze wzoru \ref{eqn:output_size}
+
+\begin{equation}\label{eqn:output_size}
+(W - F + 2P)/S + 1
+\end{equation}
+gdzie W to wymiary obrazu wejściowego, F to rozmiar pola percepcji neruonu, P to liczba dopełnianych zer a S to przeskok z jakim przesuwamy okno.
+
+Co do warstwy agregującej, również wykonuje ona operacje na małym polu wejściowym, dając w wyniku jeden skalar - np. z pola 2x2 wybierana jest maksymalna wartość lub średnia ważona wszystkich wartości.
+Operacja taka ma na celu zwiększenie kontroli nad nadmiernym dopasowaniem przez algorytm, i w wyniku daje pomniejszony wymiar obrazu (mapy) wyjściowej, np. przeprwadzenie agregacji 2x2 na warstwie 32x32 zaowocuje obrazem o wymiarach 16x16 na wyjściu.
+
+Warstwa w pełni połączona zazwyczaj używana jest na końcu i zwykle znajduje się w niej tyle neuronów, ile klas, a ich wyjście mówi nam (w przypadku zastosowaniu odpowdniej funkcji kosztu przy uczeniu sieci) o prawdopodobieństwie przynależenia danego obrazka do danej klasy.
+
+Sposóród wymienionych wyżej parametrów, kontrolowanym przez algorytm genetyczny parametrem będzie głębokość 4 warstw.
 
 \section{Algorytm geneteyczny}\label{sec:ag}
 
-Algorytm genetyczny jest kolejnym opisywanym narzędziem sztucnej inteligencji, które powstało dzięki obsrerwacji natury i jej sposóbów działania.
+Algorytm genetyczny jest kolejnym opisywanym narzędziem sztucnej inteligencji, które powstało dzięki obserwacji natury i jej sposóbów działania.
+Wywodzi się on z genetyki, czyli z badania dziedziczności i zmienności organizmów.
+Pierwsze badania z tej dziedziny w XIX wieku przeprowadzał Gregor Johann Mendel.
+W ich wyniku powstało pojęcie genu - abstrakcyjnej jednostki dziedziczności oraz alleli - różnych odmian tego samego genu.
+Dalej możemy mówić o chromosomach, czyli strukturach znajdujących się wewnątrz jąder komórek zwierzęcych i roślinnych, które zawierają geny.
+Chromosomy zbudowane są z kwasu dezoksyrybonukleinowego (DNA), które koduje całą informację genetyczną danego osobnika.
+Na podstawie obserwacji sposobu dziedziczenia i rozmnażania się komórek, procesu ewolucji zaproponowano algorytm genetyczny, który w istocie jest stochastyczną metodą optymalizacji, jak przedstawiono na rys. \ref{fig:klas_opt}.
 
+\begin{figure}[h!tb]
+	 \centering
+	 \includegraphics[width = 0.8\linewidth]{img/optymalizacja}
+	 \caption{Podział metod optymalizacji \\
+              Źródło: \cite{bialaszewski2012}}
+	 \label{fig:klas_opt}
+\end{figure}
+
+Podstawowe cechy algorytmu genetycznego:
+\begin{enumerate}
+	\item poszukiwania prowadzone są w wielu punktach
+	\item zadanie optymalizacji sprametryzowane w sposób zakodowany
+	\item nowe rozwiązania tworzeone i wybierane sa przy pomocy metod probabilystyczno-ewolucyjnych
+	\item brak ograniczeń na przestrzeń poszukiwań - funkcja celu może być dowolna, nieznana \label{lst:opt}
+	\item prostota implementacji i uniwersalność
+\end{enumerate}
+
+Głównie ze względu na punkt \ref{lst:opt} wybrano tę metodę do optymalizacji struktury konwolucyjnych sieci neuronowych, gdyż funkcja skuteczności sieci w zależności od jej struktury jest nieznana.
+
+Istotnymi pojęciami w AG są pojęcia genotypu i fenotypu.
+Genotyp rozumiemy jako zakodowane parametry reprezentujące danego osobnika.
+Poniżej wymeniono kilka podstawowych sposóbów kodowania parametrów w AG:
+\begin{itemize}
+	\item bialleliczne
+	\item Gray’a
+	\item logarytmiczne
+	\item trialleliczne
+	\item multialleliczne
+	\item wielopoziomowe
+	\item całkowitoliczowe
+\end{itemize}
+Fenotyp jest uzewnętrznienieniem tych zakodowanych cech.
+
+Podstawowe operacje algorytmu genetycznego zwane operacjami genetycznymi oraz kilka ich realizacji wymieniono poniżej:
+\begin{itemize}
+	\item selekcja:
+	\begin{itemize}
+		\item metodą proporcjonalną
+		\item metodą ze stochastycznym doborem resztowym
+		\item metodą turniejową
+		\item metodą rangową
+		\item metodą progową
+	\end{itemize}
+	\item krzyżowanie (pominięto sposoby krzyżowania dla kodowania całkowitoliczbowego)
+	\begin{itemize}
+		\item jednopunktowe
+		\item wielopunktowe
+		\item jednorodne (równomierne)
+		\item arytmetyczne
+		\item mieszane
+	\end{itemize}
+	\item mutacja:
+	\begin{itemize}
+		\item genotypowa
+		\item fenotypowa
+		\begin{itemize}
+			\item równomierna
+			\item nierównomierna
+		\end{itemize}
+		\item inwersja
+		\item wstawianie
+		\item przenoszenie
+		\item wzajemna wymiana
+	\end{itemize}
+	\item podstawienie:
+	\begin{itemize}
+		\item reprodukcja pełna
+		\item reprodukcja częściowa
+		\begin{itemize}
+			\item usuwanie najgorszych osobników - elityzm
+			\item usuwanie najbardziej podobnych do potomstwa osobników - metoda ze ściskiem
+			\item usuwanie losowo wybranych osobników
+		\end{itemize}
+	\end{itemize}
+\end{itemize} \cite{bialaszewski2012}
+
+Algorytm genetyczny początkowo wytwarza losową populację osobników (rozwiązań).
+Następnie dla każdego z osobników wyznaczana jest wartość funkcji przystosowania, która ma być zmaksymalizowana.
+Następnie, spośród ocenionych już osobników wybierana jest pula rodzicielska przy pomocy jednej z metod selekcji.
+Wewnątrz wybranej puli rodzicielskiej z pewnym prawdopoboieństwem nazywanym prawdopodobieństwem krzyżowania dochodzi do krzyżowania, czyli powstania dwóch nowych potmków z dwóch rodziców.
+Następnie, wszystkie osobniki z pewnym prawdopoboieństwem zwanym prawdopoboieństwem mutacji są modyfikowane.
+Ostatecznie, całość lub część starej populacji jest wymienina według jednej ze strategii reprodukcji.
+Powyższe działania powtarzane są tak długo, aż nie otrzymamy satysfakcjonującego nas rozwiązania, np. rozwiązanie nie poprawi się przez 100 kolejnych iteracji.
 Działanie algorytmu genetycznego można schematycznie przedstawić jak na rysunku \ref{fig:gen_schemat}
 
 \begin{figure}[h!tb]

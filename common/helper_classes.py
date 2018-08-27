@@ -17,10 +17,17 @@ class Individual(object):
 
 
 class Job(object):
-    def __init__(self, individual, epochs = 1, seed = 1337):
+    def __init__(self, individual, epochs=1, seed=1337):
         self.individual = individual
         self.epochs = epochs
         self.seed = seed
 
     def __str__(self):
         return "Individual: {} Epochs: {} Seed: {}".format(self.individual.phenotype, self.epochs, self.seed)
+
+    def get_key(self):
+        '''
+        Function used for duplicate job filtering
+        :return: returns a distinct key for each job
+        '''
+        return self.individual.phenotype, self.epochs, self.seed
