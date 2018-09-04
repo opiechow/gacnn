@@ -1,4 +1,4 @@
-\chapter{Wstęp}
+\chapter{Wstęp i cel pracy}
 W dobie powszechnego dostępu do internetu i informatyzacji człowiek produkuje olbrzymie ilości danych.
 Każdego dnia setki milionów ludzi robi zdjęcia, tworzy filmy i wysyła wiadomości tekstowe.
 Rządy państw regularnie zbierają dane wszelkiego rodzaju, od spisów statystycznych po raporty incydentów od jednostek policji.
@@ -8,34 +8,37 @@ Prognozuje się dalszy wzrost do 44 zettabajtów do roku 2020.
 Szacuje się, że dziennie powstaje ok. 2,5 exabajtów ($2,5 * 10^{18}$ bajtów) danych. \cite{khoso2016}
 Z jednej strony jest to wyzwanie, gdyż aby przetwarzać tak wielką liczbę danych potrzeba wielu zasobów - sieciowych, obliczeniowych i magazynowych.
 Jedno z centrum obliczeniowych (\textit{Data Center}) firmy \textit{Facebook} w miejscowości \textit{Prineville} w stanie \textit{Oregon} składa się z 4 budynków o łącznej powierzchni ok. $42000 m^2$.
-Poniżej, na rys. \ref{fig:data_center} przedstawiono 8 szaf serwerowych (\textit{rack}), każda złożona z 32 serwerów i mogąca przechować 2 petabajty danych. \cite{lardinois2016}.
+Dla przybliżenia skali problemu - 8 szaf serwerowych (\textit{rack}), składa się z 32 serwerów i może przechować 2 petabajty danych. \cite{lardinois2016}.
 Na 42 tys. $m^2$ można rozmieścić wiele takich szaf, co w wyniku daje olbrzymie możliwości, a to zaledwie jeden z wielu takich kompleksów na świecie.
-
-\begin{figure}[h!tb]
-	 \centering
-	 \includegraphics[width = 1.0\linewidth]{img/data_center}
-	 \caption{Fragment centrum obliczeniowego \\
-              Źródło: \cite{lardinois2016}}
-	 \label{fig:data_center}
-\end{figure}
 
 Duża liczba danych niesie ze sobą zarówno wyzwania, jak i korzyści.
 W ostatnich latach ukuło się w języku angielskim pojęcie \textit{Big Data}, które definiujemy jako duże zbiory danych zarówno ze zbiorów tradycyjnych jak i cyfrowych, które są źródłem dla nowych odkryć i analiz. \cite{Arthur2013}.
 Przetwarzanie i analiza owych zbiorów danych jest skomplikowana i czasochłonna dla człowieka, dlatego z pomocą przychodzą algorytmy z dziedziny sztucznej inteligencji, a konkretnie ich podzbiór związany z uczeniem maszynowym \textit{Machine learning}, zdefiniowany dalej w rozdziale \ref{chap:teoria}.
-Typowymi zastosowaniem tego typu algorytmów jest filtr antyspamowy, które klasyfikuje wiadomości jako spam na podstawie dużego zbioru wiadomości oznaczonych jako spam lub nie.
-Innym popularnym zastosowaniem są systemy rekomendacji - za przykład niech posłuży system w odtwarzaczu \textit{Spotify}, który na podstawie słuchanej przez użytkownika muzyki dobiera dla niego propozycje, które również mogą mu się spodobać, ze względu na podobieństwo.
-Przykładowe rekomendacje przedstawiono na rys. \ref{fig:recommendations}.
+Kilka popularnych zastosowań algorytmów \textit{Machine Learning} obejmuje:
+\begin{itemize}
+	\item wykrywanie tzw. \textit{Fake News} - dezinformujących wiadomości w portalach społecznościowych,
+	\item uwierzytelnianie za pomocą twarzy (np. technologia \textit{FaceID} firmy \textit{Apple}),
+	\item ułatwianie wyszukiwania tekstu w dokumentach (z wykorzystaniem przetwarzania języka naturalnego),
+	\item wyszukiwanie obrazami,
+    \item systemy rekomendacji. \cite{edell2018}
+\end{itemize}
+Za przykład systemu rekomendacji niech posłuży \textit{Spotify}, który na podstawie słuchanej przez użytkownika muzyki dobiera dla niego propozycje, które również mogą mu się spodobać, ze względu na podobieństwo.
+Rozwiązania tego typu stosuje wiele innych popularnych serwisów multimedialnych, między innymi \textit{YouTube}, \textit{Netflix}, z których korzystają miliony ludzi, generując wiele danych.
 
-\begin{figure}[h!tb]
-	 \centering
-	 \includegraphics[width = 1.0\linewidth]{img/recommendations}
-	 \caption{Rekomendowana przez algorytmy uczenia maszynowego muzyka w serwisie \textit{Spotify} \\
-              Źródło: praca własna}
-	 \label{fig:recommendations}
-\end{figure}
+Wraz z narodzinami \textit{Big Data} na rynku pracy pojawiło się zapotrzebowanie na ludzi, których cechuje ciekawość i odpowiednie przygotowanie w kierunku analizy i wyciągania nowych wniosków z dużych wolumenów danych.
+Człowiek taki wykorzystuje między innymi wyżej wspomniane algorytmy, a nazywany jest w języku angielskim \textit{Data Scientist}, a typowe umiejętności, jakimi dysponuje, to między innymi:
+\begin{itemize}
+	\item wiedza jak posługiwać się bazami danych (za pomocą interfejsu SQL oraz doraźnie),
+	\item znajomość modelu programowania \textit{MapReduce} (rozpraszanie i zrównoleglanie działania algorytmów), umiejętność jego implementacji np. w językach \textit{Java}, \textit{Python}
+	\item obeznanie z różnymi wskaźnikami (np. mediana, rząd, średnia) oraz jak je odnosić do różnorodnych zbiorów danych,
+	\item posługiwanie się matematyką, statystyką, korelowanie i wydobywanie danych, analiza predykcyjna,
+	\item znajomość technologii R lub RStudio (ew. MATLAB),
+	\item głęboki wgląd w tworzenie modeli uczących się,
+	\item praca z olbrzymimi zbiorami danych,
+	\item znajomość algorytmów \item{Machine Learning}. \cite{venu2012}
+\end{itemize}
 
-Rozwiązania tego typu stosuje wiele innych popularnych serwisów multimedialnych, między innymi \textit{YouTube}, \textit{Netflix}.
-Algorytmy tego typu, co zostanie przybliżone w rozdziale \ref{chap:teoria}, uczą się na podstawie podanych im danych, każdy jednak taki algorytm (np. sieci neuronowe), opisać można przez kilka parametrów.
+Algorytmy \textit{Machine Learning}, co zostanie przybliżone w rozdziale \ref{chap:teoria}, uczą się na podstawie podanych im danych, każdy jednak taki algorytm (np. sieci neuronowe), opisać można przez kilka parametrów.
 Parametry owe można dobierać w sposób arbitralny, można jednak również do wyznaczania ich optymalnych nastaw zaprząc inny algorytm (należący również klasy algorytmów SI lub nie), np. algorytm genetyczny, algorytmy roju itd..
 Inspiracją do przeprowadzenia badań w tym kierunku były zajęcia laboratoryjne z przedmiotu Sztuczna Inteligencja w Automatyce na studiach inżynierskich na kierunku Automatyka i Robotyka na wydziale Elektroniki, Telekomunikacji i Informatyki Politechniki Gdańskiej.
 Jedno z zadań laboratoryjnych polegało na znalezieniu optymalnych parametrów sieci neuronowej, tak aby wynikowa sieć dobrze aproksymowała zadaną funkcję.
@@ -45,5 +48,7 @@ Stąd wysunąć można główną tezę tej pracy - że możliwa jest optymalizac
 Dodatkowo, w związku z tym, że pełne uczenie większych sieci dla bardziej skomplikowanych problemów jak klasyfikacja obrazów jest czasochłonne, poszukiwano sposobu na skrócenie owego czasu.
 
 Poprzez analogię do świata ludzi, gdzie można dla wielu przypadków zaobserwować prawidłowość, że mądre dzieci szybko się uczą i ostatecznie dochodzą do lepszych wyników jako dorośli, niż dzieci mniej rozgarnięte, wysnuto dodatkową tezę, mianowicie, że istnieje związek pomiędzy wynikami danej sieci neuronowej po uczeniu przez jedną epokę a jej ostateczną skutecznością po uczeniu pełnym.
-Dalej przedstawiony zostanie przegląd stanu wiedzy w rozdziale \ref{chap:teoria}, zostanie opisany system, który powstał w celu udowodnienia owych tez w rozdziale \ref{chap:system_description} oraz omówione zostaną wyniki badań w rozdziale \ref{chap:tests}.
+Celem pracy jest przeprowadzenie odpowiednich badań, których wyniki potwierdzą obydwie tezy.
+
+W dalszej części pracy przedstawiony zostanie przegląd stanu wiedzy w rozdziale \ref{chap:teoria}, zostanie opisany system, który powstał w celu udowodnienia owych tez w rozdziale \ref{chap:system_description} oraz omówione zostaną wyniki badań w rozdziale \ref{chap:tests}.
 Wszystko zostanie podsumowane w rozdziale \ref{chap:summary}.

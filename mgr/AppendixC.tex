@@ -5,24 +5,24 @@
 
 System uruchamia się w sposób następujący:
 \begin{enumerate}
-  \item Przygotowuje się węzły obliczeniowe w następujący sposób:
+  \item przygotowuje się węzły obliczeniowe w następujący sposób:
   \begin{enumerate}
-    \item Na dowolnej platformie chmurowej tworzy się węzły obliczeniowe, czyli maszyny wirtualne.
-    Zaleca się użycie podobnych maszyn do użytych w toku badań, tj. maszyny z 1 vCPU, 3.5 GB pamięci ram, 7 GB pamięci masowej, system operacyjny Ubuntu 17.10
-    \item Dla każdej maszyny wirtualnej otwiera się wymagane do działania systemu porty TCP 4123-4124 dla połączeń przychodzących
-    \item Instaluje się oprogramowanie wymagane przez system, tj. interpreter języka Python w wersji 3, instalator bibliotek pip, biblioteki TensorFlow, Keras, Numpy
-    \item Pobiera się kod systemu z przygotowanego repozytorium
-    \item Uruchamia się skrypt starter.sh w tle, który uruchamia odpowiednie skrypty w języku Python i zapewnia restart systemu w razie awarii
+    \item na dowolnej platformie chmurowej tworzy się węzły obliczeniowe, czyli maszyny wirtualne.
+    Zaleca się użycie podobnych maszyn do użytych w toku badań, tj. maszyny z 1 vCPU, 3.5 GB pamięci ram, 7 GB pamięci masowej, system operacyjny Ubuntu 17.10,
+    \item dla każdej maszyny wirtualnej otwiera się wymagane do działania systemu porty TCP 4123-4124 dla połączeń przychodzących,
+    \item instaluje się oprogramowanie wymagane przez system, tj. interpreter języka Python w wersji 3, instalator bibliotek pip, biblioteki TensorFlow, Keras, Numpy,
+    \item pobiera się kod systemu z przygotowanego repozytorium,
+    \item uruchamia się skrypt starter.sh w tle, który uruchamia odpowiednie skrypty w języku Python i zapewnia restart systemu w razie awarii.
   \end{enumerate}
-  \item Do pliku workers dopisuje się adresy IP węzłów obliczeniowych, po jednym na każdą linię pliku
-  \item Lokalnie uruchamia się węzeł zarządzający reprezentujący jeden eksperyment.
+  \item do pliku workers dopisuje się adresy IP węzłów obliczeniowych, po jednym na każdą linię pliku,
+  \item lokalnie uruchamia się węzeł zarządzający reprezentujący jeden eksperyment.
   W repozytorium pliki, które są do tego przeznaczone, to:
   \begin{itemize}
-    \item \textit{genetic\_algorithmm.py}
-    \item \textit{full\_learning.py}
-    \item \textit{25epoch.py}
+    \item \textit{genetic\_algorithmm.py},
+    \item \textit{full\_learning.py},
+    \item \textit{25epoch.py}.
   \end{itemize}
-  \item dokonuje się analizy zebranych w plikach csv danych przy pomocy pozostałych zgromadzonych w repozytorium skryptów
+  \item dokonuje się analizy zebranych w plikach csv danych przy pomocy pozostałych zgromadzonych w repozytorium skryptów.
 \end{enumerate}
 W wyniku takiego działania otrzymuje się wyniki i wykresy identyczne jak dla przeprowadzonych w rozdziale \ref{chap:tests} badaniach, poza opisanymi błędnymi próbami, które zostały poprawione w toku pracy nad systemem.
 W celu dojścia do błędnych prób zaleca się przejrzenie historii systemu kontroli wersji \textit{git} dla repozytorium \textit{gacnn} w serwisie \textit{GitHub} pod adresem \url{https://github.com/opiechow/gacnn}.

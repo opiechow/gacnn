@@ -1,14 +1,17 @@
 \chapter{Badania i testy}\label{chap:tests}
+W tym rozdziale przedstawiono wyniki badań i testów przeprowadzonych na systemie oraz sformułowano na ich podstawie pewne wnioski, z których najważniejsze pojawiają się również w podsumowaniu.
+W opisany tu sposób sprawdzono działanie systemu opisanego w rozdziale \ref{chap:system_description}.
+Testy omówiono w kolejności w jakiej były wykonywane.
 \section{Wariancja wyników dla jednej sieci}\label{sec:std_dev}
 Ważnym parametrem algorytmu genetycznego jest jego kryterium stopu.
 W przypadku eksperymentów opisanych w \ref{sec:levy_test} i \ref{sec:actual_experiment} przyjęto dwa:
 \begin{enumerate}
-  \item maksymalna liczba iteracji - z przyczyn długiego czasu potrzebnego na obliczenia w przypadku eksperymentu \ref{sec:actual_experiment}, liczbę tę ustalono na 100.
-  \item maksymalna liczba iteracji bez poprawy - jeżeli od dłuższego czasu nie obserwujemy poprawy rozwiązania, możemy przyjąć założenie, że znaleźliśmy globalne minimum\label{improvement}
+  \item maksymalna liczba iteracji - z przyczyn długiego czasu potrzebnego na obliczenia w przypadku eksperymentu \ref{sec:actual_experiment}, liczbę tę ustalono na 100,
+  \item maksymalna liczba iteracji bez poprawy - jeżeli od dłuższego czasu nie obserwujemy poprawy rozwiązania, możemy przyjąć założenie, że znaleźliśmy globalne minimum\label{improvement}.
 \end{enumerate}
 Z punktem \ref{improvement} wiąże się parametr $\epsilon$, który ma sens progu różnicy między nową najlepszą wartością a poprzednią, po przekroczeniu którego możemy mówić o poprawie.
 
-Program eksperymentu został tak zaimplementowany, by reprodukowalność eksperymentu była możliwie najwyższa, tj. by niwelować wpływ generatora pseudolosowego na uzyskane wyniki.
+Program eksperymentu został tak zaimplementowany, by możliwa była replikacja wyników badań, tj. by niwelować wpływ generatora pseudolosowego na uzyskane wyniki.
 W procesie uczenia sieci neuronowych losowo inicjalizowane są wagi połączeń między neuronami.
 Oznacza to, że w przypadku, gdy nie mamy kontroli nad stanem generatora losowego, ta sama w sensie struktury sieć może uzyskać inny wynik po jednej epoce uczenia w zależności od początkowych wag.
 
@@ -28,8 +31,8 @@ Dla 100 prób wariancja wyniosła $\sigma^2 =3.708 \times 10^{-6}$, a odchylenie
 W związku z tym przyjęto wartość parametru $\epsilon = 4\sigma = 7.702 \times 10^{-3}$, aby wpływ różnej inicjalizacji wag nie był interpretowany przez algorytm genetyczny jako poprawa.
 
 \section{Test działania algorytmu genetycznego}\label{sec:levy_test}
-W celu zbadania poprawności działania oraz dostrojenia parametrów algorytmu genetycznego przeprowadzono test szukania minimum funkcji Levego.
-Funkcja Levego (\textit{Levy Function}) dana jest wzorem \ref{eqn:levyfunction}:
+W celu zbadania poprawności działania oraz dostrojenia parametrów algorytmu genetycznego przeprowadzono test szukania minimum funkcji Levy'ego.
+Funkcja Levy'ego (\textit{Levy Function}) dana jest wzorem \ref{eqn:levyfunction}:
 
 \begin{equation}\label{eqn:levyfunction}
   f(\mathbf{x}) = sin^2(\pi w_1) + \sum_{i=1}^{d-1} (w_i - 1)^2 [ 1 + 10sin^2(\pi w_i + 1)] + (w_d - 1)^2 [1 + sin^2(2 \pi w_d)]
@@ -45,7 +48,7 @@ Wykres tej funkcji dla przypadku 2-wymiarowego przedstawiono na rys. \ref{fig:le
 \begin{figure}[h!tb]
 	 \centering
 	 \includegraphics[width = 1.0\linewidth]{img/levy}
-	 \caption{Wykres funkcji Levego \\
+	 \caption{Wykres funkcji Levy'ego \\
               Źródło: \cite{simulationlib}}
 	 \label{fig:levyfunction}
 \end{figure}
@@ -54,7 +57,7 @@ Przestrzeń poszukiwań (genotyp osobnika) przyjęto identyczną jak dla problem
 
 W celu uniknięcia przypadku, w którym optymalny osobnik powstaje w wyniku mechanizmu naprawiania osobników (opisanego w \ref{sec:individual_fix}) dokonano arbitralnie dobranego przesunięcia wektora $\mathbf{x}$ o wektor $\begin{bmatrix}3 \\ 7 \\ 13 \\ 20\end{bmatrix}$, tak, że optymalne rozwiązanie znalazło się w punkcie $\mathbf{x^*} = \begin{bmatrix}4 \\ 8 \\ 14 \\ 21\end{bmatrix}$.
 
-Jako, że algorytm maksymalizuje funkcję przystosowania osobników, w celu minimalizacji wartości funkcji Levego (funkcji kosztu) została ona zdefiniowana zgodnie ze wzorem \ref{eqn:levy_fitness}. \cite{bialaszewski2012}
+Jako, że algorytm maksymalizuje funkcję przystosowania osobników, w celu minimalizacji wartości funkcji Levy'ego (funkcji kosztu) została ona zdefiniowana zgodnie ze wzorem \ref{eqn:levy_fitness}. \cite{bialaszewski2012}
 \begin{equation}\label{eqn:levy_fitness}
   g(\mathbf{x}) = C_{max} - f(\mathbf{x})
 \end{equation}
@@ -62,13 +65,13 @@ gdzie $C_{max} = 1000$ w celu spełnienia warunku $g(\textbf{x}) > 0$ dla każde
 
 Metodą prób i błędów dobrano takie nastawy parametrów algorytmu genetycznego, by znajdował on minimum tej funkcji, tj.
 \begin{itemize}
-  \item Liczba osobników $N = 100$
-  \item prawdopodobieństwo krzyżowania - $p_{c} = 0.9$
-  \item prawdopodobieństwo mutacji - $p_{m} = 0.3$
-  \item maksymalna liczba iteracji - 100
-  \item maksymalna liczba iteracji bez poprawy - 50
-  \item liczba najlepszych osobników przechodzących do kolejnego pokolenia - $ N_{k} = 30$
-  \item minimalna poprawa $\epsilon = 0.007702$
+  \item liczba osobników $N = 100$,
+  \item prawdopodobieństwo krzyżowania - $p_{c} = 0.9$,
+  \item prawdopodobieństwo mutacji - $p_{m} = 0.3$,
+  \item maksymalna liczba iteracji - 100,
+  \item maksymalna liczba iteracji bez poprawy - 50,
+  \item liczba najlepszych osobników przechodzących do kolejnego pokolenia - $ N_{k} = 30$,
+  \item minimalna poprawa $\epsilon = 0.007702$.
 \end{itemize}
 
 Ostatni parametr dobrany został w sposób opisany w \ref{sec:std_dev}
@@ -82,7 +85,7 @@ Wszystkie kolejne wykresy zostały wykonane przy pomocy biblioteki \textit{Matpl
 \begin{figure}[h!tb]
 	 \centering
 	 \includegraphics[width = 0.85\linewidth]{img/levy_maxes}
-	 \caption{Maksymalne wartości funkcji przystosowania w każdej iteracji dla funkcji Levego \\
+	 \caption{Maksymalne wartości funkcji przystosowania w każdej iteracji dla funkcji Levy'ego \\
               Źródło: praca własna}
 	 \label{fig:levy_maxes}
 \end{figure}
@@ -90,7 +93,7 @@ Wszystkie kolejne wykresy zostały wykonane przy pomocy biblioteki \textit{Matpl
 \begin{figure}[h!tb]
 	 \centering
 	 \includegraphics[width = 0.85\linewidth]{img/levy_means}
-	 \caption{Średnie wartości funkcji przystosowania w każdej iteracji dla funkcji Levego \\
+	 \caption{Średnie wartości funkcji przystosowania w każdej iteracji dla funkcji Levy'ego \\
               Źródło: praca własna}
 	 \label{fig:levy_means}
 \end{figure}
@@ -137,15 +140,15 @@ W wyniku jego przeprowadzenia otrzymano poprawnie nauczoną sieć neuronową, wi
 \section{Poszukiwanie optymalnej struktury konwolucyjnej sieci neuronowej za pomocą algorytmu genetycznego dla uczenia 1-epokowego}\label{sec:actual_experiment}
 Celem tego badania jest sprawdzenie, czy algorytm genetyczny jest w stanie znaleźć optymalną w sensie skuteczności po jednej epoce uczenia strukturę sieci neuronowej.
 
-Parametry algorytmu genetycznego przyjęto dokładnie takie, do jakich dostrojono algorytm, gdy poszukiwał minimum funkcji Levego, to jest:
+Parametry algorytmu genetycznego przyjęto dokładnie takie, do jakich dostrojono algorytm, gdy poszukiwał minimum funkcji Levy'ego, to jest:
 \begin{itemize}
-  \item Liczba osobników $N = 100$
-  \item prawdopodobieństwo krzyżowania - $p_{c} = 0.9$
-  \item prawdopodobieństwo mutacji - $p_{m} = 0.3$
-  \item maksymalna liczba iteracji - 100
-  \item maksymalna liczba iteracji bez poprawy - 50
-  \item liczba najlepszych osobników przechodzących do kolejnego pokolenia - $ N_{k} = 30$
-  \item minimalna poprawa $\epsilon = 0.007702$
+  \item liczba osobników $N = 100$,
+  \item prawdopodobieństwo krzyżowania - $p_{c} = 0.9$,
+  \item prawdopodobieństwo mutacji - $p_{m} = 0.3$,
+  \item maksymalna liczba iteracji - 100,
+  \item maksymalna liczba iteracji bez poprawy - 50,
+  \item liczba najlepszych osobników przechodzących do kolejnego pokolenia - $ N_{k} = 30$,
+  \item minimalna poprawa $\epsilon = 0.007702$.
 \end{itemize}
 
 \begin{figure}[h!tb]
@@ -216,7 +219,7 @@ Poniżej, na rys. \ref{fig:cnn_maxes} i rys. \ref{fig:cnn_means} przestawiono ma
 	 \label{fig:cnn_means}
 \end{figure}
 
-Ponownie jak w teście Levego, wykresy maksymalnych i średnich wartości funkcji przystosowania osobników wyglądają jak typowy dla poprawnie zaimplementowanego algorytmu genetycznego.
+Ponownie jak w teście Levy'ego, wykresy maksymalnych i średnich wartości funkcji przystosowania osobników wyglądają jak typowy dla poprawnie zaimplementowanego algorytmu genetycznego.
 Kryterium stopu które zadziałało tym razem to liczba iteracji bez poprawy - 50.
 Znalezione przez algorytm rozwiązanie ma postać: $\mathbf{x^*} = \begin{bmatrix}12 \\ 21 \\ 23 \\ 31\end{bmatrix}$ i po jednej epoce uczenia osiąga skuteczność na poziomie 47.51\%.
 Niestety, nie jesteśmy w stanie stwierdzić, czy jest to minimum globalne bez wykonywania kosztownego przeszukiwania metodą siłową.
@@ -266,13 +269,13 @@ Aby zobrazować różnice pomiędzy owymi sieciami zestawiono ze sobą przebiegi
 \end{enumerate}
 Co zaobserwowano:
 \begin{itemize}
-  \item Wszystkie krzywe uczenia ewoluują w ten sam sposób - z każdą epoką uczenia coraz lepiej klasyfikują obrazy
-  \item Porównując rys. \ref{fig:iter_learn_first} i rys. \ref{fig:iter_learn_last} widzimy, że w obydwu przypadkach najlepsza i średnia sieć znajdują się blisko siebie, a najgorsza znajduje się stosunkowo daleko pod nimi.
-  \item Na rys. \ref{fig:iter_learn_last} widzimy sytuację, w której w dalszych fazach uczenia sieć średnia wyprzedza początkowo najlepszą.
+  \item wszystkie krzywe uczenia ewoluują w ten sam sposób - z każdą epoką uczenia coraz lepiej klasyfikują obrazy,
+  \item porównując rys. \ref{fig:iter_learn_first} i rys. \ref{fig:iter_learn_last} widzimy, że w obydwu przypadkach najlepsza i średnia sieć znajdują się blisko siebie, a najgorsza znajduje się stosunkowo daleko pod nimi,
+  \item na rys. \ref{fig:iter_learn_last} widzimy sytuację, w której w dalszych fazach uczenia sieć średnia wyprzedza początkowo najlepszą,
   Zgodnie z \ref{sec:thesis_proof}, do takich sytuacji dochodzi w 40\% iteracji algorytmu.
-  Należy przy tym zauważyć, że przecinają się linia średnia z najlepszą, a linia najgorsza pozostaje w bezpiecznej odległości przez kolejne epoki.
-  Nasuwa się przy tym wniosek, że im większa początkowa (po jednej epoce) różnica w jakości klasyfikacji obrazów przez sieć, tym większe prawdopodobieństwo, że po pełnym uczeniu relacja pomiędzy jakościami sieci się nie zmieni.
-  \item Porównując rys. \ref{fig:iter_learn_first} z rys. \ref{fig:iter_learn_last} lub patrząc na przebiegi na rys. \ref{fig:iter_learn_best} widzimy, że działanie algorytmu genetycznego podnosi pułap, na którym znajdują się krzywe uczenia.
+  Należy przy tym zauważyć, że przecinają się linia średnia z najlepszą, a linia najgorsza pozostaje w bezpiecznej odległości przez kolejne epoki,
+  Nasuwa się przy tym wniosek, że im większa początkowa (po jednej epoce) różnica w jakości klasyfikacji obrazów przez sieć, tym większe prawdopodobieństwo, że po pełnym uczeniu relacja pomiędzy jakościami sieci się nie zmieni,
+  \item porównując rys. \ref{fig:iter_learn_first} z rys. \ref{fig:iter_learn_last} lub patrząc na przebiegi na rys. \ref{fig:iter_learn_best} widzimy, że działanie algorytmu genetycznego podnosi pułap, na którym znajdują się krzywe uczenia.
   Wartości zarówno w 1. jak i 10. epoce znajdują się wyżej w iteracji ostatniej niż pierwszej.
 
 \end{itemize}
@@ -318,7 +321,7 @@ Dla rozwiązania $\mathbf{x^*} = \begin{bmatrix}12 \\ 21 \\ 23 \\ 31\end{bmatrix
 Na rys. \ref{fig:25epoch} przedstawiono krzywą uczenia dla tego przypadku:
 
 Ostateczny wynik uzyskany przez sieć to 67\%.
-Jest to gorszy wynik, niż w przykładzie, na którym oparto budowanie modeli sieci i uczenie ich (dostępny pod adresem \url{https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py})
-Powodem tego może być brak zastosowania warstw \textit{dropout} w sieci modyfikowanej przez algorytm genetyczny, co prowadzi do nadmiernego dopasowania.
+Jest to gorszy wynik, niż w przykładzie, na którym oparto budowanie modeli sieci i uczenie ich (dostępny pod adresem https://github.com/keras-team/keras/blob/master/examples/cifar10\_cnn.py)
+Powodem tego może być brak zastosowania warstw \textit{dropout} (są to warstwy, które reprezentują pomijanie pewnej liczby losowych połączeń przy uczeniu), w sieci modyfikowanej przez algorytm genetyczny, co prowadzi do nadmiernego dopasowania.
 Dalsza optymalizacja powyżej uzyskanych 67\% wymagałaby modyfikacji elementów przyjętych jako stałe w strukturze sieci.
 Wynik ten jest jednak optymalny przy tak narzuconej strukturze.

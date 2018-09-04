@@ -5,70 +5,72 @@ Badanie zależności pomiędzy początkową wydajnością uczonych sieci a ich w
 Na samym początku wymagało pogłębienia wiedzy o:
 
 \begin{itemize}
-  \item Uczeniu maszynowym
-  \item Metauczeniu
-  \item Uczeniu z nadzorem
-  \item Klasyfikacji obrazków
-  \item Zbiorze CIFAR-10
-  \item Metodzie k-najbliższych sąsiadów
-  \item Klasyfikatorach liniowych
-  \item Sieciach neuronowych - ogólnie
-  \item Konwolucyjnych sieciach neuronowych
-  \item Algorytmie genetycznym
+  \item uczeniu maszynowym,
+  \item meta uczeniu,
+  \item uczeniu z nadzorem,
+  \item klasyfikacji obrazków,
+  \item zbiorze CIFAR-10,
+  \item metodzie k-najbliższych sąsiadów,
+  \item klasyfikatorach liniowych,
+  \item sieciach neuronowych - ogólnie,
+  \item konwolucyjnych sieciach neuronowych,
+  \item algorytmie genetycznym.
 \end{itemize}
 
 Z takim przygotowaniem teoretycznym można było podejść do zaprojektowania systemu do przeprowadzenia badań.
 To z kolei wiązało się z kolejnymi krokami:
 
 \begin{enumerate}
-  \item Redukcji problemu, to jest dokładniejszego zdefiniowania problemu z uwzględnieniem ograniczonego czasu i budżetu na obliczenia
-  \item Zdefiniowania osobnika dla algorytmu genetycznego jako sieci neuronowej o określonej strukturze z pewnymi zmiennymi parametrami
-  \item Zdefiniowaniu konkretnych operacji genetycznych jakie przeprowadzane będą w tej konkretnej implementacji algorytmu genetycznego, a konkretniej zdefiniowanie:
+  \item redukcji problemu, to jest dokładniejszego zdefiniowania problemu z uwzględnieniem ograniczonego czasu i budżetu na obliczenia,
+  \item zdefiniowania osobnika dla algorytmu genetycznego jako sieci neuronowej o określonej strukturze z pewnymi zmiennymi parametrami,
+  \item zdefiniowaniu konkretnych operacji genetycznych jakie przeprowadzane będą w tej konkretnej implementacji algorytmu genetycznego, a konkretniej zdefiniowanie:
   \begin{itemize}
-    \item krzyżowania
-    \item mutacji
-    \item upewnienia się, że osobniki znajdują się wewnątrz zdefiniowanej przestrzeni poszukiwań
-    \item substytucji między pokoleniami
+    \item krzyżowania,
+    \item mutacji,
+    \item upewnienia się, że osobniki znajdują się wewnątrz zdefiniowanej przestrzeni poszukiwań,
+    \item substytucji między pokoleniami.
   \end{itemize}
-  \item Zaprojektowaniu ogólnej architektury oprogramowania do przeprowadzenia eksperymentu
-  \item Zdefiniowaniu sposobu pracy węzła zarządzającego przeprowadzaniem eksperymentu
-  \item Zaprojektowaniu systemu kolejkowania zadań w celu przyspieszenia obliczeń
-  \item Stworzeniu protokołu do komunikacji z węzłami zdalnymi
-  \item Implementacji węzła obliczeniowego wykonującego zlecone mu zadania i zwracającego wyniki
-  \item Automatyzacji tworzenia nowych węzłów obliczeniowych
-  \item Analizie replikatywności wyników badań ze względu na korzystanie z generatora liczb pseudolosowych
+  \item zaprojektowaniu ogólnej architektury oprogramowania do przeprowadzenia eksperymentu,
+  \item zdefiniowaniu sposobu pracy węzła zarządzającego przeprowadzaniem eksperymentu,
+  \item zaprojektowaniu systemu kolejkowania zadań w celu przyspieszenia obliczeń,
+  \item stworzeniu protokołu do komunikacji z węzłami zdalnymi,
+  \item implementacji węzła obliczeniowego wykonującego zlecone mu zadania i zwracającego wyniki,
+  \item automatyzacji tworzenia nowych węzłów obliczeniowych,
+  \item analizie możliwości replikacji wyników badań ze względu na korzystanie z generatora liczb pseudolosowych.
 \end{enumerate}
 
 Powstawanie owego systemu wymagało czasu, dogłębnego przemyślenia oraz pochłonęło zasoby na zarówno udane jak i nieudane próby przeprowadzenia eksperymentu.
 Ostatecznie testy i wyniki, które zostały przeprowadzone można podsumować następująco:
 
 \begin{itemize}
-  \item Przeprowadzono badanie wariancji wyników dla sieci o jednej strukturze przy rożnych wartościach ziarna generatora losowego w celu wyznaczenia progu poprawy pomiędzy iteracjami
-  \item Przeprowadzono test działania algorytmu genetycznego dla testowej funkcji Levego
-  \item Przeprowadzono test działania systemu kolejkowego dla jednej maszyny lokalnej
-  \item Przeprowadzono poszukiwanie optymalnej struktury sieci neuronowej za pomocą algorytmu genetycznego w dwóch próbach
-  \item Porównano wyniki dla uczenia 1- i 10- epokowego
-  \item Zaobserwowano proces uczenia dla wybranych z pierwszej i ostatniej iteracji algorytmu genetycznego i porównano je
-  \item Uzyskaną w wyniku działania algorytmu genetycznego sieć uczono przez 25 epok jako pełne uczenie
+  \item przeprowadzono badanie wariancji wyników dla sieci o jednej strukturze przy rożnych wartościach ziarna generatora losowego w celu wyznaczenia progu poprawy pomiędzy iteracjami,
+  \item przeprowadzono test działania algorytmu genetycznego dla testowej funkcji Levy'ego, na podstawie którego wyciągnięto wniosek, że algorytm genetycznie działa poprawnie i można go zastosować do właściwego zadania zmieniając wyznaczaną funkcję celu,
+  \item przeprowadzono test działania systemu kolejkowego dla jednej maszyny lokalnej, z którego wynikła konieczność zmiany długości bufora dla przesyłu danych pomiędzy węzłami
+  \item przeprowadzono poszukiwanie optymalnej struktury sieci neuronowej za pomocą algorytmu genetycznego w dwóch próbach, gdzie na podstawie pierwszej naprawiono błędy w systemie, a obserwując wykresy wyciągnięto wniosek, że uzyskiwana jakość sieci polepsza się (dowód tezy głównej)
+  \item porównano wyniki dla uczenia 1- i 10- epokowego i na tej podstawie stwierdzono, że istnieje pomiędzy nimi związek (dowód tezy pomocniczej)
+  \item zaobserwowano proces uczenia dla wybranych z pierwszej i ostatniej iteracji algorytmu genetycznego i porównano je, po raz kolejny obserwując polepszenie jakości sieci, a zatem optymalizację struktury (dowód tezy głównej)
+  \item uzyskaną w wyniku działania algorytmu genetycznego sieć uczono przez 25 epok jako pełne uczenie i wyciągnięto wniosek, że proponowane stałe elementy struktury sieci mogłyby być lepiej dobrane
 \end{itemize}
 
 W toku przeprowadzonych badań udało się potwierdzić obydwie stawiane we wstępie tezy, tj.
 
 \begin{enumerate}
-  \item Możliwa jest optymalizacja struktury konwonlucyjnych sieci neuronowych za pomocą algorytmu genetycznego
-  \item Istnieje związek pomiędzy skutecznością sieci po krótkim i długim uczeniu
+  \item możliwa jest optymalizacja struktury konwolucyjnych sieci neuronowych za pomocą algorytmu genetycznego (teza główna),
+  \item istnieje związek pomiędzy skutecznością sieci po krótkim i długim uczeniu (teza pomocnicza).
 \end{enumerate}
+
+Tym samym cel pracy został zrealizowany.
 
 System można w dalszym ciągu dopracować.
 Poniżej przedstawiono kilka propozycji ulepszeń:
 
 \begin{itemize}
-  \item Aby uzyskać replikatywność badań zrezygnowano z równoległych obliczeń na GPU i system dostosowany został do obliczeń na CPU, można by jednak uwzględnić taką możliwość w kolejnych generacjach systemu.
-  \item System kolejkowy można by dodatkowo usprawnić implementując algorytm rozdzielania zadań dla równoległych maszyn, np. implementując algorytm CDS (Campbella, Dudeka i Smitha)
-  \item Można w dalszym ciągu ulepszyć czytelność kodu przepisując odpowiednie fragmenty
-  \item Algorytmy parametry genetycznego dobrane zostały metodą prób i błędów - można by wejść na kolejny poziom metauczenia również dobierając jego parametry za pomocą innego algorytmu uczenia maszynowego\
-  \item Ustalone elementy sieci neuronowej (stałą część jej struktury) można by ulepszyć tak, by ostateczna wynikowa sieć miała lepsze wyniki klasyfikacji
-  \item Węzły zdalne w żaden sposób nie sprawdzają, kto wysyła im zadania.
+  \item aby zapewnić możliwość replikacji badań zrezygnowano z równoległych obliczeń na GPU i system dostosowany został do obliczeń na CPU, można by jednak uwzględnić taką możliwość w kolejnych generacjach systemu,
+  \item system kolejkowy można by dodatkowo usprawnić implementując algorytm rozdzielania zadań dla równoległych maszyn, np. implementując algorytm CDS (Campbella, Dudeka i Smitha),
+  \item można w dalszym ciągu ulepszyć czytelność kodu przepisując odpowiednie fragmenty,
+  \item algorytmy parametry genetycznego dobrane zostały metodą prób i błędów - można by wejść na kolejny poziom meta uczenia również dobierając jego parametry za pomocą innego algorytmu uczenia maszynowego,
+  \item ustalone elementy sieci neuronowej (stałą część jej struktury) można by ulepszyć tak, by ostateczna wynikowa sieć miała lepsze wyniki klasyfikacji,
+  \item węzły zdalne w żaden sposób nie sprawdzają, kto wysyła im zadania.
   Może to doprowadzić do sytuacji gdzie uruchomienie jednocześnie kilku systemów kolejkowych zlecających zadanie uniemożliwia poprawne działanie systemu.
   Należałoby to poprawić w przypadku korzystania z systemu przez więcej niż jedną osobę.
 \end{itemize}

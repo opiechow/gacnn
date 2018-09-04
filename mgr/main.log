@@ -1,10 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.27)  27 AUG 2018 14:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.27)  3 SEP 2018 21:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\nonstopmode \input{main.tex}
-(./main.tex (./configure.tex
-(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+**main.tex
+(./main.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(./configure.tex (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -1234,12 +1236,12 @@ LaTeX Warning: Float too large for page by 71.24048pt on input line 18.
 ] [3 <./Oswiadczenie_145526.pdf>]) [2
 
 ] (./abstract.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--7
+Underfull \hbox (badness 10000) in paragraph at lines 24--29
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--7
+Underfull \hbox (badness 10000) in paragraph at lines 24--29
 
  []
 
@@ -1247,12 +1249,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--7
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
-Underfull \hbox (badness 10000) in paragraph at lines 11--16
+Underfull \hbox (badness 10000) in paragraph at lines 54--16
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--16
+Underfull \hbox (badness 10000) in paragraph at lines 54--16
 
  []
 
@@ -1275,32 +1277,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--16
 
 ]
 Rozdzia\PlPrIeC {\l } 1.
-LaTeX Font Info:    Font shape `OT4/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT4/cmss/m/sl' tried instead on input line 10.
-<img/data_center.jpg, id=70, 12.84637pt x 12.83002pt>
-File: img/data_center.jpg Graphic file (type jpg)
+[8
 
-<use img/data_center.jpg>
-Package pdftex.def Info: img/data_center.jpg used on input line 16.
-(pdftex.def)             Requested size: 426.79135pt x 426.33342pt.
- [8
-
- <./img/data_center.jpg>]
-<img/recommendations.png, id=79, 1440.38126pt x 793.96625pt>
-File: img/recommendations.png Graphic file (type png)
-
-<use img/recommendations.png>
-Package pdftex.def Info: img/recommendations.png used on input line 31.
-(pdftex.def)             Requested size: 426.79135pt x 235.24777pt.
-LaTeX Font Info:    Font shape `OT4/cmss/m/it' in size <9> not available
-(Font)              Font shape `OT4/cmss/m/sl' tried instead on input line 33.
-) (./Chapter2.tex [9 <./img/recommendations.png>]
+]) (./Chapter2.tex [9]
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    Font shape `OT4/cmss/bx/it' in size <10> not available
 (Font)              Font shape `OT4/cmss/bx/sl' tried instead on input line 2.
 [10
 
-] <img/kot.png, id=88, 3052.40375pt x 1541.76pt>
+] <img/kot.png, id=85, 3052.40375pt x 1541.76pt>
 File: img/kot.png Graphic file (type png)
  <use img/kot.png>
 Package pdftex.def Info: img/kot.png used on input line 62.
@@ -1308,14 +1293,14 @@ Package pdftex.def Info: img/kot.png used on input line 62.
 
 Underfull \vbox (badness 1472) has occurred while \output is active []
 
- [11 <./img/kot.png>] <img/klas_problemy.png, id=95, 978.65625pt x 348.30125pt>
+ [11 <./img/kot.png>] <img/klas_problemy.png, id=93, 978.65625pt x 348.30125pt>
 File: img/klas_problemy.png Graphic file (type png)
 
 <use img/klas_problemy.png>
 Package pdftex.def Info: img/klas_problemy.png used on input line 83.
 (pdftex.def)             Requested size: 426.79135pt x 151.89778pt.
 
-<img/sample_images.png, id=96, 356.532pt x 278.2395pt>
+<img/sample_images.png, id=94, 356.532pt x 278.2395pt>
 File: img/sample_images.png Graphic file (type png)
 
 <use img/sample_images.png>
@@ -1324,46 +1309,46 @@ Package pdftex.def Info: img/sample_images.png used on input line 105.
  [12 <./img/klas_problemy.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [13 <./img/sample_images.png>] <img/knear.png, id=105, 578.16pt x 434.5836pt>
+) [13 <./img/sample_images.png>] <img/knear.png, id=103, 578.16pt x 434.5836pt>
 File: img/knear.png Graphic file (type png)
 
 <use img/knear.png>
 Package pdftex.def Info: img/knear.png used on input line 149.
 (pdftex.def)             Requested size: 426.79135pt x 320.80434pt.
  [14 <./img/knear.png>]
-<img/klas_cartoon.png, id=109, 1027.84pt x 770.88pt>
+<img/klas_cartoon.png, id=107, 1027.84pt x 770.88pt>
 File: img/klas_cartoon.png Graphic file (type png)
 
 <use img/klas_cartoon.png>
 Package pdftex.def Info: img/klas_cartoon.png used on input line 191.
 (pdftex.def)             Requested size: 320.0935pt x 240.06425pt.
  [15 <./img/klas_cartoon.png>]
-<img/lin_klas.png, id=114, 1227.58624pt x 454.69875pt>
+<img/lin_klas.png, id=112, 1227.58624pt x 454.69875pt>
 File: img/lin_klas.png Graphic file (type png)
  <use img/lin_klas.png>
 Package pdftex.def Info: img/lin_klas.png used on input line 208.
 (pdftex.def)             Requested size: 426.79135pt x 158.0854pt.
 
-[16 <./img/lin_klas.png>] <img/neuron.png, id=121, 562.1pt x 211.79124pt>
+[16 <./img/lin_klas.png>] <img/neuron.png, id=119, 562.1pt x 211.79124pt>
 File: img/neuron.png Graphic file (type png)
 
 <use img/neuron.png>
 Package pdftex.def Info: img/neuron.png used on input line 259.
 (pdftex.def)             Requested size: 426.79135pt x 160.80789pt.
  [17 <./img/neuron.png>] [18]
-<img/cnn.png, id=132, 465.74pt x 327.2225pt>
+<img/cnn.png, id=129, 465.74pt x 327.2225pt>
 File: img/cnn.png Graphic file (type png)
  <use img/cnn.png>
 Package pdftex.def Info: img/cnn.png used on input line 338.
 (pdftex.def)             Requested size: 426.79135pt x 299.87pt.
- [19 <./img/cnn.png>] <img/optymalizacja.png, id=136, 519.9425pt x 315.1775pt>
+ [19 <./img/cnn.png>] <img/optymalizacja.png, id=133, 519.9425pt x 315.1775pt>
 File: img/optymalizacja.png Graphic file (type png)
 
 <use img/optymalizacja.png>
 Package pdftex.def Info: img/optymalizacja.png used on input line 383.
 (pdftex.def)             Requested size: 341.43437pt x 206.96938pt.
  [20 <./img/optymalizacja.png>] [21]
-<img/genetyczny_schemat.png, id=144, 522.95375pt x 367.3725pt>
+<img/genetyczny_schemat.png, id=141, 522.95375pt x 367.3725pt>
 File: img/genetyczny_schemat.png Graphic file (type png)
 
 <use img/genetyczny_schemat.png>
@@ -1373,35 +1358,35 @@ Package pdftex.def Info: img/genetyczny_schemat.png used on input line 468.
 Rozdzia\PlPrIeC {\l } 3.
 [23
 
-] <img/fenotyp.png, id=153, 442.65375pt x 221.82875pt>
+] <img/fenotyp.png, id=150, 442.65375pt x 221.82875pt>
 File: img/fenotyp.png Graphic file (type png)
 
 <use img/fenotyp.png>
 Package pdftex.def Info: img/fenotyp.png used on input line 49.
 (pdftex.def)             Requested size: 426.79135pt x 213.89075pt.
  [24 <./img/fenotyp.png>]
-<img/crossing.png, id=159, 859.21pt x 583.17876pt>
+<img/crossing.png, id=156, 859.21pt x 583.17876pt>
 File: img/crossing.png Graphic file (type png)
  <use img/crossing.png>
 Package pdftex.def Info: img/crossing.png used on input line 90.
 (pdftex.def)             Requested size: 426.79135pt x 289.68437pt.
 
 [25 <./img/crossing.png>]
-<img/system_overview.png, id=164, 663.47874pt x 241.90375pt>
+<img/system_overview.png, id=161, 663.47874pt x 241.90375pt>
 File: img/system_overview.png Graphic file (type png)
 
 <use img/system_overview.png>
 Package pdftex.def Info: img/system_overview.png used on input line 127.
 (pdftex.def)             Requested size: 426.79135pt x 155.60777pt.
 
-<img/folder_structure.png, id=165, 382.42876pt x 241.90375pt>
+<img/folder_structure.png, id=162, 382.42876pt x 241.90375pt>
 File: img/folder_structure.png Graphic file (type png)
 
 <use img/folder_structure.png>
 Package pdftex.def Info: img/folder_structure.png used on input line 138.
 (pdftex.def)             Requested size: 298.75264pt x 188.98314pt.
  [26 <./img/system_overview.png> <./img/folder_structure.png>] [27] [28]
-<img/kolejkowanie.png, id=177, 984.67876pt x 362.35374pt>
+<img/kolejkowanie.png, id=174, 984.67876pt x 362.35374pt>
 File: img/kolejkowanie.png Graphic file (type png)
 
 <use img/kolejkowanie.png>
@@ -1413,14 +1398,14 @@ Overfull \hbox (42.68173pt too wide) in paragraph at lines 255--257
  []
 
 [29 <./img/kolejkowanie.png>]
-<img/komunikacja.png, id=183, 603.25375pt x 456.70625pt>
+<img/komunikacja.png, id=180, 603.25375pt x 456.70625pt>
 File: img/komunikacja.png Graphic file (type png)
 
 <use img/komunikacja.png>
 Package pdftex.def Info: img/komunikacja.png used on input line 328.
 (pdftex.def)             Requested size: 426.79135pt x 323.10689pt.
  [30] [31 <./img/komunikacja.png>] [32]
-<img/worker_node.png, id=194, 884.30376pt x 336.25626pt>
+<img/worker_node.png, id=191, 884.30376pt x 336.25626pt>
 File: img/worker_node.png Graphic file (type png)
 
 <use img/worker_node.png>
@@ -1471,7 +1456,7 @@ LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 473
 (/usr/share/texlive/texmf-dist/tex/latex/polski/ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-<img/azure.png, id=199, 849.1725pt x 933.4875pt>
+<img/azure.png, id=196, 849.1725pt x 933.4875pt>
 File: img/azure.png Graphic file (type png)
  <use img/azure.png>
 Package pdftex.def Info: img/azure.png used on input line 478.
@@ -1481,7 +1466,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 504--508
 
  []
 
-[34] [35 <./img/azure.png>] <img/wip.png, id=209, 983.675pt x 791.95876pt>
+[34] [35 <./img/azure.png>] <img/wip.png, id=206, 983.675pt x 791.95876pt>
 File: img/wip.png Graphic file (type png)
 
 <use img/wip.png>
@@ -1489,28 +1474,28 @@ Package pdftex.def Info: img/wip.png used on input line 555.
 (pdftex.def)             Requested size: 426.79135pt x 343.60504pt.
  [36 <./img/wip.png>]) (./Chapter4.tex [37]
 Rozdzia\PlPrIeC {\l } 4.
-<img/levy.png, id=217, 562.1pt x 421.575pt>
+<img/levy.png, id=214, 562.1pt x 421.575pt>
 File: img/levy.png Graphic file (type png)
  <use img/levy.png>
 Package pdftex.def Info: img/levy.png used on input line 47.
 (pdftex.def)             Requested size: 426.79135pt x 320.09155pt.
  [38
 
-] [39 <./img/levy.png (PNG copy)>] <img/levy_maxes.png, id=225, 462.528pt x 346
+] [39 <./img/levy.png (PNG copy)>] <img/levy_maxes.png, id=222, 462.528pt x 346
 .896pt>
 File: img/levy_maxes.png Graphic file (type png)
 
 <use img/levy_maxes.png>
 Package pdftex.def Info: img/levy_maxes.png used on input line 84.
 (pdftex.def)             Requested size: 362.77525pt x 272.09692pt.
- <img/levy_means.png, id=226, 462.528pt x 346.896pt>
+ <img/levy_means.png, id=223, 462.528pt x 346.896pt>
 File: img/levy_means.png Graphic file (type png)
 
 <use img/levy_means.png>
 Package pdftex.def Info: img/levy_means.png used on input line 92.
 (pdftex.def)             Requested size: 362.77525pt x 272.09692pt.
  [40 <./img/levy_maxes.png> <./img/levy_means.png>]
-<img/localhost_test.png, id=232, 522.95375pt x 229.85875pt>
+<img/localhost_test.png, id=229, 522.95375pt x 229.85875pt>
 File: img/localhost_test.png Graphic file (type png)
 
 <use img/localhost_test.png>
@@ -1522,33 +1507,33 @@ LaTeX Warning: Reference `sec:2525_epoch_training' on page 41 undefined on inpu
 t line 135.
 
 [41 <./img/localhost_test.png>]
-<img/cnn_maxes_first.png, id=238, 462.528pt x 346.896pt>
+<img/cnn_maxes_first.png, id=235, 462.528pt x 346.896pt>
 File: img/cnn_maxes_first.png Graphic file (type png)
 
 <use img/cnn_maxes_first.png>
 Package pdftex.def Info: img/cnn_maxes_first.png used on input line 153.
 (pdftex.def)             Requested size: 384.1096pt x 288.09827pt.
 
-<img/cnn_means_first.png, id=239, 462.528pt x 346.896pt>
+<img/cnn_means_first.png, id=236, 462.528pt x 346.896pt>
 File: img/cnn_means_first.png Graphic file (type png)
 
 <use img/cnn_means_first.png>
 Package pdftex.def Info: img/cnn_means_first.png used on input line 161.
 (pdftex.def)             Requested size: 384.1096pt x 288.09827pt.
  [42 <./img/cnn_maxes_first.png>]
-<img/warnings.png, id=244, 660.4675pt x 519.9425pt>
+<img/warnings.png, id=241, 660.4675pt x 519.9425pt>
 File: img/warnings.png Graphic file (type png)
  <use img/warnings.png>
 Package pdftex.def Info: img/warnings.png used on input line 191.
 (pdftex.def)             Requested size: 384.1096pt x 302.39197pt.
 
-<img/cnn_maxes.png, id=245, 462.528pt x 346.896pt>
+<img/cnn_maxes.png, id=242, 462.528pt x 346.896pt>
 File: img/cnn_maxes.png Graphic file (type png)
  <use img/cnn_maxes.png>
 Package pdftex.def Info: img/cnn_maxes.png used on input line 205.
 (pdftex.def)             Requested size: 384.1096pt x 288.09827pt.
 
-<img/cnn_means.png, id=246, 462.528pt x 346.896pt>
+<img/cnn_means.png, id=243, 462.528pt x 346.896pt>
 File: img/cnn_means.png Graphic file (type png)
  <use img/cnn_means.png>
 Package pdftex.def Info: img/cnn_means.png used on input line 213.
@@ -1559,27 +1544,27 @@ Package pdftex.def Info: img/cnn_means.png used on input line 213.
 LaTeX Warning: Text page 44 contains only floats.
 
 [44 <./img/warnings.png> <./img/cnn_maxes.png>] [45 <./img/cnn_means.png>]
-<img/iter_learn_first.png, id=260, 462.528pt x 346.896pt>
+<img/iter_learn_first.png, id=257, 462.528pt x 346.896pt>
 File: img/iter_learn_first.png Graphic file (type png)
 
 <use img/iter_learn_first.png>
 Package pdftex.def Info: img/iter_learn_first.png used on input line 282.
 (pdftex.def)             Requested size: 362.77525pt x 272.09692pt.
 
-<img/iter_learn_last.png, id=261, 462.528pt x 346.896pt>
+<img/iter_learn_last.png, id=258, 462.528pt x 346.896pt>
 File: img/iter_learn_last.png Graphic file (type png)
 
 <use img/iter_learn_last.png>
 Package pdftex.def Info: img/iter_learn_last.png used on input line 290.
 (pdftex.def)             Requested size: 362.77525pt x 272.09692pt.
 
-<img/iter_learn_best.png, id=262, 462.528pt x 346.896pt>
+<img/iter_learn_best.png, id=259, 462.528pt x 346.896pt>
 File: img/iter_learn_best.png Graphic file (type png)
 
 <use img/iter_learn_best.png>
 Package pdftex.def Info: img/iter_learn_best.png used on input line 298.
 (pdftex.def)             Requested size: 362.77525pt x 272.09692pt.
- <img/25epoch.png, id=263, 462.528pt x 346.896pt>
+ <img/25epoch.png, id=260, 462.528pt x 346.896pt>
 File: img/25epoch.png Graphic file (type png)
 
 <use img/25epoch.png>
@@ -1591,7 +1576,13 @@ Rozdzia\PlPrIeC {\l } 5.
 [49
 
 ]) [50] (./main.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 18--22
+Underfull \hbox (badness 1584) in paragraph at lines 18--22
+[]\OT4/cmss/m/n/10 Venu Anu-gan-ti.  Da-ta scien-ce vs. da-ta ana-ly-tics.  Do-
+st¦p: 03/09/2018 pod ad-re-sem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
 []\OT4/cmss/m/n/10 Lisa Ar-thur.  What is big da-ta?  Do-st¦p: 26/08/2018 pod a
 d-re-sem
  []
@@ -1599,8 +1590,8 @@ d-re-sem
 ) [51
 
 
-] (./main.lof
-Overfull \hbox (13.64288pt too wide) in paragraph at lines 7--7
+] [52] (./main.lof
+Overfull \hbox (13.64288pt too wide) in paragraph at lines 5--5
  [][] []\OT4/cmss/m/n/10 Przykªadowe ob-raz-ki ze zbio-ru CIFAR-10 ™ró-dªo: htt
 ps://www.cs.toronto.edu/~kriz/cifar.html [][]  
  []
@@ -1609,21 +1600,21 @@ ps://www.cs.toronto.edu/~kriz/cifar.html [][]
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [52
+ [53
 
 
 ] (./main.lot)
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
- (./AppendixA.tex [53
+ (./AppendixA.tex [54
 
 
 ]
  A.
-[54
+[55
 
-]) (./AppendixB.tex [55]
+]) (./AppendixB.tex [56]
  B.
 (./code/genetic_algorithm.py
 LaTeX Font Info:    Try loading font information for OML+cmss on input line 22.
@@ -1643,12 +1634,12 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbar' on input line 49.
 
-[56
+[57
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [57]
+ [58]
 Overfull \hbox (5.21304pt too wide) in paragraph at lines 159--160
 [][][][][][][][][][][][][][][][][] 
  []
@@ -1656,17 +1647,17 @@ Overfull \hbox (5.21304pt too wide) in paragraph at lines 159--160
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [58])
-(./code/queue_handling.py [59]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [60]
+ [59])
+(./code/queue_handling.py [60]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [61]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [62]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [63]
 Overfull \hbox (5.21304pt too wide) in paragraph at lines 207--208
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1674,34 +1665,34 @@ Overfull \hbox (5.21304pt too wide) in paragraph at lines 207--208
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63])
+ [64])
 (./code/csv_handling.py
 Overfull \hbox (5.21304pt too wide) in paragraph at lines 28--29
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[64]
+[65]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [65])
-(./code/listener_jobs.py [66]) (./code/listener_results.py) (./code/eval_cnn.py
-[67]
+ [66])
+(./code/listener_jobs.py [67]) (./code/listener_results.py) (./code/eval_cnn.py
+[68]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [68])
+ [69])
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-(./code/starter.sh)) (./AppendixC.tex [69]
+(./code/starter.sh)) (./AppendixC.tex [70]
  C.
-) (./AppendixD.tex [70
+) (./AppendixD.tex [71
 
 ]
  D.
-) [71
+) [72
 
 ] (./main.aux (./titlepage.aux))
 
@@ -1712,18 +1703,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 12806 strings out of 493029
- 177959 string characters out of 6136234
- 438114 words of memory out of 5000000
- 15894 multiletter control sequences out of 15000+600000
- 22866 words of font info for 65 fonts, out of 8000000 for 9000
+ 12790 strings out of 493029
+ 177643 string characters out of 6136234
+ 438472 words of memory out of 5000000
+ 15883 multiletter control sequences out of 15000+600000
+ 22326 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,10n,94p,841b,1899s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,10n,94p,820b,1897s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/pltt.enc}{/usr/share/texliv
 e/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr/share/texmf/fonts/enc/dvips/cm-s
 uper/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plmi.en
-c}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/share/texliv
-e/texmf-dist/fonts/enc/dvips/pl/plme.enc}</usr/share/texlive/texmf-dist/fonts/t
+c}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plme.enc}{/usr/share/texliv
+e/texmf-dist/fonts/enc/dvips/pl/plms.enc}</usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 pl/plbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plex10.pfb><
@@ -1736,14 +1727,14 @@ ve/texmf-dist/fonts/type1/public/pl/plss8.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/pl/plss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /pl/plssbi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plssbx10.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plssi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/pl/plssi9.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/pl/plsy10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/pl/plsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plt
-t10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on main.pdf (73 pages, 8788287 bytes).
+e/texlive/texmf-dist/fonts/type1/public/pl/plsy10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/pl/plsy7.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/pl/pltt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1000.p
+fb>
+Output written on main.pdf (74 pages, 7227203 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 250 compressed objects within 3 object streams
+ 423 PDF objects out of 1000 (max. 8388607)
+ 249 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

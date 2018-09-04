@@ -1,15 +1,59 @@
 \chapter*{Streszczenie}
 
-Streszczenie. \\\\
+Żyjemy w czasach, w których zewsząd otaczają nas duże zbiory danych i algorytmy uczenia maszynowego.
+
+Myślą przewodnią pracy jest zastosowanie jednego algorytmu sztucznej inteligencji do lepszego doboru parametrów innego programu tego typu.
+We wstępie wysunięto tezę główną, tj. że możliwe jest optymalizowanie struktury konwolucyjnych sieci neuronowych za pomocą algorytmu genetycznego.
+Teza pomocnicza głosi, że istnieje związek pomiędzy wynikami sieci po jednej epoce uczenia a jej ostatecznymi osiągami.
+Została ona wysunięta w związku z potrzebą oszczędności czasu i kosztów obliczeniowych, a uczenie przez jedną epokę pozwala na ich redukcję.
+
+
+Następnie zgłębione zostały kluczowe dla tego tematu zagadnienia. Poczynając od zdefiniowania pojęć takich jak uczenie maszynowe, meta uczenie czy uczenie z nadzorem,
+poprzez przedstawienie problemu klasyfikacji obrazów z przybliżeniem zbioru testowego CIFAR-10, przedstawienie metody k-najbliższych sąsiadów i klasyfikatora liniowego, kończąc
+na metodach sztucznej inteligencji takich jak sieci neuronowe, konwolucyjne sieci neuronowe i algorytm genetyczny.
+
+Po zredukowaniu problemu do optymalizacji struktury po jednej epoce uczenia i przedstawieniu pojedynczej sieci neuronowej jako jednego osobnika w algorytmie genetycznym oraz zdefiniowaniu operacji genetycznych
+wykonywanych nań, zaprojektowano system do przeprowadzenia eksperymentu.
+
+System został obszernie omówiony, poczynając od węzła zarządzającego, przez system kolejkowania zadań i zaprojektowany protokół komunikacji ze zdalnymi węzłami, po strukturę samego węzła obliczeniowego
+i sposób zarządzania owymi węzłami. Omówiono sposób zapewnienia replikacji badań.
+
+Następnie przedstawione są wyniki badań i testów, w tym badanie wariancji pomiaru skuteczności klasyfikacji sieci w zależności od ziarna generatora losowego, przez testowanie działania algorytmu genetycznego i systemu kolejkowego,
+po właściwe badania zależności pomiędzy uczeniem krótkim i długim oraz poszukiwania optymalnej struktury. Z badań wyciągnięto wnioski popierające tezy sformułowane we wstępie.
+
+Następnie wyniki są krótko omawiane w podsumowaniu, gdzie również proponowane są dalsze kierunki rozwoju systemu.
+\\\\
 \noindent
-\textbf{Słowa kluczowe}: elektrownie wodne, systemy alarmowe, automatyzacja, sterowanie
+\textbf{Słowa kluczowe}: automatyzacja, sieci neuronowe, algorytmy genetyczne, sztuczna inteligencja
 \\
 
 \noindent
 \textbf{Dziedzina nauki i techniki, zgodnie z wymogami OECD}: nauki inżynieryjne i techniczne, systemy automatyzacji i kontroli
 \chapter*{Abstract}
-English abstract. \\\\
+We live in a time where we are surrounded by Big Data and Machine Learning Algorithms.
+
+The main thought driving this thesis is using an artificial intelligence algorithm for choosing better parameters for another program of the same class.
+In the introduction the main thesis is introduced, which states that it is possible to perform optimization of a convolutional network structure using the genetic algorithm.
+A supporting thesis states that there is a connection between classification accuracy of a neural network after 1 and after more epochs of training.
+The second thesis was a natural consequence of the need to preserve time and computing resources, and 1-epoch training allows that.
+
+Key concepts crucial for proving the thesis have been covered.
+Machine learning, meta learning, and supervised learning are defined as first.
+Then we move on to elaborate on the image classification problem, the CIFAR-10 dataset, k-nearest neighbor method and linear classifiers.
+Finally artificial intelligence concepts such as neural networks, convolutional neural networks (CNNs) and the genetic algorithm are covered.
+
+After reducing the problem to optimizing the structure of a convolutional neural network after 1 epoch of training, defining the specimen in the genetic algorithm as a single CNN structure and specifying the genetic operations of the algorithm, a system for conducting the experiment is proposed.
+
+Further on, the system is broadly discussed, starting with the management node, through the queuing system and a proposed communication protocol for communication with the remote nodes, arriving at the structure of a worker node and a management system for the worker nodes.
+A way to ensure reproducibility of the experiment is being introduced.
+
+Finally the experiment and tests results are discussed, including measuring the variance of the classification accuracy of a single neural network trained with different random seeds and testing if the queuing system works properly.
+After that the actual experiment results are being discussed, including looking for a connection between long- and short-term training and optimizing the network structure.
+The results provide insights supporting both the theses.
+
+Finally the results are shortly discussed in the summary, where possible further system development direction and improvements are proposed.
+ \\\\
 \noindent
-\textbf{Keywords}: hydro plants, alarm systems, automation, control engineering\\\\
+\textbf{Keywords}: automation, neural networks, genetic algorithm, artificial intelligence\\\\
 \noindent
 \textbf{Field    of    science    and    technology    in    accordance    with    OECD    requirements}: engineering and technology, automation  and  control  systems

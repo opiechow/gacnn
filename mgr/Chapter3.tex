@@ -1,4 +1,6 @@
 \chapter{Opis rozwiązania}\label{chap:system_description}
+W tym rozdziale następuje uściślenie problemu oraz doprecyzowanie zasad działania algorytmu genetycznego.
+Również opisywany jest cały system stworzony do przeprowadzenia badań.
 \section{Redukcja problemu}\label{sec:reduction}
 Jak już wspomniano w rozdziale \ref{chap:teoria}, uczenie głębokich sieci neuronowych w celu klasyfikacji obrazów dla dużych danych wejściowych jest zadaniem czasochłonnym.
 Jednym ze sposobów redukcji tego czasu jest stosowanie architektury konwolucyjnej (opisanej w \ref{sec:cnn}), która znacznie redukuje liczbę wag do nauczenia, a przy tym i czas obliczeń.
@@ -9,15 +11,15 @@ W przypadku algorytmu genetycznego, jedna konwolucyjna sieć neuronowa jest jedn
 Aby algorytm genetyczny skutecznie przeszukiwał przestrzeń poszukiwań, potrzebna jest stosunkowo duży rozmiar populacji $N$.
 Jeśli wyznaczenie funkcji przystosowania byłoby jednoznaczne z wyznaczeniem skuteczności sieci po pełnym uczeniu, całkowity czas dla jednej iteracji dla $N = 100$:
  \begin{itemize}
-	\item Przy sekwencyjnym uczeniu każdego osobnika wyniósłby $T_s = Nt_{cnn} = 300$ h$ =  12.5 $ dnia.
-	\item Przy równoległym uczeniu każdego osobnika na $m = 10$ węzłach obliczeniowych wyniesie $T_p = \frac{T_s}{m} = 30$ h $= 1.25$ dnia.
+	\item przy sekwencyjnym uczeniu każdego osobnika wyniósłby $T_s = Nt_{cnn} = 300$ h$ =  12.5 $ dnia,
+	\item przy równoległym uczeniu każdego osobnika na $m = 10$ węzłach obliczeniowych wyniesie $T_p = \frac{T_s}{m} = 30$ h $= 1.25$ dnia.
 \end{itemize}
 Narzucając (oprócz kryterium stopu) maksymalną liczbę iteracji równą $I = 100$, w pesymistycznym przypadku dla obliczeń równoległych przy $m = 10$ całkowity czas obliczeń wyniósłby $T_c=IT_p=125$ dni.
 W związku z ograniczonym czasem na przeprowadzenie badań oraz minimalizację kosztów obliczeń, czas ten musiał zostać znacznie zredukowany.
 
 Jako rozwiązanie tego problemu zaproponowano:
 \begin{enumerate}
-	\item uczenie małych sieci, o ustalonych ramach i zmienności struktury wyznaczanej przez zmienną liczbę filtrów w warstwach konwolucyjnych (takich jak opisane w \ref{sec:fenotyp}).
+	\item uczenie małych sieci, o ustalonych ramach i zmienności struktury wyznaczanej przez zmienną liczbę filtrów w warstwach konwolucyjnych (takich jak opisane w \ref{sec:fenotyp}),
 	\item przyjęcie jako celu optymalizacji skuteczność sieci już po jednej epoce uczenia sieci.
 \end{enumerate}
 
@@ -73,9 +75,9 @@ Tutaj metoda proporcjonalna została zaimplementowana w następujący sposób:
 
 Powtórz $N$-krotnie:
 \begin{enumerate}
-  \item Sumowane są wartości funkcji przystosowania $S(\mathbf{x})=\sum_{i=1}^{N}f(x_i)$ dla każdego $x_i$ w populacji
-  \item Losowana jest losowa liczba z przedziału $r = (0,S(\mathbf{x}))$
-  \item Znajdowane jest najmniejsze $i$, dla którego w danej sekwencji osobników $\sum_{i=1}^{N}x_i > r $
+  \item sumowane są wartości funkcji przystosowania $S(\mathbf{x})=\sum_{i=1}^{N}f(x_i)$ dla każdego $x_i$ w populacji,
+  \item losowana jest losowa liczba z przedziału $r = (0,S(\mathbf{x}))$,
+  \item znajdowane jest najmniejsze $i$, dla którego w danej sekwencji osobników $\sum_{i=1}^{N}x_i > r $.
 \end{enumerate}
 
 \subsection{Krzyżowanie}
@@ -98,18 +100,18 @@ Sposób mutacji wykorzystany w tej pracy tożsamy jest ze zmianą wartościowo-r
 Dokonywana jest ona na fenotypie osobnika.
 Jeżeli mutacja danego osobnika zachodzi, to:
 \begin{itemize}
-  \item Losowo wybierana jest liczba ze zbioru $\lbrace 0, 1, 2, 3 \rbrace$, która determinuje, który parametr będzie zmieniany
-  \item Następuje wylosowanie nowej wartości dla wybranego parametru z dopuszczalnego zbioru liczb całkowitych $\lbrace 1..31 \rbrace$, który zastępuje starą wartość
+  \item losowo wybierana jest liczba ze zbioru $\lbrace 0, 1, 2, 3 \rbrace$, która determinuje, który parametr będzie zmieniany,
+  \item następuje wylosowanie nowej wartości dla wybranego parametru z dopuszczalnego zbioru liczb całkowitych $\lbrace 1..31 \rbrace$, który zastępuje starą wartość.
 \end{itemize}
 
 \subsection{''Naprawianie'' osobników}\label{sec:individual_fix}
 Istnieje pewne prawdopodobieństwo, że w wyniku krzyżowania otrzymamy osobnika, dla którego jeden lub więcej parametrów przyjmie wartość zero.
 Rozwiązać ten problem można na dwa sposoby:
 \begin{enumerate}
-  \item Na poziomie algorytmu genetycznego - zamieniając otrzymane 0 losową lub najbliższą (1) dopuszczalną wartością\label{bullet:genetic_fix}
-  \item Na poziomie konstruowania sieci neuronowej - jeżeli warstwa zawiera 0 filtrów to jest pomijana w sekwencyjnym budowaniu modelu sieci.
+  \item na poziomie algorytmu genetycznego - zamieniając otrzymane 0 losową lub najbliższą (1) dopuszczalną wartością\label{bullet:genetic_fix},
+  \item na poziomie konstruowania sieci neuronowej - jeżeli warstwa zawiera 0 filtrów to jest pomijana w sekwencyjnym budowaniu modelu sieci.
 \end{enumerate}
-W pracy zdecydowano się zastosować się podejście \ref{bullet:genetic_fix} z zastępowaniem 0 przez 1, ze względu na prostotę implementacyjną.
+W pracy zdecydowano się zastosować się podejście \ref{bullet:genetic_fix} z zastępowaniem 0 przez 1, ze względu na prostotę implementacji.
 
 \subsection{Substytucja}
 Zastosowana w algorytmie technika substytucji osobników rodzicielskich przez potomków jest strategią z reprodukcją częściową.
@@ -145,34 +147,34 @@ Całość projektu zorganizowano w katalogi tak, aby zgrupować pliki źródłow
 Bloki oznaczone na obydwu rysunkach tym samym kolorem są swoimi odpowiednikami.
 W związku z tym:
 \begin{itemize}
-  \item katalog \textit{gacnn} jest korzeniem, również nazwą repozytorium kodu źródłowego.
-        Jego nazwa jest abrewiacją angielskich odpowiedników nazw algorytm genetyczny i konwolucyjna sień neuronowa.
-  \item katalog \textit{common} zawiera elementy potrzebne możliwie przez każdy z innych modułów
-  \item katalog \textit{data} przechowuje zebrane przez węzeł zarządzający dane oraz skrypty służące do ich przetwarzania i wizualizacji
-  \item katalog \textit{master} zawiera wszystkie programy, które mogą być węzłem zarządzającym, oraz system zarządzania kolejką zadań
-  \item katalog \textit{worker} zawiera oprogramowanie uruchamiane na każdym z węzłów obliczeniowych
-  \item katalog \textit{misc} zawiera pomocnicze skrypty służące do tworzenia i przygotowywania węzłów obliczeniowych
-  \item katalog \textit{azure} zawiera skrypty j.w. przeznaczone konkretnie do tworzenia instancji węzłów obliczeniowych na platformie Microsoft Azure
+  \item katalog \textit{gacnn} jest korzeniem, również nazwą repozytorium kodu źródłowego,
+        Jego nazwa jest abrewiacją angielskich odpowiedników nazw algorytm genetyczny i konwolucyjna sień neuronowa,
+  \item katalog \textit{common} zawiera elementy potrzebne możliwie przez każdy z innych modułów,
+  \item katalog \textit{data} przechowuje zebrane przez węzeł zarządzający dane oraz skrypty służące do ich przetwarzania i wizualizacji,
+  \item katalog \textit{master} zawiera wszystkie programy, które mogą być węzłem zarządzającym, oraz system zarządzania kolejką zadań,
+  \item katalog \textit{worker} zawiera oprogramowanie uruchamiane na każdym z węzłów obliczeniowych,
+  \item katalog \textit{misc} zawiera pomocnicze skrypty służące do tworzenia i przygotowywania węzłów obliczeniowych,
+  \item katalog \textit{azure} zawiera skrypty j.w. przeznaczone konkretnie do tworzenia instancji węzłów obliczeniowych na platformie Microsoft Azure.
 \end{itemize}
 
 \subsection{Elementy wspólne}
 Wspólne elementy autorskiego kodu używane zarówno przez węzeł zarządzający, jak i przez węzły obliczeniowe, to definicje dwóch klas:
 \begin{itemize}
-  \item Klasa \textit{Job} - opisuje zadane przekazywane przez węzeł zarządzający do systemu kolejkowego i dalej do węzła obliczeniowego.
+  \item klasa \textit{Job} - opisuje zadane przekazywane przez węzeł zarządzający do systemu kolejkowego i dalej do węzła obliczeniowego.
         W istocie swej jest to struktura przechowująca 3 elementy:
         \begin{itemize}
-          \item osobnika (reprezentowanego przez obiekt klasy \textit{Individual}), dla którego należy wyznaczyć funkcję przystosowania
-          \item liczbę epok uczenia sieci neuronowej
-          \item ziarno dla generatora pseudolosowego
+          \item osobnika (reprezentowanego przez obiekt klasy \textit{Individual}), dla którego należy wyznaczyć funkcję przystosowania,
+          \item liczbę epok uczenia sieci neuronowej,
+          \item ziarno dla generatora pseudolosowego.
         \end{itemize}
-  \item Klasa \textit{Individual} - opisuje pojedynczego osobnika, tj. pojedynczą strukturę sieci neuronowej.
+  \item klasa \textit{Individual} - opisuje pojedynczego osobnika, tj. pojedynczą strukturę sieci neuronowej.
         Przechowuje ona 4 informacje:
         \begin{itemize}
-          \item Fenotyp osobnika - lista 4 liczb opisujących liczbę filtrów w odpowiednich warstwach sieci
-          \item Przystosowanie osobnika - wartość funkcji przystosowania osobnika.
-                Dla algorytmu optymalizującego strukturę konwolucyjnej sieci neuronowej jest to skuteczność klasyfikacji zbioru testowego przez nauczoną sieć.
-          \item Ostateczna uzyskana wartość funkcji kosztu (\textit{loss function}) po uczeniu - w celu informacyjnym
-          \item Historię uczenia sieci - przechowuje wartości przystosowania i funkcji kosztu po każdej epoce uczenia sieci, przechowywane w celach informacyjno-diagnostycznych
+          \item fenotyp osobnika - lista 4 liczb opisujących liczbę filtrów w odpowiednich warstwach sieci,
+          \item przystosowanie osobnika - wartość funkcji przystosowania osobnika.
+                Dla algorytmu optymalizującego strukturę konwolucyjnej sieci neuronowej jest to skuteczność klasyfikacji zbioru testowego przez nauczoną sieć,
+          \item ostateczna uzyskana wartość funkcji kosztu (\textit{loss function}) po uczeniu - w celu informacyjnym,
+          \item historię uczenia sieci - przechowuje wartości przystosowania i funkcji kosztu po każdej epoce uczenia sieci, przechowywane w celach informacyjno-diagnostycznych.
         \end{itemize}
 \end{itemize}
 
@@ -183,66 +185,66 @@ Węzłem zarządzającym nazywany będzie program, który korzysta z opisanego w
 Jego głównym zadaniem jest typowanie osobników, dla których ma zostać wyliczona funkcja przystosowania.
 Dla potrzeb wspomnianych w \ref{sec:reduction} funkcji przystosowania dla uczenia 1- i 10- epokowego konieczne było stworzenie dwóch programów zarządzających:
 \begin{enumerate}
-  \item Węzeł typujący osobniki do wyliczenia na podstawie działania algorytmu genetycznego dla uczenia 1-epokowego - plik \textit{genetic\_algorithm.py}\label{list:genetic}
-  \item Węzeł typujący najlepsze, środkowe i najgorsze osobniki z każdej iteracji algorytmu genetycznego dla uczenia 10-epokowego - plik \textit{full\_learning.py}\label{list:full}
+  \item węzeł typujący osobniki do wyliczenia na podstawie działania algorytmu genetycznego dla uczenia 1-epokowego - plik \textit{genetic\_algorithm.py}\label{list:genetic},
+  \item węzeł typujący najlepsze, środkowe i najgorsze osobniki z każdej iteracji algorytmu genetycznego dla uczenia 10-epokowego - plik \textit{full\_learning.py}\label{list:full}.
 \end{enumerate}
 Obydwa z wyżej wymienionych węzłów korzystają z pomocniczych funkcji do zapisywania odebranych od węzłów obliczeniowych danych - plik \textit{csv\_handling.py}.
 
 Węzeł opisany powyżej w punkcie \ref{list:genetic} został napisany tak, by możliwie łatwo można było regulować parametry algorytmu.
 Poniżej przedstawiono ich listę:
 \begin{itemize}
-  \item liczba osobników $N$
-  \item wymiarowość przestrzeni poszukiwań - liczba warstw konwolucyjnych $n$
-  \item zakres przestrzeni poszukiwań - liczba bitów przypadających na kodowanie jednej warstwy $m$
-  \item prawdopodobieństwo krzyżowania - $p_{c}$
-  \item prawdopodobieństwo mutacji - $p_{m}$
-  \item maksymalna liczba iteracji
-  \item maksymalna liczba iteracji bez poprawy
-  \item liczba najlepszych osobników przechodzących do kolejnego pokolenia - $ N_{k} = 30$
-  \item minimalna poprawa $\epsilon$
-  \item ziarno generatora pseudolosowego - domyślnie 1337
+  \item liczba osobników $N$,
+  \item wymiarowość przestrzeni poszukiwań - liczba warstw konwolucyjnych $n$,
+  \item zakres przestrzeni poszukiwań - liczba bitów przypadających na kodowanie jednej warstwy $m$,
+  \item prawdopodobieństwo krzyżowania - $p_{c}$,
+  \item prawdopodobieństwo mutacji - $p_{m}$,
+  \item maksymalna liczba iteracji,
+  \item maksymalna liczba iteracji bez poprawy,
+  \item liczba najlepszych osobników przechodzących do kolejnego pokolenia - $ N_{k} = 30$,
+  \item minimalna poprawa $\epsilon$,
+  \item ziarno generatora pseudolosowego - domyślnie 1337.
 \end{itemize}
 
 Po ustawieniu wyżej wymienionych parametrów, program działa następująco:
 
 \begin{enumerate}
-  \item Ustawia zadane ziarno generatora losowego. Przyczyny, dla których to robi, opisano w \ref{sec:replicativity}.
-  \item Jeśli nie istnieje, tworzy plik .csv do przechowywania danych, gdzie każdy wpis zawiera:
+  \item ustawia zadane ziarno generatora losowego. Przyczyny, dla których to robi, opisano w \ref{sec:replicativity}.
+  \item jeśli nie istnieje, tworzy plik .csv do przechowywania danych, gdzie każdy wpis zawiera:
   \begin{itemize}
-    \item Numer iteracji
-    \item Genotyp osobnika w formie zakodowanej
-    \item Wartość funkcji przystosowania
-    \item Wartość funkcji kosztu
+    \item numer iteracji,
+    \item genotyp osobnika w formie zakodowanej,
+    \item wartość funkcji przystosowania,
+    \item wartość funkcji kosztu.
   \end{itemize}
-  \item Jeżeli istnieje plik .csv z danymi z niedokończonego działania programu, wczytuje je.
-  \item Jeżeli nie wczytano żadnych danych, następuje inicjalizacja populacji. Losowo generowanych jest $N$ osobników.
-  \item Dopóki nie osiągnięto kryterium stopu (maksymalna liczba iteracji bez poprawy wyniku lub maksymalna liczba iteracji osiągnięte)
+  \item jeżeli istnieje plik .csv z danymi z niedokończonego działania programu, wczytuje je,
+  \item jeżeli nie wczytano żadnych danych, następuje inicjalizacja populacji. Losowo generowanych jest $N$ osobników,
+  \item dopóki nie osiągnięto kryterium stopu (maksymalna liczba iteracji bez poprawy wyniku lub maksymalna liczba iteracji osiągnięte):
   \begin{enumerate}
-    \item Przygotowuje listę zadań dla systemu kolejkowego - dla każdego osobnika tworzy jedno zadanie, które w jednym zdaniu brzmi: ''Ucz tego osobnika przez 1 epokę z takim ziarnem generatora pseudolosowego''.
-    \item Oblicza wartość funkcji przystosowania dla całej populacji korzystając z metody \textit{evaluate(jobs)} systemu kolejkowania zadań.
-    \item Sortuje osobniki według wartości funkcji przystosowania
-    \item Zapisuje dane z tej iteracji do pliku csv
-    \item Sprawdza najlepszy wynik i czy w tej iteracji nastąpiła poprawa - jeśli nie, zwiększa licznik iteracji bez poprawy
-    \item Za starą populację podstawia nową uzyskaną w wyniku:
+    \item przygotowuje listę zadań dla systemu kolejkowego - dla każdego osobnika tworzy jedno zadanie, które w jednym zdaniu brzmi: ''Ucz tego osobnika przez 1 epokę z takim ziarnem generatora pseudolosowego'',
+    \item oblicza wartość funkcji przystosowania dla całej populacji korzystając z metody \textit{evaluate(jobs)} systemu kolejkowania zadań,
+    \item sortuje osobniki według wartości funkcji przystosowania,
+    \item zapisuje dane z tej iteracji do pliku csv,
+    \item sprawdza najlepszy wynik i czy w tej iteracji nastąpiła poprawa - jeśli nie, zwiększa licznik iteracji bez poprawy,
+    \item za starą populację podstawia nową uzyskaną w wyniku:
     \begin{enumerate}
-      \item selekcji
-      \item krzyżowania
-      \item mutacji
-      \item ''naprawiania'' osobników
-      \item substytucji
+      \item selekcji,
+      \item krzyżowania,
+      \item mutacji,
+      \item ''naprawiania'' osobników,
+      \item substytucji.
     \end{enumerate}
-    Wszystkie z powyższych odbywają się jak opisano w \ref{sec:genetic_ops}
+    Wszystkie z powyższych odbywają się jak opisano w \ref{sec:genetic_ops}.
   \end{enumerate}
 \end{enumerate}
 
 W wyniku działania powyższego skryptu otrzymujemy plik csv zawierający wszystkie osobniki z wszystkich iteracji działania algorytmu genetycznego.
 Dane te są przetwarzane dalej w celu wizualizacji, jak również przez skrypt \textit{full\_learning.py}, który również jest węzłem zarządzającym, a działa następująco:
 \begin{enumerate}
-  \item Wczytuje osobniki zapisane w pliku .csv przez algorytm genetycznych
-  \item Z każdej iteracji wybiera najlepszego, środkowego i najgorszego osobnika
-  \item Dla każdego wybranego osobnika tworzy zadanie, które w jednym zdaniu brzmi: ''Ucz tego osobnika przez 1 epokę z takim ziarnem generatora pseudolosowego''.
-  \item Oddelegowuje zadania do systemu kolejkowania zadań.
-  \item Zbiera wyniki i zapisuje je do innego pliku.
+  \item wczytuje osobniki zapisane w pliku .csv przez algorytm genetycznych,
+  \item z każdej iteracji wybiera najlepszego, środkowego i najgorszego osobnika,
+  \item dla każdego wybranego osobnika tworzy zadanie, które w jednym zdaniu brzmi: ''Ucz tego osobnika przez 1 epokę z takim ziarnem generatora pseudolosowego'',
+  \item oddelegowuje zadania do systemu kolejkowania zadań,
+  \item zbiera wyniki i zapisuje je do innego pliku.
 \end{enumerate}
 Ten skrypt wyznacza inną funkcję przystosowania dla tych samych osobników - skuteczność po 10 epokach uczenia, w porównaniu do 1-epokowego uczenia.
 
@@ -262,20 +264,20 @@ Implementacja systemu kolejkowego zawarta jest w pliku \textit{queue\_handling.p
 Zawiera on następujące elementy:
 
 \begin{itemize}
-  \item Interfejs \textit{Worker} będącą reprezentacją pojedynczego węzła obliczeniowego.
-  \item Klasę \textit{RemoteWorker} dziedziczącą po klasie \textit{Worker}, służącą do delegowania zadań do zdalnej maszyny wirtualnej wykonującej obliczenia.
-  \item Klasę \textit{LevyWorker} dziedziczącą po klasie \textit{Worker}, lokalnie wyznaczającą wartość funkcji Levego, używana przy testowaniu działania algorytmu genetycznego jak opisano w \ref{sec:levy_test}.
-  \item Klasę \textit{WorkManager} będącą właściwą implementacją systemu kolejkowania.
+  \item interfejs \textit{Worker} będącą reprezentacją pojedynczego węzła obliczeniowego,
+  \item klasę \textit{RemoteWorker} dziedziczącą po klasie \textit{Worker}, służącą do delegowania zadań do zdalnej maszyny wirtualnej wykonującej obliczenia,
+  \item klasę \textit{LevyWorker} dziedziczącą po klasie \textit{Worker}, lokalnie wyznaczającą wartość funkcji Levy'ego, używana przy testowaniu działania algorytmu genetycznego jak opisano w \ref{sec:levy_test},
+  \item klasę \textit{WorkManager} będącą właściwą implementacją systemu kolejkowania.
 \end{itemize}
 
 Interfejs \textit{Worker} zawiera następujące metody:
 \begin{itemize}
-  \item \textit{is\_available()} - mówi, czy dany węzeł może przyjmować teraz zadania
-  \item \textit{assign\_job(job)} - przypisuje do danego węzła przekazane jako argument zadanie do obliczania
-  \item \textit{has\_result()} - odpytuje węzeł, czy posiada już wynik obliczeń
-  \item \textit{get\_result{}} - zwraca odebrany od węzła wynik obliczeń
-  \item \textit{free\_worker()} - zwalnia węzeł oznaczając go jako gotowy do rozpoczęcia dalszych obliczeń
-  \item \textit{get\_current\_job()} - zwraca aktualnie zlecone węzłowi zadanie
+  \item \textit{is\_available()} - mówi, czy dany węzeł może przyjmować teraz zadania,
+  \item \textit{assign\_job(job)} - przypisuje do danego węzła przekazane jako argument zadanie do obliczania,
+  \item \textit{has\_result()} - odpytuje węzeł, czy posiada już wynik obliczeń,
+  \item \textit{get\_result{}} - zwraca odebrany od węzła wynik obliczeń,
+  \item \textit{free\_worker()} - zwalnia węzeł oznaczając go jako gotowy do rozpoczęcia dalszych obliczeń,
+  \item \textit{get\_current\_job()} - zwraca aktualnie zlecone węzłowi zadanie.
 \end{itemize}
 
 Właściwą implementacją systemu kolejkowego jest klasa \textit{WorkManager}.
@@ -284,34 +286,34 @@ Jedyną publiczną metodą tej klasy jest funkcja \textit{evaluate(jobs)}, któr
 Dla przypadku obsługi węzłów zdalnych system kolejkowy:
 
 \begin{enumerate}
-  \item Wyszukuje duplikaty wśród otrzymanych zadań i zawęża listę zadań do unikalnego zbioru\label{list:duplicates}
-  \item Dopóki liczba uzyskanych wyników jest mniejsza od liczby zleconych zadań:
+  \item wyszukuje duplikaty wśród otrzymanych zadań i zawęża listę zadań do unikalnego zbioru\label{list:duplicates}
+  \item dopóki liczba uzyskanych wyników jest mniejsza od liczby zleconych zadań:
     \begin{enumerate}
-      \item Sprawdza plik \textit{workers} z listą adresów IP potencjalnych węzłów
-      \item Próbuje połączyć się z węzłami zgodnie z procedurą opisaną w \ref{sec:communication}.
-      \item Dodaje każdy zgłaszający się węzeł do listy węzłów i oznacza go jako wolny.
-      \item Rozdziela zadania każdemu z węzłów, dla każdego węzła z listy:
+      \item sprawdza plik \textit{workers} z listą adresów IP potencjalnych węzłów,
+      \item próbuje połączyć się z węzłami zgodnie z procedurą opisaną w \ref{sec:communication},
+      \item dodaje każdy zgłaszający się węzeł do listy węzłów i oznacza go jako wolny,
+      \item rozdziela zadania każdemu z węzłów, dla każdego węzła z listy:
         \begin{enumerate}
-          \item Sprawdza czy ten węzeł jest oznaczony jako wolny i czy są dostępne zadania.
+          \item sprawdza czy ten węzeł jest oznaczony jako wolny i czy są dostępne zadania,
                 Jeśli nie, przechodzi do kolejnego węzła i powtarza obecny krok.
-          \item Pobiera zadanie z puli dostępnych zadań
-          \item Próbuje przypisać pobrane zadanie do tego węzła (może się to nie udać np. z powodu utraty połączenia sieciowego).
-          \item Jeśli powyższy krok się nie powiódł, przywraca zadanie do puli zadań, a niedziałający węzeł jest usuwany z listy węzłów.
+          \item pobiera zadanie z puli dostępnych zadań,
+          \item próbuje przypisać pobrane zadanie do tego węzła (może się to nie udać np. z powodu utraty połączenia sieciowego),
+          \item jeśli powyższy krok się nie powiódł, przywraca zadanie do puli zadań, a niedziałający węzeł jest usuwany z listy węzłów.
         \end{enumerate}
-      \item Odpytuje każdy zajęty węzeł o wyniki w następujący sposób:\label{enum:second_worker_check}
+      \item odpytuje każdy zajęty węzeł o wyniki w następujący sposób:\label{enum:second_worker_check}
       \begin{enumerate}
-        \item Odpytuje węzeł czy wynik jest dostępny.
+        \item odpytuje węzeł czy wynik jest dostępny.
               Jeśli nie, przechodzi do kolejnego węzła i powtarza obecny krok.
-        \item Pobiera od węzła jego wynik i zadanie. Zapisuje je do słownika, gdzie zadanie jest kluczem, a wynik wartością.
-        \item Oznacza węzeł jako wolny.
-        \item Jeśli któryś z powyższych kroków się nie powiódł, przywraca zadanie węzła do puli i usuwa go z listy węzłów.
+        \item pobiera od węzła jego wynik i zadanie. Zapisuje je do słownika, gdzie zadanie jest kluczem, a wynik wartością,
+        \item oznacza węzeł jako wolny,
+        \item jeśli któryś z powyższych kroków się nie powiódł, przywraca zadanie węzła do puli i usuwa go z listy węzłów.
       \end{enumerate}
-      \item W celu zmniejszenia obciążenia sieci przy komunikacji z węzłami, odczekuje sekundę przed kolejną iteracją.
+      \item w celu zmniejszenia obciążenia sieci przy komunikacji z węzłami, odczekuje sekundę przed kolejną iteracją.
     \end{enumerate}
-  \item Przywraca usunięte w punkcie \ref{list:duplicates} duplikaty, przepisując odpowiednie wyniki z policzonych zadań ze słownika zadanie-wynik.
+  \item przywraca usunięte w punkcie \ref{list:duplicates} duplikaty, przepisując odpowiednie wyniki z policzonych zadań ze słownika zadanie-wynik.
 \end{enumerate}
 
-W przypadku testu dla lokalnie obliczane wartości funkcji Levego opisanego w \ref{sec:levy_test} system ten, z pewnymi modyfikacjami, również może zostać wykorzystany.
+W przypadku testu dla lokalnie obliczane wartości funkcji Levy'ego opisanego w \ref{sec:levy_test} system ten, z pewnymi modyfikacjami, również może zostać wykorzystany.
 Obliczenia wykonywane są lokalnie i dostępne są natychmiast po zleceniu zadania, w związku z czym:
 \begin{itemize}
   \item lista węzłów zawiera tylko jeden węzeł \textit{LevyWorker} i nie jest w żaden sposób modyfikowana
@@ -338,15 +340,15 @@ Na zielono zaznaczono obiekty komunikujące się przez sieć, natomiast na czerw
 
 Sama komunikacja przebiega w następujący sposób.
 \begin{enumerate}
-  \item System kolejkowy sprawdza, czy pod zadanym adresem IP rzeczywiście znajduje się węzeł obliczeniowy.
+  \item system kolejkowy sprawdza, czy pod zadanym adresem IP rzeczywiście znajduje się węzeł obliczeniowy.
   Sprawdzenie to polega na przesłaniu tekstowo zapytania ''UP?'' na obydwa otwarte porty węzła obliczeniowego.
-  Jeżeli w odpowiedzi z obydwu portu dostaje komunikat ''UP'', dodaje węzeł do swojej wewnętrznej listy węzłów i nie powtarza więcej tej komunikacji do momentu, kiedy znowu będzie potrzeba dodania tego węzła do listy.
-  \item Jeżeli poprzedni punkt przebiegł pomyślnie, węzeł jest gotowy do przyjęcia zadania.
-  System kolejkowy przesyła spakowany przy pomocą modułu \textit{Pickle} obiekt klasy \textit{Job} na port 4123, który jest używany do akceptacji zadań.\label{list:job}
-  \item Następnie cyklicznie (co sekundę, jest to wspominane w \ref{sec:queue_system} opóźnienie przesyłane jest zapytanie na port 4124 czy jest już wynik poprzez komunikat ''RDY?''.
+  Jeżeli w odpowiedzi z obydwu portu dostaje komunikat ''UP'', dodaje węzeł do swojej wewnętrznej listy węzłów i nie powtarza więcej tej komunikacji do momentu, kiedy znowu będzie potrzeba dodania tego węzła do listy,
+  \item jeżeli poprzedni punkt przebiegł pomyślnie, węzeł jest gotowy do przyjęcia zadania.
+  System kolejkowy przesyła spakowany przy pomocą modułu \textit{Pickle} obiekt klasy \textit{Job} na port 4123, który jest używany do akceptacji zadań,\label{list:job}
+  \item następnie cyklicznie (co sekundę, jest to wspominane w \ref{sec:queue_system} opóźnienie przesyłane jest zapytanie na port 4124 czy jest już wynik poprzez komunikat ''RDY?''.
   Jeżeli wynik jeszcze nie jest dostępny, odsyłana jest odpowiedź ''BSY'' oznaczająca dalsze trwanie obliczeń.\label{list:result}
-  W przeciwnym wypadku przesyłany jest spakowany przy pomocą modułu \textit{Pickle} obiekt klasy \textit{Individual} zawierający w sobie wyniki obliczeń.
-  \item System kolejkowy następnie powtarza kroki \ref{list:job} i \ref{list:result} tak długo, jak posiada zadania do rozdzielenia, lub dopóki nie nastąpi nieoczekiwany błąd.
+  W przeciwnym wypadku przesyłany jest spakowany przy pomocą modułu \textit{Pickle} obiekt klasy \textit{Individual} zawierający w sobie wyniki obliczeń,
+  \item system kolejkowy następnie powtarza kroki \ref{list:job} i \ref{list:result} tak długo, jak posiada zadania do rozdzielenia, lub dopóki nie nastąpi nieoczekiwany błąd.
 \end{enumerate}
 
 \subsection{Węzeł obliczeniowy}\label{sec:worker_node}
@@ -362,14 +364,14 @@ W związku z tym kod uruchamiany na węźle został rozdzielony na 3 pliki źró
 Pierwszym z nich jest \textit{listener\_jobs.py}.
 Działa on według następującego schematu:
 \begin{enumerate}
-  \item Ustawia socket nasłuchujący połączeń na porcie TCP/4123
-  \item W nieskończonej pętli:
+  \item ustawia socket nasłuchujący połączeń na porcie TCP/4123
+  \item w nieskończonej pętli:
   \begin{enumerate}
-    \item Akceptuje przychodzące połączenie i odbiera dane
-    \item Jeżeli w przychodzących danych występuje komunikat ''UP?'' odsyła komunikat ''UP'', zamyka połączenie i pomija resztę kroków w tym przebiegu pętli.
-    \item Zamyka połączenie od systemu kolejkowego.
-    \item Rozpakowuje przychodzące dane i sprawdza czy otrzymano obiekt klasy \textit{Job}, w przeciwnym wypadku generuje wyjątek i zakańcza działanie programu.
-    \item Przekazuje sterowanie do funkcji \textit{eval\_network(...)} z parametrami odczytanymi z otrzymanego obiektu.
+    \item akceptuje przychodzące połączenie i odbiera dane,
+    \item jeżeli w przychodzących danych występuje komunikat ''UP?'' odsyła komunikat ''UP'', zamyka połączenie i pomija resztę kroków w tym przebiegu pętli,
+    \item zamyka połączenie od systemu kolejkowego,
+    \item rozpakowuje przychodzące dane i sprawdza czy otrzymano obiekt klasy \textit{Job}, w przeciwnym wypadku generuje wyjątek i zakańcza działanie programu,
+    \item przekazuje sterowanie do funkcji \textit{eval\_network(...)} z parametrami odczytanymi z otrzymanego obiektu.
   \end{enumerate}
 \end{enumerate}
 
@@ -378,14 +380,14 @@ Na czas uczenia sieci proces nie nasłuchuje połączeń - przyjęto założenie
 Kolejny plik, tj. \textit{eval\_cnn.py}, zawiera jedną metodę, która oblicza funkcję przystosowania osobnika, poprzez skonstruowanie modelu sieci, uczenie go zbiorem uczącym oraz walidację na zbiorze testowym obrazków ze zbioru CIFAR-10.
 Bardziej szczegółowo:
 \begin{enumerate}
-  \item Ustawia zadane ziarno generatora losowego. Przyczyny, dla których to robi, opisano w \ref{sec:replicativity}.
-  \item Ładuje do pamięci zbiór danych CIFAR-10. Jeżeli skrypt jest uruchamiany pierwszy raz, pobiera ów zbiór z internetu.
-  \item Buduje model sieci neuronowej taki jak przedstawiono na rys. \ref{fig:fenotyp}.
+  \item ustawia zadane ziarno generatora losowego. Przyczyny, dla których to robi, opisano w \ref{sec:replicativity},
+  \item ładuje do pamięci zbiór danych CIFAR-10. Jeżeli skrypt jest uruchamiany pierwszy raz, pobiera ów zbiór z internetu,
+  \item buduje model sieci neuronowej taki jak przedstawiono na rys. \ref{fig:fenotyp}.
         Budowanie modelu jest uniwersalne dla różnych długości fenotypu, tj. różnej zadanej ilości warstw konwolucyjnych.
         Warstwa agregująca zostanie wstawiona w połowie , czyli dla 4 warstw za 2. warstwą.
-  \item Uczy uzyskany model korzystając z optymalizatora \textit{RMSProp} przez zadaną liczbę epok. Otrzymaną historię uczenia przechowuje w odpowiednim polu obiektu klasy \textit{Individual}.\label{list:training}
-  \item Sprawdza skuteczność uzyskanej nauczonej sieci na zbiorze testowym, j.w. zapisując uzyskaną skuteczność i wartość funkcji kosztu w odpowiednich polach.\label{list:check}
-  \item Pakuje uzupełniony przez powyższe operacje obiekt klasy \textit{Individual} przy pomocy modułu \textit{pickle} i zapisuje wynik w pliku ''result''.
+  \item uczy uzyskany model korzystając z optymalizatora \textit{RMSProp} przez zadaną liczbę epok. Otrzymaną historię uczenia przechowuje w odpowiednim polu obiektu klasy \textit{Individual},\label{list:training}
+  \item sprawdza skuteczność uzyskanej nauczonej sieci na zbiorze testowym, j.w. zapisując uzyskaną skuteczność i wartość funkcji kosztu w odpowiednich polach,\label{list:check}
+  \item pakuje uzupełniony przez powyższe operacje obiekt klasy \textit{Individual} przy pomocy modułu \textit{pickle} i zapisuje wynik w pliku ''result''.
 \end{enumerate}
 
 Przy przeprowadzaniu eksperymentów zaobserwowano niedeterministyczne występowanie wyjątku \textit{MemoryError} oznaczającego zużycie całej dostępnej pamięci i brak miejsca na alokowanie nowej, powodujący zakończenie działania programu.
@@ -395,13 +397,13 @@ Zastosowanym sposobem obejścia tego problemu jest ponowne uruchomienie skryptu 
 Trzeci plik \textit{listener\_results.py} odpowiedzialny jest za przesyłanie wyników na żądanie systemu kolejkowego lub informowanie, że nie są one jeszcze dostępne.
 Program ten realizuje następujące kroki:
 \begin{enumerate}
-  \item Ustawia socket nasłuchujący połączeń na porcie TCP/4124
-  \item W nieskończonej pętli:
+  \item ustawia socket nasłuchujący połączeń na porcie TCP/4124,
+  \item w nieskończonej pętli:
   \begin{enumerate}
-    \item Akceptuje przychodzące połączenie i odbiera dane
-    \item Jeżeli w przychodzących danych występuje komunikat ''UP?'' odsyła komunikat ''UP''. Jeżeli warunek nie jest spełniony, sprawdzany jest warunek poniżej.
-    \item Jeżeli w przychodzących danych występuje komunikat ''RDY?'' sprawdza czy jest dostępny plik z wynikami. Jeżeli nie, przesyła w odpowiedzi komunikat ''BSY''. Jeżeli jest, wysyła odczytany plik z wynikami.
-    \item Zamyka połączenie z systemem kolejkowym.
+    \item akceptuje przychodzące połączenie i odbiera dane,
+    \item jeżeli w przychodzących danych występuje komunikat ''UP?'' odsyła komunikat ''UP''. Jeżeli warunek nie jest spełniony, sprawdzany jest warunek poniżej,
+    \item jeżeli w przychodzących danych występuje komunikat ''RDY?'' sprawdza czy jest dostępny plik z wynikami. Jeżeli nie, przesyła w odpowiedzi komunikat ''BSY''. Jeżeli jest, wysyła odczytany plik z wynikami,
+    \item zamyka połączenie z systemem kolejkowym.
   \end{enumerate}
 \end{enumerate}
 
@@ -411,13 +413,13 @@ W związku z wykorzystaniem maszyn wirtualnych opartych o system Linux, w celu s
 Aby węzeł obliczeniowy zaczął działać, należy uruchomić w tle ten skrypt.
 Jego działanie opisać można następująco:
 \begin{enumerate}
-  \item Usuń plik z wynikami - zakładamy, że startujemy od nowa i nie powinno być wyników - realizowane przez komendę \textit{rm result}
-  \item Wyłącz działające procesy nasłuchujące zadań i wyników - realizowane przez komendę \textit{pkill python}
-  \item Uruchom w tle i uniezależnij od procesu rodzica skrypt \textit{listener\_results.py}
-  \item W nieskończonej pętli:
+  \item usuń plik z wynikami - zakładamy, że startujemy od nowa i nie powinno być wyników - realizowane przez komendę \textit{rm result},
+  \item wyłącz działające procesy nasłuchujące zadań i wyników - realizowane przez komendę \textit{pkill python},
+  \item uruchom w tle i uniezależnij od procesu rodzica skrypt \textit{listener\_results.py},
+  \item w nieskończonej pętli:
   \begin{enumerate}
-    \item Uruchom skrypt \textit{listener\_jobs.py} i czekaj na jego wykonanie
-    \item Poczekaj 10 sekund - oczekiwanie przed kolejnym uruchomieniem programu w przypadku, gdyby zajęty port TCP/4123 nie został jeszcze zwolniony.
+    \item uruchom skrypt \textit{listener\_jobs.py} i czekaj na jego wykonanie,
+    \item poczekaj 10 sekund - oczekiwanie przed kolejnym uruchomieniem programu w przypadku, gdyby zajęty port TCP/4123 nie został jeszcze zwolniony.
   \end{enumerate}
 \end{enumerate}
 
@@ -443,12 +445,12 @@ Dobrym rozwiązaniem okazują się być maszyny wirtualne z systemem Linux w chm
 Poniżej przedstawiono listę kilku dostawców takiego rozwiązania, których rozważano przy do stworzenia infrastruktury węzłów obliczeniowych:
 
 \begin{itemize}
-  \item Amazon Web Services
-  \item Microsoft Azure
-  \item Google Cloud Platform
-  \item DigtalOcean
-  \item Oktawave
-  \item OVH
+  \item Amazon Web Services,
+  \item Microsoft Azure,
+  \item Google Cloud Platform,
+  \item DigtalOcean,
+  \item Oktawave,
+  \item OVH.
 \end{itemize}
 
 Na dzień dzisiejszy firma \textit{Microsoft} oferuje 100\$ kredytu do wykorzystania dla studentów w celach badawczych, dlatego rozwiązanie to zostało wykorzystane do utworzenia 20 instancji maszyn wirtualnych, które wykorzystano jako węzły obliczeniowe.
@@ -483,21 +485,21 @@ Na rys. \ref{fig:azure} przedstawiono interfejs webowy \textit{Microsoft Azure}.
 
 Jak widać, oprócz początkowego wybrania obrazu (tutaj wybrano Ubuntu 17.10) należy przejść przez 4 etapy, gdzie musi podjąć następujące kroki:
 \begin{enumerate}
-  \item Wprowadzić nazwę maszyny wirtualnej, np. \textit{Worker1}
-  \item Wprowadzić dane do logowania przez ssh: nazwę użytkownika i klucz publiczny
-  \item Wybrać lub stworzyć grupę zasobów (nazwano grupę \textit{gacnn})
-  \item Lokalizację - przy czym należy pamiętać o limicie 4 vCPU na lokalizację
-  \item Wybrać rozmiar maszyny wirtualnej - tutaj wybrano rozmiar nazwany \textbf{DS1\_v2} o następujących parametrach:
+  \item wprowadzić nazwę maszyny wirtualnej, np. \textit{Worker1},
+  \item wprowadzić dane do logowania przez ssh: nazwę użytkownika i klucz publiczny,
+  \item wybrać lub stworzyć grupę zasobów (nazwano grupę \textit{gacnn}),
+  \item lokalizację - przy czym należy pamiętać o limicie 4 vCPU na lokalizację,
+  \item wybrać rozmiar maszyny wirtualnej - tutaj wybrano rozmiar nazwany \textbf{DS1\_v2} o następujących parametrach:
   \begin{itemize}
-    \item liczba vCPU: 1
-    \item Pamięć RAM: 3.5 GB
-    \item Rozmiar lokalnego SSD: 7 GB
-    \item Cena: 41.41€ za miesiąc (0.0557€ za godzinę)
+    \item liczba vCPU: 1,
+    \item pamięć RAM: 3.5 GB,
+    \item rozmiar lokalnego SSD: 7 GB,
+    \item cena: 41.41€ za miesiąc (0.0557€ za godzinę).
   \end{itemize}
-  \item Raz w każdym regionie stworzyć zestaw reguł zapory ogniowej (\textit{Network Security Group}) i dodać do niego regułę akceptującą połączenia na portach TCP: 4123-4124
-  \item Przypisać utworzony powyżej zestaw reguł do tworzonej maszyny wirtualnej
-  \item Wyłączyć niepotrzebną opcję diagnostyki uruchamiania (\textit{Boot Diagnostics})
-  \item Zatwierdzić utworzenie maszyny wirtualnej
+  \item raz w każdym regionie stworzyć zestaw reguł zapory ogniowej (\textit{Network Security Group}) i dodać do niego regułę akceptującą połączenia na portach TCP: 4123-4124,
+  \item przypisać utworzony powyżej zestaw reguł do tworzonej maszyny wirtualnej,
+  \item wyłączyć niepotrzebną opcję diagnostyki uruchamiania (\textit{Boot Diagnostics}),
+  \item zatwierdzić utworzenie maszyny wirtualnej.
 \end{enumerate}
 Rozwiązanie takie jest jednak czasochłonne i nieefektywne, przejście przez wszystkie etapy przy dużym poziomie koncentracji operatora zajmuje ok. ~3 minuty, co oznacza, że utworzenie 20 maszyn wirtualnych zajęłoby około godziny.
 
@@ -539,11 +541,11 @@ Poniższe kroki można w ten sposób wykonywać na 20 maszynach jednocześnie.
 
 Dalsze przygotowanie środowiska dla węzła obliczeniowego polega na:
 \begin{enumerate}
-  \item pobraniu programu \textit{python3-pip}
-  \item instalacja za jego pomocą bibliotek \textit{numpy, tensorflow, keras}.
-  \item sklonowanie repozytorium umieszczonego pod adresem \url{https://github.com/opiechow/gacnn}
-  \item przejście do katalogu gacnn/worker
-  \item uruchomienie skryptu starer.sh
+  \item pobraniu programu \textit{python3-pip},
+  \item instalacja za jego pomocą bibliotek \textit{numpy, tensorflow, keras},
+  \item sklonowanie repozytorium umieszczonego pod adresem \url{https://github.com/opiechow/gacnn},
+  \item przejście do katalogu gacnn/worker,
+  \item uruchomienie skryptu starer.sh.
 \end{enumerate}
 
 Po tych operacjach węzły obliczeniowe działają i czekają na zadania od systemu kolejkowego.
@@ -558,24 +560,24 @@ Przykładowy widok dla sześciu węzłów obliczeniowych przedstawiono na rys. \
 	 \label{fig:wip}
 \end{figure}
 
-\section{Replikatywność badań}\label{sec:replicativity}
+\section{Replikacja badań}\label{sec:replicativity}
 Zarówno w przypadku działania algorytmu genetycznego, jak i w przypadku uczenia sieci neuronowych, występuje wiele operacji, które z założenia powinny być niedeterministyczne.
 Poniżej przedstawiono listę tych operacji dla algorytmu genetycznego:
 \begin{itemize}
-  \item Losowe generowanie początkowej populacji algorytmu genetycznego
-  \item Selekcja ruletkowa
-  \item Losowe dobieranie osobników w pary rodzicielskie
-  \item Zachodzenie krzyżowania z pewnym prawdopodobieństwem
-  \item Losowanie maski w krzyżowaniu równomiernym
-  \item Zachodzenie mutacji z pewnym prawdopodobieństwem
-  \item Losowanie parametru do zmutowaniu
-  \item Losowanie nowej wartości mutowanego parametru
-  \item Losowanie części populacji przechodzącej do kolejnej iteracji
+  \item losowe generowanie początkowej populacji algorytmu genetycznego,
+  \item selekcja ruletkowa,
+  \item losowe dobieranie osobników w pary rodzicielskie,
+  \item zachodzenie krzyżowania z pewnym prawdopodobieństwem,
+  \item losowanie maski w krzyżowaniu równomiernym,
+  \item zachodzenie mutacji z pewnym prawdopodobieństwem,
+  \item losowanie parametru do zmutowaniu,
+  \item losowanie nowej wartości mutowanego parametru,
+  \item losowanie części populacji przechodzącej do kolejnej iteracji.
 \end{itemize}
 
 W przypadku uczenia sieci neuronowych losowo inicjalizowane są początkowe wagi w sieci.
 
-Aby zapewnić replikatywność badań, w toku pisania systemu dbano o zachowanie kontroli nad stanem początkowym generatora liczb pseudolosowych.
+Aby zapewnić możliwość replikacji badań, w toku pisania systemu dbano o zachowanie kontroli nad stanem początkowym generatora liczb pseudolosowych.
 W tym celu zarówno przed uruchomieniem algorytmu genetycznego jak i uczeniem sieci ustawiane jest ziarno generatora losowego.
 W przypadku węzła zarządzającego ziarno jest jednym z parametrów ustawianym przed uruchomieniem algorytmu.
 W przypadku węzłów obliczeniowych ziarno dla generatora odbierane jest razem z zadaniem do policzenia.
@@ -584,7 +586,7 @@ W przypadku algorytmu genetycznego używany jest generator z wbudowanego w języ
 W przypadku uczenia sieci neuronowych wszystkie operacje losowe ukryte są w działaniu funkcji biblioteki \textit{Keras}.
 Procedura ustawiania ziarna dla wszystkich generatorów dostępna jest w dokumentacji biblioteki. \cite{chollet2015keras}
 
-Poważną wadą dbania o replikatywność jest wymuszenie na \textit{TensorFlow} działania wyłącznie na jednym wątku, gdyż uniemożliwia to korzystanie z korzyści oferowanych przez uczenie sieci przy pomocy GPU i technologii CUDA.
+Poważną wadą dbania o możliwość replikacji jest wymuszenie na \textit{TensorFlow} działania wyłącznie na jednym wątku, gdyż uniemożliwia to korzystanie z korzyści oferowanych przez uczenie sieci przy pomocy GPU i technologii CUDA.
 Aby umożliwić działanie systemu w tymi technologiami, kryterium stopu uzależniono od wariancji wyników uzyskanych dla takiej samej sieci korzystając z różnych wartości ziarna generatora liczb losowych.
 
 W przypadku przedstawionych poniżej eksperymentów nie korzystano z uczenia GPU, a z 20 maszyn wirtualnych z jednym vCPU każda.

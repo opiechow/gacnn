@@ -1,41 +1,43 @@
 \chapter{Przegląd stanu wiedzy}\label{chap:teoria}
+Wiedza wymagana do zbadania możliwości wykorzystania algorytmu genetycznego do optymalizacji struktury konwolucyjnych sieci neuronowych składa się z bardziej podstawowych pojęć.
+W tym rozdziale następuje przejśćie od definicji uczenia maszynowego i problemu klasyfikacji obrazów przez metody rozwiązywania tego problemu do krótkiego omówienia algorytmu genetycznego jako metody optymalizacji.
 \section{Uczenie maszynowe}\label{machine_learning}
 Mówi się, że program komputerowy uczy się z doświadczenia (\textit{experience}) E w związku z pewną klasą zadań (\textit{tasks}) T oraz miarą wydajności (\textit{performance measure}) P jeżeli jego osiągi w zadaniach w T, jak mierzone przez P, ulegają polepszeniu z doświadczeniem E. \cite{mitchell1997machine}
 W przypadku pojedynczej konwolucyjnej sieci neuronowej (opisanej bliżej w \ref{sec:cnn}):
 \begin{itemize}
-	\item jako doświadczenie $E_{CN}$ możemy zdefiniować przetwarzanie obrazów wraz z ich etykietami klas
-	\item zadaniem $T_{CN}$ nazwiemy klasyfikację obrazów
-	\item miarą jakości $P_{CN}$ będzie stosunek liczby poprawnie zaklasyfikowanych zdjęć ze zbioru testowego do wielkości zbioru testowego
+	\item jako doświadczenie $E_{CN}$ możemy zdefiniować przetwarzanie obrazów wraz z ich etykietami klas,
+	\item zadaniem $T_{CN}$ nazwiemy klasyfikację obrazów,
+	\item miarą jakości $P_{CN}$ będzie stosunek liczby poprawnie zaklasyfikowanych zdjęć ze zbioru testowego do wielkości zbioru testowego.
 \end{itemize}
 W przypadku algorytmu genetycznego (opisanego w \ref{sec:ag}) poszukującego optymalnej struktury sieci neuronowej:
 \begin{itemize}
-	\item doświadczeniem $E_{GA}$ będzie tworzenie i testowanie nowych sieci neuronowych
-	\item zadanie $T_{GA}$ to poszukiwanie optymalnej w sensie $P_{CN}$ struktury (parametrów) sieci neuronowej
-	\item miarą jakości $P_{GA}$ będzie miara jakości najlepszego wygenerowanego przez algorytm osobnika
+	\item doświadczeniem $E_{GA}$ będzie tworzenie i testowanie nowych sieci neuronowych,
+	\item zadanie $T_{GA}$ to poszukiwanie optymalnej w sensie $P_{CN}$ struktury (parametrów) sieci neuronowej,
+	\item miarą jakości $P_{GA}$ będzie miara jakości najlepszego wygenerowanego przez algorytm osobnika.
 \end{itemize}
-Zastosowanie jednego algorytmu z dziedziny uczenia maszynowego do poprawy procesu uczenia się innego algorytmu tej samej klasy ma ścisły związek z pojęciem metauczenia.
-\section{Metauczenie}
+Zastosowanie jednego algorytmu z dziedziny uczenia maszynowego do poprawy procesu uczenia się innego algorytmu tej samej klasy ma ścisły związek z pojęciem meta uczenia.
+\section{Meta uczenie}
 \begin{enumerate}
-	\item System metauczący się (\textit{A metalearning system}) musi zawierać podsystem uczący się, który przystosowuje się z doświadczeniem.
-	\item Doświadczenie jest zdobywane poprzez wykorzystywanie metawiedzy wydobytej
+	\item system meta uczący się (\textit{A meta learning system}) musi zawierać podsystem uczący się, który przystosowuje się z doświadczeniem,
+	\item doświadczenie jest zdobywane poprzez wykorzystywanie meta wiedzy wydobytej:
 	\begin{enumerate}[a)]
-		\item z poprzedniego epizodu uczenia na pojedynczym zbiorze danych, i/lub
+		\item z poprzedniego epizodu uczenia na pojedynczym zbiorze danych,
 		\item z innych dziedzin lub problemów.
 	\end{enumerate}
 \end{enumerate}
-Dodatkowo, często używanym pojęciem w metauczeniu jest pojęcie tendencyjności (\textit{bias}), które w tym kontekście odnosi się do zbioru założeń wpływających na wybór hipotez opisujących dane. \cite{Lemke2015}
+Dodatkowo, często używanym pojęciem w meta uczeniu jest pojęcie tendencyjności (\textit{bias}), które w tym kontekście odnosi się do zbioru założeń wpływających na wybór hipotez opisujących dane. \cite{Lemke2015}
 Hipoteza w tym kontekście oznacza funkcję predykcyjną (\textit{predictive function}) powstałą w wyniku zastosowania tradycyjnego uczenia (np. konwolucyjnej sieci neuronowej) pewnymi danymi, a wpływ na jej kształt mają ustalone założenia zaszyte w strukturze uczonego algorytmu. \cite[s.2]{Brazdil2009}
 Autorzy w \cite{Brazdil2009} wyróżniają:
 \begin{itemize}
-	\item tendencyjność deklaratywną (\textit{declarative bias}) - specyfikuje ona reprezentację przestrzeni hipotez, np. przedstawianie hipotez korzystając wyłącznie z sieci neuronowych
-	\item tendencyjność proceduralną (\textit{procedural bias}) - wpływa na szeregowanie hipotez, np. preferowanie hipotez o krótszym czasie wykonania (\textit{runtime})
+	\item tendencyjność deklaratywną (\textit{declarative bias}) - specyfikuje ona reprezentację przestrzeni hipotez, np. przedstawianie hipotez korzystając wyłącznie z sieci neuronowych,
+	\item tendencyjność proceduralną (\textit{procedural bias}) - wpływa na szeregowanie hipotez, np. preferowanie hipotez o krótszym czasie wykonania (\textit{runtime}).
 \end{itemize}
-Zgodnie z tą teorią, w tradycyjnym uczeniu tendencyjność jest stała, podczas gdy metauczenie stara się ją dobierać dynamicznie. \cite{Lemke2015}
+Zgodnie z tą teorią, w tradycyjnym uczeniu tendencyjność jest stała, podczas gdy meta uczenie stara się ją dobierać dynamicznie. \cite{Lemke2015}
 W kontekście projektowanego systemu automatycznie dobierającego parametry konwolucyjnej sieci neuronowej, spełnia ona założenia sprecyzowane w pierwszej części definicji, tj.
 \begin{itemize}
-	\item Istnieje uczący się podsystem (konwolucyjna sieć neuronowa)
-	\item Struktura najlepszego osobnika ulega zmianie (przystosowuje się z doświadczeniem)
-	\item Metawiedza jest wydobywana z poprzednich epizodów uczenia (jako wartość funkcji przystosowania konkretnej struktury)
+	\item istnieje uczący się podsystem (konwolucyjna sieć neuronowa),
+	\item struktura najlepszego osobnika ulega zmianie (przystosowuje się z doświadczeniem),
+	\item meta wiedza jest wydobywana z poprzednich epizodów uczenia (jako wartość funkcji przystosowania konkretnej struktury).
 \end{itemize}
 W odniesieniu do tendencyjności deklaratywnej - przestrzeń poszukiwań (najlepszego algorytmu do klasyfikacji obrazów) została zawężona wyłącznie do konwolucyjnych sieci neuronowych, jednakże sieci o różnych strukturach będą produkować różne hipotezy.
 Poszukiwanie najlepszego algorytmu do klasyfikacji obrazów na zbiorze CIFAR-10 nie jest tematem tej pracy - jest nią próba znalezienia optymalnej struktury dla konkretnego algorytmu.
@@ -51,11 +53,6 @@ Podczas gdy taki klasyfikator (filtr antyspamowy) przetwarza tekst, w przypadku 
 \section{Klasyfikacja obrazów}
 Klasyfikacja obrazów jest zadaniem z klasy uczenia z nadzorem, w którym poszukujemy funkcji przypisującej obrazom odpowiednie etykiety z pewnego skończonego zbioru.
 Jest to jeden z podstawowych problemów przetwarzania obrazów.
-Co więcej, wiele pozornie różnych zadań (takich jak detekcja obiektów, segmentacja) można zredukować do problemu klasyfikacji obrazów.
-Przykładowo, model klasyfikujący obrazy przetwarza zdjęcie pokazane poniżej na rys. \ref{fig:image_classification} i przypisuje prawdopodobieństwa do czterech kategorii, $\lbrace kot, pies, kapelusz, kubek \rbrace$.
-Jak pokazano na rysunku, należy pamiętać, że zdjęcia dla komputera są niczym innym jak dużą trójwymiarową tablicą liczb.
-W tym przypadku zdjęcie kota jest szerokie na 2048 pikseli, wysokie na 1536 pikseli i posiada 3 kanały koloru: czerwony, zielony i niebieski (z ang. w skrócie \textit{RGB}).
-Tym samym zdjęcie składa się z $2048 \times 1536 \times 3 = 9437184$ liczb.
 
 \begin{figure}[h!tb]
 	 \centering
@@ -65,16 +62,22 @@ Tym samym zdjęcie składa się z $2048 \times 1536 \times 3 = 9437184$ liczb.
 	 \label{fig:image_classification}
 \end{figure}
 
+
+Co więcej, wiele pozornie różnych zadań (takich jak detekcja obiektów, segmentacja) można zredukować do problemu klasyfikacji obrazów.
+Przykładowo, model klasyfikujący obrazy przetwarza zdjęcie pokazane na rys. \ref{fig:image_classification} i przypisuje prawdopodobieństwa do czterech kategorii, $\lbrace kot, pies, kapelusz, kubek \rbrace$.
+Jak pokazano na rysunku, należy pamiętać, że zdjęcia dla komputera są niczym innym jak dużą trójwymiarową tablicą liczb.
+W tym przypadku zdjęcie kota jest szerokie na 2048 pikseli, wysokie na 1536 pikseli i posiada 3 kanały koloru: czerwony, zielony i niebieski (z ang. w skrócie \textit{RGB}).
+Tym samym zdjęcie składa się z $2048 \times 1536 \times 3 = 9437184$ liczb.
 Zadanie klasyfikacji obrazów w tym przypadku polega na zredukowaniu tych prawie 10 milionów liczb do jednej etykiety, dla rys. \ref{fig:image_classification} będzie to ''$kot$''.
 Dla człowieka rozpoznanie obiektu jest względnie proste. Z punktu widzenia algorytmu przetwarzania obrazów napotykamy kilka zasadniczych trudności, związanych z faktem, że komputer interpretuje obraz jako trójwymiarową macierz wartości jasności pikseli:
 \begin{itemize}
-	\item Zróżnicowanie perspektywy - ten sam obiekt może być różnie zorientowany względem kamery rejestrującej obraz
-	\item Zróżnicowanie skali - obiekty jednej klasy (np. koty) często występują w różnych rozmiarach (nie tylko z punktu widzenia rozmiaru na zdjęciu, ale i w rzeczywistości)
-	\item Deformacja - wiele klasyfikowanych obiektów nie jest bryłami sztywnymi i mogą być skrajnie zniekształcone
-	\item Okluzja - zjawisko zasłonięcia obiektu przez inny obiekt, czasem jedynie niewielki fragment szukanego obiektu jest widoczny
-	\item Warunki oświetleniowe - efekty różnego oświetlenia są bardzo wydatne na poziomie pikseli
-	\item Nieład w tle - klasyfikowane obiekty mogą zlewać się z tłem, czyniąc ich identyfikację trudniejszą
-	\item Zróżnicowanie wewnątrz klasy - niektóre klasy są bardzo ogólne (np. broń) i zawierają w sobie bardzo różnie wyglądające obiekty (np. miecz a karabin maszynowy).
+	\item zróżnicowanie perspektywy - ten sam obiekt może być różnie zorientowany względem kamery rejestrującej obraz,
+	\item zróżnicowanie skali - obiekty jednej klasy (np. koty) często występują w różnych rozmiarach (nie tylko z punktu widzenia rozmiaru na zdjęciu, ale i w rzeczywistości),
+	\item deformacja - wiele klasyfikowanych obiektów nie jest bryłami sztywnymi i mogą być skrajnie zniekształcone,
+	\item okluzja - zjawisko zasłonięcia obiektu przez inny obiekt, czasem jedynie niewielki fragment szukanego obiektu jest widoczny,
+	\item warunki oświetleniowe - efekty różnego oświetlenia są bardzo wydatne na poziomie pikseli,
+	\item nieład w tle - klasyfikowane obiekty mogą zlewać się z tłem, czyniąc ich identyfikację trudniejszą,
+	\item zróżnicowanie wewnątrz klasy - niektóre klasy są bardzo ogólne (np. broń) i zawierają w sobie bardzo różnie wyglądające obiekty (np. miecz a karabin maszynowy).
 \end{itemize}
 Na rys.\ref{fig:classification_problems} przedstawiono ilustrację powyższych problemów.
 
@@ -104,7 +107,7 @@ Poniżej, na rysunku \ref{fig:sample_data} przedstawiono wszystkie klasy wraz z 
 	 \centering
 	 \includegraphics[width = 1.0\linewidth]{img/sample_images}
 	 \caption{Przykładowe obrazki ze zbioru CIFAR-10 \\
-              Źródło: https://www.cs.toronto.edu/\textasciitilde kriz/cifar.html}
+              Źródło: Praca własna na podstawie: https://www.cs.toronto.edu/\textasciitilde kriz/cifar.html}
 	 \label{fig:sample_data}
 \end{figure}
 
@@ -196,10 +199,10 @@ Możemy wyobrazić sobie ściśnięcie wszystkich punktów do dwóch wymiarów j
 
 Przy klasyfikatorze liniowym warto zauważyć kilka faktów:
 \begin{itemize}
-	\item Pojedyncze mnożenie macierzowe $Wx_i$ w efekcie wyznacza oceny dla 10 różnych klasyfikatorów jednocześnie (jeden na klasę), gdzie każdy klasyfikator to rząd macierzy W i jednej prostej separującej na rys. \ref{fig:cartoon_class}
-	\item Dane wejściowe $(x_i,y_i)$ są ustalone, a kontrolujemy parametry $W,b$. Naszym celem będzie ustawienie tych parametrów w taki sposób, by wynikowe oceny zgadzały się z prawdziwymi przynależnościami do klas na całym zbiorze treningowym.
-	\item Zaletą tego podejścia jest możliwość odrzucenia (nie przechowywania w pamięci) zbioru treningowego po nauczeniu się parametrów $W,b$. Dzieje się tak, ponieważ nowe punkty do klasyfikacji klasyfikujemy przy pomocy ocen uzyskanych z już nauczonej funkcji.
-	\item Klasyfikowanie obrazów testowych sprowadza się do pojedynczego mnożenia macierzowego i dodawania, które jest szybsze od porównywania do wszystkich obrazków ze zbioru treningowego (jak w \ref{sec:knear}).
+	\item pojedyncze mnożenie macierzowe $Wx_i$ w efekcie wyznacza oceny dla 10 różnych klasyfikatorów jednocześnie (jeden na klasę), gdzie każdy klasyfikator to rząd macierzy W i jednej prostej separującej na rys. \ref{fig:cartoon_class},
+	\item dane wejściowe $(x_i,y_i)$ są ustalone, a kontrolujemy parametry $W,b$. Naszym celem będzie ustawienie tych parametrów w taki sposób, by wynikowe oceny zgadzały się z prawdziwymi przynależnościami do klas na całym zbiorze treningowym,
+	\item zaletą tego podejścia jest możliwość odrzucenia (nie przechowywania w pamięci) zbioru treningowego po nauczeniu się parametrów $W,b$. Dzieje się tak, ponieważ nowe punkty do klasyfikacji klasyfikujemy przy pomocy ocen uzyskanych z już nauczonej funkcji,
+	\item klasyfikowanie obrazów testowych sprowadza się do pojedynczego mnożenia macierzowego i dodawania, które jest szybsze od porównywania do wszystkich obrazków ze zbioru treningowego (jak w \ref{sec:knear}).
 \end{itemize}
 
 Przykład mapowania wartości pikseli do oceny przynależności do klas przedstawiono na rys. \ref{fig:lin_class}
@@ -288,15 +291,15 @@ Dalej rozważać będziemy jedynie sieci bez połączeń zwrotnych.
 
 Sieci neuronowe posiadają wiele zastosowań, wśród nich można wymienić:
 \begin{itemize}
-	\item modelowanie zagadnień programowania liniowego
-	\item rozpoznawanie pisma
-	\item zastosowania w teorii sterowania
+	\item modelowanie zagadnień programowania liniowego,
+	\item rozpoznawanie pisma,
+	\item zastosowania w teorii sterowania,
 	\begin{itemize}
-		\item identyfikacja obiektów
-		\item neurosterowanie obiektami statycznymi
+		\item identyfikacja obiektów,
+		\item neurosterowanie obiektami statycznymi.
 	\end{itemize}
-	\item sterowanie kinematyką robotów
-	\item neuronowe sieci ekspertowe \cite{zuradabarskijedruch1996}
+	\item sterowanie kinematyką robotów,
+	\item neuronowe sieci ekspertowe. \cite{zuradabarskijedruch1996}
 \end{itemize}
 
 Pytanie o to, które z modyfikowalnych komponentów systemu uczącego się są odpowiedzialne za jego sukces lub porażkę i jakie zmiany w nich polepszają ich wydajność nazywane jest fundamentalnym problemem przypisania zasługi (\textit{the fundamental credit assignment problem}). \cite{SCHMIDHUBER201585}.
@@ -324,9 +327,9 @@ W sieciach neuronowych każda warstwa przekształca trójwymiarowe wejście na t
 W sieciach konwolucyjnych wyróżnia się kilka podstawowych rodzajów warstw, które następnie składa się w całą sieć.
 Trzy podstawowe typy to:
 \begin{itemize}
-	\item warstwa konwolucyjna lub splotowa - oblicza wyjścia neuronów połączonych z lokalnymi fragmentami wejścia, wyznaczając iloczyn skalarny pomiędzy swoimi wagami a małym obszarem wejścia, do którego są połączone.
-	\item warstwa agregująca - dokonuje operacji podpróbkowania (\textit{subsampling}) wzdłuż wysokości i szerokości wejścia, zmniejszając wymiar danych na swoim wyjściu
-	\item warstwa w pełni połączona - tak jak w klasycznych sieciach neuronowych, każdy neuron jest połączony z każdą jednostką wejścia
+	\item warstwa konwolucyjna lub splotowa - oblicza wyjścia neuronów połączonych z lokalnymi fragmentami wejścia, wyznaczając iloczyn skalarny pomiędzy swoimi wagami a małym obszarem wejścia, do którego są połączone,
+	\item warstwa agregująca - dokonuje operacji podpróbkowania (\textit{subsampling}) wzdłuż wysokości i szerokości wejścia, zmniejszając wymiar danych na swoim wyjściu,
+	\item warstwa w pełni połączona - tak jak w klasycznych sieciach neuronowych, każdy neuron jest połączony z każdą jednostką wejścia.
 \end{itemize}
 
 Przyjmować będziemy również, że warstwa aktywacji liniowej (\textit{ReLU, Rectified Linear Unit}) jest ''zaszyta'' wewnątrz warstwy konwolucyjnej, na jej wyjściu.
@@ -349,7 +352,7 @@ W wyniku operacji splotu otrzymywana jest mapa cech dla każdego neuronu, i w wy
 Oprócz liczby filtrów z różnymi wagami, z których każdy splatany jest przez na zasadzie ruchomego okna, dodatkowymi parametrami cechującymi taką sieć są:
 
 \begin{itemize}
-	\item przeskok (\textit{stride}) - okno można przesuwać konsekwentnie piksel po pikselu po całym obrazie, można jednak przesuwać o większą ilość pikseli, owocuje to jednak zmniejszeniem wymiaru obrazu wyjściowego
+	\item przeskok (\textit{stride}) - okno można przesuwać konsekwentnie piksel po pikselu po całym obrazie, można jednak przesuwać o większą ilość pikseli, owocuje to jednak zmniejszeniem wymiaru obrazu wyjściowego,
 	\item dopełnianie zerami (\textit{zero padding}) - w przypadku skrajnych pikseli okno np. o wymiarach 3x3 przesuwane jest po nieistniejących w obrazie pikselach, które najczęściej zastępowane są zerami.
 	 			Rozmiar ramki złożonej z zer jest parametrem, który pozwala nam kontrolować rozmiar wyjścia.
 \end{itemize}
@@ -388,11 +391,11 @@ Na podstawie obserwacji sposobu dziedziczenia i rozmnażania się komórek, proc
 
 Podstawowe cechy algorytmu genetycznego:
 \begin{enumerate}
-	\item poszukiwania prowadzone są w wielu punktach
-	\item zadanie optymalizacji sparametryzowane w sposób zakodowany
-	\item nowe rozwiązania tworzone i wybierane są przy pomocy metod probabilistyczno-ewolucyjnych
-	\item brak ograniczeń na przestrzeń poszukiwań - funkcja celu może być dowolna, nieznana \label{lst:opt}
-	\item prostota implementacji i uniwersalność
+	\item poszukiwania prowadzone są w wielu punktach,
+	\item zadanie optymalizacji sparametryzowane w sposób zakodowany,
+	\item nowe rozwiązania tworzone i wybierane są przy pomocy metod probabilistyczno-ewolucyjnych,
+	\item brak ograniczeń na przestrzeń poszukiwań - funkcja celu może być dowolna, nieznana \label{lst:opt},
+	\item prostota implementacji i uniwersalność.
 \end{enumerate}
 
 Głównie ze względu na punkt \ref{lst:opt} wybrano tę metodę do optymalizacji struktury konwolucyjnych sieci neuronowych, gdyż funkcja skuteczności sieci w zależności od jej struktury jest nieznana.
@@ -415,44 +418,44 @@ Podstawowe operacje algorytmu genetycznego zwane operacjami genetycznymi oraz ki
 \begin{itemize}
 	\item selekcja:
 	\begin{itemize}
-		\item metodą proporcjonalną
-		\item metodą ze stochastycznym doborem resztowym
-		\item metodą turniejową
-		\item metodą rangową
-		\item metodą progową
+		\item metodą proporcjonalną,
+		\item metodą ze stochastycznym doborem resztowym,
+		\item metodą turniejową,
+		\item metodą rangową,
+		\item metodą progową.
 	\end{itemize}
-	\item krzyżowanie (pominięto sposoby krzyżowania dla kodowania całkowitoliczbowego)
+	\item krzyżowanie (pominięto sposoby krzyżowania dla kodowania całkowitoliczbowego):
 	\begin{itemize}
-		\item jednopunktowe
-		\item wielopunktowe
-		\item jednorodne (równomierne)
-		\item arytmetyczne
-		\item mieszane
+		\item jednopunktowe,
+		\item wielopunktowe,
+		\item jednorodne (równomierne),
+		\item arytmetyczne,
+		\item mieszane.
 	\end{itemize}
 	\item mutacja:
 	\begin{itemize}
-		\item genotypowa
-		\item fenotypowa
+		\item genotypowa,
+		\item fenotypowa:
 		\begin{itemize}
-			\item równomierna
-			\item nierównomierna
+			\item równomierna,
+			\item nierównomierna.
 		\end{itemize}
-		\item inwersja
-		\item wstawianie
-		\item przenoszenie
-		\item wzajemna wymiana
+		\item inwersja,
+		\item wstawianie,
+		\item przenoszenie,
+		\item wzajemna wymiana.
 	\end{itemize}
 	\item podstawienie:
 	\begin{itemize}
-		\item reprodukcja pełna
-		\item reprodukcja częściowa
+		\item reprodukcja pełna,
+		\item reprodukcja częściowa:
 		\begin{itemize}
-			\item usuwanie najgorszych osobników - elityzm
-			\item usuwanie najbardziej podobnych do potomstwa osobników - metoda ze ściskiem
-			\item usuwanie losowo wybranych osobników
+			\item usuwanie najgorszych osobników - elityzm,
+			\item usuwanie najbardziej podobnych do potomstwa osobników - metoda ze ściskiem,
+			\item usuwanie losowo wybranych osobników. \cite{bialaszewski2012}
 		\end{itemize}
 	\end{itemize}
-\end{itemize} \cite{bialaszewski2012}
+\end{itemize} 
 
 Algorytm genetyczny początkowo wytwarza losową populację osobników (rozwiązań).
 Następnie dla każdego z osobników wyznaczana jest wartość funkcji przystosowania, która ma być zmaksymalizowana.

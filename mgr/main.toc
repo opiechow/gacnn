@@ -1,5 +1,5 @@
 \contentsline {chapter}{Wykaz wa\IeC {\.z}niejszych oznacze\IeC {\'n} i skr\IeC {\'o}t\IeC {\'o}w}{6}
-\contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p}{8}
+\contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p i cel pracy}{8}
 \contentsline {chapter}{\numberline {2}Przegl\IeC {\k a}d stanu wiedzy}{10}
 \contentsline {section}{\numberline {2.1}Uczenie maszynowe}{10}
 \contentsline {section}{\numberline {2.2}Metauczenie}{10}
@@ -8,9 +8,9 @@
 \contentsline {section}{\numberline {2.5}CIFAR-10}{12}
 \contentsline {section}{\numberline {2.6}K najbli\IeC {\.z}szych s\IeC {\k a}siad\IeC {\'o}w}{14}
 \contentsline {section}{\numberline {2.7}Klasyfikator liniowy}{15}
-\contentsline {section}{\numberline {2.8}Sieci Neruonowe}{17}
+\contentsline {section}{\numberline {2.8}Sieci Neuronowe}{17}
 \contentsline {section}{\numberline {2.9}Konwolucyjne sieci neuronowe}{18}
-\contentsline {section}{\numberline {2.10}Algorytm geneteyczny}{20}
+\contentsline {section}{\numberline {2.10}Algorytm genetyczny}{20}
 \contentsline {chapter}{\numberline {3}Opis rozwi\IeC {\k a}zania}{23}
 \contentsline {section}{\numberline {3.1}Redukcja problemu}{23}
 \contentsline {section}{\numberline {3.2}Sie\IeC {\'c} neuronowa jako osobnik algorytmu genetycznego}{23}
@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {3.4.3}System kolejkowania zada\IeC {\'n}}{29}
 \contentsline {subsection}{\numberline {3.4.4}Protok\IeC {\'o}\IeC {\l } komunikacji ze zdalnymi w\IeC {\k e}z\IeC {\l }ami}{30}
 \contentsline {subsection}{\numberline {3.4.5}W\IeC {\k e}ze\IeC {\l } obliczeniowy}{31}
-\contentsline {subsection}{\numberline {3.4.6}Zarz\IeC {\k a}danie infrastruktur\IeC {\k a} w\IeC {\k e}z\IeC {\l }\IeC {\'o}w obliczeniowych}{33}
+\contentsline {subsection}{\numberline {3.4.6}Zarz\IeC {\k a}dzanie infrastruktur\IeC {\k a} w\IeC {\k e}z\IeC {\l }\IeC {\'o}w obliczeniowych}{33}
 \contentsline {section}{\numberline {3.5}Replikatywno\IeC {\'s}\IeC {\'c} bada\IeC {\'n}}{37}
 \contentsline {chapter}{\numberline {4}Badania i testy}{38}
 \contentsline {section}{\numberline {4.1}Wariancja wynik\IeC {\'o}w dla jednej sieci}{38}
@@ -38,41 +38,41 @@
 \contentsline {section}{\numberline {4.7}Osi\IeC {\k a}gi najlepszej wed\IeC {\l }ug algorytmu sieci po 25 epokach uczenia}{47}
 \contentsline {chapter}{\numberline {5}Podsumowanie}{49}
 \contentsline {chapter}{Bibliografia}{51}
-\contentsline {chapter}{Spis rysunk\'ow}{52}
-\contentsline {chapter}{Spis tabel}{53}
+\contentsline {chapter}{Spis rysunk\'ow}{53}
+\contentsline {chapter}{Spis tabel}{54}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {A}Dodatek A}{54}
+\contentsline {chapter}{ \numberline {A}Dodatek A}{55}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek A}{54}
-\contentsline {section}{\numberline {A.1}Tytu\IeC {\l } dyplomu}{54}
-\contentsline {section}{\numberline {A.2}Cel i przeznaczenie aplikacji}{54}
-\contentsline {section}{\numberline {A.3}Funkcjonalno\IeC {\'s}\IeC {\'c}}{54}
-\contentsline {subsection}{\numberline {A.3.1}Spis realizowanych funkcji}{54}
-\contentsline {subsection}{\numberline {A.3.2}Lista przyk\IeC {\l }adowych zastosowa\IeC {\'n}}{54}
-\contentsline {subsection}{\numberline {A.3.3}Szczeg\IeC {\'o}\IeC {\l }owy opis dzia\IeC {\l }ania aplikacji}{54}
-\contentsline {section}{\numberline {A.4}Og\IeC {\'o}lna architektura systemu}{54}
-\contentsline {section}{\numberline {A.5}Architektura sprz\IeC {\k e}tu}{54}
-\contentsline {section}{\numberline {A.6}Architektura oprogramowania}{55}
-\contentsline {section}{\numberline {A.7}Opis sposobu wytwarzania aplikacji}{55}
-\contentsline {subsection}{\numberline {A.7.1}Za\IeC {\l }o\IeC {\.z}enia i sformu\IeC {\l }owanie zadania}{55}
-\contentsline {subsection}{\numberline {A.7.2}Analiza problemu (z przegl\IeC {\k a}dem dotychczasowych rozwi\IeC {\k a}za\IeC {\'n})}{55}
-\contentsline {subsection}{\numberline {A.7.3}Specyfikacje}{55}
-\contentsline {subsection}{\numberline {A.7.4}Przygotowanie projektu}{55}
-\contentsline {subsection}{\numberline {A.7.5}Prototypowanie i implementacja}{55}
-\contentsline {subsection}{\numberline {A.7.6}Testowanie}{55}
-\contentsline {subsection}{\numberline {A.7.7}Ocena aplikacji (w tym por\IeC {\'o}wnanie do innych rozwi\IeC {\k a}za\IeC {\'n})}{55}
-\contentsline {subsection}{\numberline {A.7.8}Wnioski i perspektywy dalszych prac}{55}
+\contentsline {chapter}{ Dodatek A}{55}
+\contentsline {section}{\numberline {A.1}Tytu\IeC {\l } dyplomu}{55}
+\contentsline {section}{\numberline {A.2}Cel i przeznaczenie aplikacji}{55}
+\contentsline {section}{\numberline {A.3}Funkcjonalno\IeC {\'s}\IeC {\'c}}{55}
+\contentsline {subsection}{\numberline {A.3.1}Spis realizowanych funkcji}{55}
+\contentsline {subsection}{\numberline {A.3.2}Lista przyk\IeC {\l }adowych zastosowa\IeC {\'n}}{55}
+\contentsline {subsection}{\numberline {A.3.3}Szczeg\IeC {\'o}\IeC {\l }owy opis dzia\IeC {\l }ania aplikacji}{55}
+\contentsline {section}{\numberline {A.4}Og\IeC {\'o}lna architektura systemu}{55}
+\contentsline {section}{\numberline {A.5}Architektura sprz\IeC {\k e}tu}{55}
+\contentsline {section}{\numberline {A.6}Architektura oprogramowania}{56}
+\contentsline {section}{\numberline {A.7}Opis sposobu wytwarzania aplikacji}{56}
+\contentsline {subsection}{\numberline {A.7.1}Za\IeC {\l }o\IeC {\.z}enia i sformu\IeC {\l }owanie zadania}{56}
+\contentsline {subsection}{\numberline {A.7.2}Analiza problemu (z przegl\IeC {\k a}dem dotychczasowych rozwi\IeC {\k a}za\IeC {\'n})}{56}
+\contentsline {subsection}{\numberline {A.7.3}Specyfikacje}{56}
+\contentsline {subsection}{\numberline {A.7.4}Przygotowanie projektu}{56}
+\contentsline {subsection}{\numberline {A.7.5}Prototypowanie i implementacja}{56}
+\contentsline {subsection}{\numberline {A.7.6}Testowanie}{56}
+\contentsline {subsection}{\numberline {A.7.7}Ocena aplikacji (w tym por\IeC {\'o}wnanie do innych rozwi\IeC {\k a}za\IeC {\'n})}{56}
+\contentsline {subsection}{\numberline {A.7.8}Wnioski i perspektywy dalszych prac}{56}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {B}Dodatek B}{56}
+\contentsline {chapter}{ \numberline {B}Dodatek B}{57}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek B}{56}
+\contentsline {chapter}{ Dodatek B}{57}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {C}Dodatek C}{70}
+\contentsline {chapter}{ \numberline {C}Dodatek C}{71}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek C}{70}
+\contentsline {chapter}{ Dodatek C}{71}
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{ \numberline {D}Dodatek D}{71}
+\contentsline {chapter}{ \numberline {D}Dodatek D}{72}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{ Dodatek D}{71}
+\contentsline {chapter}{ Dodatek D}{72}
 \setcounter {tocdepth}{3}
 \contentsfinish 

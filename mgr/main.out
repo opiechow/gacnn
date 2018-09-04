@@ -1,0 +1,64 @@
+\BOOKMARK [0][-]{chapter*.5}{Wykaz wazniejszych oznaczen i skr\363t\363w}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Wstep i cel pracy}{}% 2
+\BOOKMARK [0][-]{chapter.2}{Przeglad stanu wiedzy}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Uczenie maszynowe}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{CIFAR-10}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.3}{K najblizszych sasiad\363w}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.4}{Klasyfikator liniowy}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.5}{Sieci Neuronowe}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.6}{Konwolucyjne sieci neuronowe}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.7}{Algorytm genetyczny}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Opis rozwiazania}{}% 11
+\BOOKMARK [1][-]{section.3.1}{Redukcja problemu}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{Siec neuronowa jako osobnik algorytmu genetycznego}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{Operacje genetyczne algorytmu genetycznego}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.3.1}{Krzyzowanie}{section.3.3}% 15
+\BOOKMARK [2][-]{subsection.3.3.2}{Mutacja}{section.3.3}% 16
+\BOOKMARK [2][-]{subsection.3.3.3}{''Naprawianie'' osobnik\363w}{section.3.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.4}{Substytucja}{section.3.3}% 18
+\BOOKMARK [1][-]{section.3.4}{Architektura eksperymentu}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.4.1}{Elementy wsp\363lne}{section.3.4}% 20
+\BOOKMARK [2][-]{subsection.3.4.2}{Weze\233 zarzadzajacy}{section.3.4}% 21
+\BOOKMARK [2][-]{subsection.3.4.3}{System kolejkowania zadan}{section.3.4}% 22
+\BOOKMARK [2][-]{subsection.3.4.4}{Protok\363\233 komunikacji ze zdalnymi wez\233ami}{section.3.4}% 23
+\BOOKMARK [2][-]{subsection.3.4.5}{Weze\233 obliczeniowy}{section.3.4}% 24
+\BOOKMARK [2][-]{subsection.3.4.6}{Zarzadzanie infrastruktura wez\233\363w obliczeniowych}{section.3.4}% 25
+\BOOKMARK [1][-]{section.3.5}{Replikatywnosc badan}{chapter.3}% 26
+\BOOKMARK [0][-]{chapter.4}{Badania i testy}{}% 27
+\BOOKMARK [1][-]{section.4.1}{Wariancja wynik\363w dla jednej sieci}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.2}{Test dzia\233ania algorytmu genetycznego}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.3}{Test dzia\233ania dla lokalnego wez\233a obliczeniowego}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.4}{Poszukiwanie optymalnej struktury konwolucyjnej sieci neuronowej za pomoca algorytmu genetycznego dla uczenia 1-epokowego}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.5}{Por\363wnanie wynik\363w dla uczenia 1- i 10- epokowego}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.6}{Por\363wnanie przebiegu uczenia sieci w pierwszej i ostatniej iteracji algorytmu genetycznego}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.7}{Osiagi najlepszej wed\233ug algorytmu sieci po 25 epokach uczenia}{chapter.4}% 34
+\BOOKMARK [0][-]{chapter.5}{Podsumowanie}{}% 35
+\BOOKMARK [0][-]{chapter*.34}{Bibliografia}{}% 36
+\BOOKMARK [0][-]{chapter*.35}{Spis rysunk\363w}{}% 37
+\BOOKMARK [0][-]{chapter*.36}{Spis tabel}{}% 38
+\BOOKMARK [0][-]{.1.A}{ Dodatek A}{}% 39
+\BOOKMARK [0][-]{.1.A}{ Dodatek A}{}% 40
+\BOOKMARK [1][-]{section.1.A.1}{Tytu\233 dyplomu}{.1.A}% 41
+\BOOKMARK [1][-]{section.1.A.2}{Cel i przeznaczenie aplikacji}{.1.A}% 42
+\BOOKMARK [1][-]{section.1.A.3}{Funkcjonalnosc}{.1.A}% 43
+\BOOKMARK [2][-]{subsection.1.A.3.1}{Spis realizowanych funkcji}{section.1.A.3}% 44
+\BOOKMARK [2][-]{subsection.1.A.3.2}{Lista przyk\233adowych zastosowan}{section.1.A.3}% 45
+\BOOKMARK [2][-]{subsection.1.A.3.3}{Szczeg\363\233owy opis dzia\233ania aplikacji}{section.1.A.3}% 46
+\BOOKMARK [1][-]{section.1.A.4}{Og\363lna architektura systemu}{.1.A}% 47
+\BOOKMARK [1][-]{section.1.A.5}{Architektura sprzetu}{.1.A}% 48
+\BOOKMARK [1][-]{section.1.A.6}{Architektura oprogramowania}{.1.A}% 49
+\BOOKMARK [1][-]{section.1.A.7}{Opis sposobu wytwarzania aplikacji}{.1.A}% 50
+\BOOKMARK [2][-]{subsection.1.A.7.1}{Za\233ozenia i sformu\233owanie zadania}{section.1.A.7}% 51
+\BOOKMARK [2][-]{subsection.1.A.7.2}{Analiza problemu \(z przegladem dotychczasowych rozwiazan\)}{section.1.A.7}% 52
+\BOOKMARK [2][-]{subsection.1.A.7.3}{Specyfikacje}{section.1.A.7}% 53
+\BOOKMARK [2][-]{subsection.1.A.7.4}{Przygotowanie projektu}{section.1.A.7}% 54
+\BOOKMARK [2][-]{subsection.1.A.7.5}{Prototypowanie i implementacja}{section.1.A.7}% 55
+\BOOKMARK [2][-]{subsection.1.A.7.6}{Testowanie}{section.1.A.7}% 56
+\BOOKMARK [2][-]{subsection.1.A.7.7}{Ocena aplikacji \(w tym por\363wnanie do innych rozwiazan\)}{section.1.A.7}% 57
+\BOOKMARK [2][-]{subsection.1.A.7.8}{Wnioski i perspektywy dalszych prac}{section.1.A.7}% 58
+\BOOKMARK [0][-]{.1.B}{ Dodatek B}{}% 59
+\BOOKMARK [0][-]{.1.B}{ Dodatek B}{}% 60
+\BOOKMARK [0][-]{.1.C}{ Dodatek C}{}% 61
+\BOOKMARK [0][-]{.1.C}{ Dodatek C}{}% 62
+\BOOKMARK [0][-]{.1.D}{ Dodatek D}{}% 63
+\BOOKMARK [0][-]{.1.D}{ Dodatek D}{}% 64

@@ -4,32 +4,32 @@
 \addcontentsline{toc}{chapter}{Dodatek D}
 Podobnie jak w przypadku zwykłego uruchomienia systemu, uruchamia się system w stan gotowości do pracy, tj.
 \begin{enumerate}
-  \item Przygotowuje się węzły obliczeniowe w następujący sposób:
+  \item przygotowuje się węzły obliczeniowe w następujący sposób:
   \begin{enumerate}
-    \item Na dowolnej platformie chmurowej tworzy się węzły obliczeniowe, czyli maszyny wirtualne.
-    Zaleca się użycie podobnych maszyn do użytych w toku badań, tj. maszyny z 1 vCPU, 3.5 GB pamięci ram, 7 GB pamięci masowej, system operacyjny Ubuntu 17.10
-    \item Dla każdej maszyny wirtualnej otwiera się wymagane do działania systemu porty TCP 4123-4124 dla połączeń przychodzących
-    \item Instaluje się oprogramowanie wymagane przez system, tj. interpreter języka Python w wersji 3, instalator bibliotek pip, biblioteki TensorFlow, Keras, Numpy
-    \item Pobiera się kod systemu z przygotowanego repozytorium
-    \item Uruchamia się skrypt starter.sh w tle, który uruchamia odpowiednie skrypty w języku Python i zapewnia restart systemu w razie awarii
+    \item na dowolnej platformie chmurowej tworzy się węzły obliczeniowe, czyli maszyny wirtualne.
+    Zaleca się użycie podobnych maszyn do użytych w toku badań, tj. maszyny z 1 vCPU, 3.5 GB pamięci ram, 7 GB pamięci masowej, system operacyjny Ubuntu 17.10,
+    \item dla każdej maszyny wirtualnej otwiera się wymagane do działania systemu porty TCP 4123-4124 dla połączeń przychodzących,
+    \item instaluje się oprogramowanie wymagane przez system, tj. interpreter języka Python w wersji 3, instalator bibliotek pip, biblioteki TensorFlow, Keras, Numpy,
+    \item pobiera się kod systemu z przygotowanego repozytorium,
+    \item uruchamia się skrypt starter.sh w tle, który uruchamia odpowiednie skrypty w języku Python i zapewnia restart systemu w razie awarii.
   \end{enumerate}
-  \item Do pliku workers dopisuje się adresy IP węzłów obliczeniowych, po jednym na każdą linię pliku
+  \item do pliku workers dopisuje się adresy IP węzłów obliczeniowych, po jednym na każdą linię pliku
 \end{enumerate}
 
 Następnie można przystąpić do projektowania nowych eksperymentów, czyli nowych implementacji węzła zarządzającego.
 Polega to na odpowiednim wykorzystaniu gotowego systemu kolejkowego, które przeprowadza się w sposób następujący:
 \begin{enumerate}
-  \item W kodzie węzła zarządzającego należy utworzyć obiekt klasy \textit{WorkManager}
-  \item Należy przygotować listę zadań, która jest listą obiektów klasy \textit{Job} - dla każdego zadania należy ustalić osobnika klasy \textit{Individual} do uczenia, liczbę epok uczenia oraz ziarno dla generatora liczb losowych
-  \item Korzystając z metody \textit{evaluate(jobs)} obiektu klasy \textit{WorkManager} należy przeprowadzić obliczenia
-  \item Uzyskaną listę wyników, czyli listę obiektów klasy \textit{Individual} z uzupełnionymi wszystkimi polami należy zapisać do pliku, np. korzystając z funkcji \textit{save\_csv\_and\_history(write\_csv, results, iteration, n, m)}.
+  \item w kodzie węzła zarządzającego należy utworzyć obiekt klasy \textit{WorkManager},
+  \item należy przygotować listę zadań, która jest listą obiektów klasy \textit{Job} - dla każdego zadania należy ustalić osobnika klasy \textit{Individual} do uczenia, liczbę epok uczenia oraz ziarno dla generatora liczb losowych,
+  \item korzystając z metody \textit{evaluate(jobs)} obiektu klasy \textit{WorkManager} należy przeprowadzić obliczenia,
+  \item uzyskaną listę wyników, czyli listę obiektów klasy \textit{Individual} z uzupełnionymi wszystkimi polami należy zapisać do pliku, np. korzystając z funkcji \textit{save\_csv\_and\_history(write\_csv, results, iteration, n, m)}.
 \end{enumerate}
 
 W ten sposób można w szybki sposób dokonywać uczenia wielu sieci na równoległych maszynach.
 Przykładowe pliki, na których można wzorować nowe implementacje węzłów zarządzających:
 
 \begin{itemize}
-  \item \textit{genetic\_algorithmm.py}
-  \item \textit{full\_learning.py}
-  \item \textit{25epoch.py}
+  \item \textit{genetic\_algorithmm.py},
+  \item \textit{full\_learning.py},
+  \item \textit{25epoch.py}.
 \end{itemize}
